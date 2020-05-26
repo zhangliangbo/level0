@@ -1,0 +1,65 @@
+plugins {
+    id 'java'
+    id 'groovy'
+    id 'com.github.johnrengelman.shadow' version '5.1.0'
+    id 'com.bmuschko.nexus' version '2.3.1'
+//    id 'io.codearte.nexus-staging' version '0.21.1'
+}
+
+group 'xxl.level0'
+version '1.0.0-SNAPSHOT'
+
+sourceCompatibility = "8"
+targetCompatibility = "8"
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+dependencies {
+    //function programming
+    implementation 'io.vavr:vavr:0.10.3'
+    //apache
+    implementation 'org.apache.commons:commons-lang3:3.10'
+    implementation 'org.apache.commons:commons-collections4:4.4'
+    implementation 'org.apache.commons:commons-text:1.8'
+    implementation 'org.apache.commons:commons-math3:3.6.1'
+    implementation 'org.apache.commons:commons-jcs-core:2.2.1'
+    implementation 'org.apache.commons:commons-compress:1.20'
+    implementation 'org.apache.commons:commons-email:1.5'
+    implementation 'commons-dbutils:commons-dbutils:1.7'
+    implementation 'commons-io:commons-io:2.6'
+    implementation 'commons-cli:commons-cli:1.4'
+    implementation 'commons-codec:commons-codec:1.14'
+    implementation 'com.google.code.findbugs:jsr305:3.0.2'
+    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.google.zxing:core:3.4.0'
+    implementation 'com.google.zxing:javase:3.4.0'
+    implementation 'net.sourceforge.jexcelapi:jxl:2.6.12'
+    implementation 'org.apache.poi:poi-ooxml:4.1.1'
+    //google core api for java
+    implementation 'com.google.guava:guava:29.0-jre'
+    //just use in test to study grammar
+    testImplementation 'org.codehaus.groovy:groovy-all:3.0.4'
+    //real test
+    testImplementation 'junit:junit:4.12'
+
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+shadowJar {
+    zip64 true
+    manifest {
+        attributes(['Main-Class': 'xxl.reactornetty.TcpServerDemo'])
+    }
+}
+
+nexus {
+    sign = true
+    repositoryUrl = 'http://localhost:8081/repository/maven-releases/'
+    snapshotRepositoryUrl = 'http://localhost:8081/repository/maven-snapshots/'
+}
