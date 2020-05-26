@@ -5,7 +5,7 @@ package xxl.mathematica;
  */
 
 public class Mod {
-    public static int mod(int m, int n) {
-        return m % n;
-    }
+  public static int mod(int m, int n) {
+    return m % n;
+  }
 }

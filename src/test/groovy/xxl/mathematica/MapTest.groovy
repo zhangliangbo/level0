@@ -1,7 +1,6 @@
 package xxl.mathematica
 
 import org.junit.Test
-
 import xxl.mathematica.functional.Map
 
 import java.util.function.Function

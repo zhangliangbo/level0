@@ -2,9 +2,9 @@ package xxl.mathematica.external
 
 import xxl.mathematica.RandomChoice
 import xxl.mathematica.RandomInteger
-import xxl.mathematica.list.Table
 import xxl.mathematica.io.Export
 import xxl.mathematica.io.excel.IExcel
+import xxl.mathematica.list.Table
 
 class ExternalTest extends GroovyTestCase {
     void testExec() {

@@ -8,25 +8,22 @@ import java.util.List;
 @XmlType
 public class XmlBean {
 
-    @XmlElement
-    public String name;
+  @XmlElement
+  public int age;
+  @XmlElement
+  public List<XmlBeanChild> goods;
+  @XmlElement
+  public String name;
+  @XmlAttribute
+  public int state;
 
-    @XmlElement
-    public int age;
-
-    @XmlAttribute
-    public int state;
-
-    @XmlElement
-    public List<XmlBeanChild> goods;
-
-    @Override
-    public String toString() {
-        return "XmlBean{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                ", state=" + state +
-                ", goods=" + goods +
-                '}';
-    }
+  @Override
+  public String toString() {
+    return "XmlBean{" +
+        "name='" + name + '\'' +
+        ", age=" + age +
+        ", state=" + state +
+        ", goods=" + goods +
+        '}';
+  }
 }

@@ -6,11 +6,11 @@ package xxl.mathematica.exception;
 
 public class MaxStepException extends Exception {
 
-    public MaxStepException(int max) {
-        super("evaluate times have more the default max times " + max);
-    }
+  public MaxStepException(int max) {
+    super("evaluate times have more the default max times " + max);
+  }
 
-    public MaxStepException(String string) {
-        super(string);
-    }
+  public MaxStepException(String string) {
+    super(string);
+  }
 }
