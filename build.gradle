@@ -41,6 +41,7 @@ dependencies {
     implementation 'com.google.zxing:javase:3.4.0'
     implementation 'net.sourceforge.jexcelapi:jxl:2.6.12'
     implementation 'org.apache.poi:poi-ooxml:4.1.1'
+    implementation 'com.relops:snowflake:1.1'
     //google core api for java
     implementation 'com.google.guava:guava:29.0-jre'
     //just use in test to study grammar
