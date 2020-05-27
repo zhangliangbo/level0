@@ -92,26 +92,6 @@ public class Hash {
     }
 
     /**
-     * base64加密
-     *
-     * @param data
-     * @return
-     */
-    public static byte[] encodeBase64(byte[] data) {
-        return Base64.encodeBase64(data);
-    }
-
-    /**
-     * base64解密
-     *
-     * @param data
-     * @return
-     */
-    public static byte[] decodeBase64(byte[] data) {
-        return Base64.decodeBase64(data);
-    }
-
-    /**
      * 算法名称
      */
     public enum Algorithm {
