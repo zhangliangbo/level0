@@ -20,6 +20,8 @@ repositories {
 dependencies {
     //function programming
     implementation 'io.vavr:vavr:0.10.3'
+    //netty
+    implementation 'io.netty:netty-all:4.1.49.Final'
     //apache
     implementation 'org.apache.commons:commons-lang3:3.10'
     implementation 'org.apache.commons:commons-collections4:4.4'
