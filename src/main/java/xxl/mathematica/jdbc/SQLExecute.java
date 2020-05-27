@@ -14,7 +14,7 @@ import java.util.Map;
 /**
  * 选择数据
  */
-public class SQLSelect {
+public class SQLExecute {
 
   private static final ICacheAccess<DataSource, QueryRunner> cache = JCS.getInstance("xxl.mathematica.jdbc");
 
