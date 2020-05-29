@@ -5,7 +5,7 @@ package xxl.mathematica.exception;
  */
 
 public class NoEnoughResultException extends Exception {
-  public NoEnoughResultException(int has, int require) {
-    super("the result size is " + has + ", can not get " + require + " item");
-  }
+    public NoEnoughResultException(int has, int require) {
+        super("the result size is " + has + ", can not get " + require + " item");
+    }
 }

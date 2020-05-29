@@ -5,5 +5,5 @@ package xxl.mathematica;
  */
 
 class Constant {
-  static final int MaxStep = 65535;
+    static final int MaxStep = 65535;
 }

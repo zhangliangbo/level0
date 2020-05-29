@@ -7,17 +7,17 @@ import java.util.List;
  */
 
 public class Prepend {
-  /**
-   * 在 list 前加 elem.
-   *
-   * @param list
-   * @param t
-   * @param <T>
-   * @return
-   */
-  public static <T> List<T> prepend(List<T> list, T t) {
-    return io.vavr.collection.List.ofAll(list)
-        .prepend(t)
-        .asJava();
-  }
+    /**
+     * 在 list 前加 elem.
+     *
+     * @param list
+     * @param t
+     * @param <T>
+     * @return
+     */
+    public static <T> List<T> prepend(List<T> list, T t) {
+        return io.vavr.collection.List.ofAll(list)
+                .prepend(t)
+                .asJava();
+    }
 }

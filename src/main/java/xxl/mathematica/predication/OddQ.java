@@ -5,13 +5,13 @@ package xxl.mathematica.predication;
  */
 
 public class OddQ {
-  /**
-   * 是否为奇数
-   *
-   * @param number
-   * @return
-   */
-  public static boolean oddQ(int number) {
-    return number % 2 != 0;
-  }
+    /**
+     * 是否为奇数
+     *
+     * @param number
+     * @return
+     */
+    public static boolean oddQ(int number) {
+        return number % 2 != 0;
+    }
 }

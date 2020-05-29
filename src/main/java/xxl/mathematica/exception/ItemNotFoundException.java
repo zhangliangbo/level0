@@ -6,7 +6,7 @@ package xxl.mathematica.exception;
 
 public class ItemNotFoundException extends Exception {
 
-  public ItemNotFoundException(String param) {
-    super("can not find item that meet " + param);
-  }
+    public ItemNotFoundException(String param) {
+        super("can not find item that meet " + param);
+    }
 }

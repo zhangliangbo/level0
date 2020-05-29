@@ -8,40 +8,40 @@ package xxl.mathematica;
  */
 public class Rule<K, V> {
 
-  private K key;
-  private V value;
+    private K key;
+    private V value;
 
-  public Rule(K key, V value) {
-    this.key = key;
-    this.value = value;
-  }
+    public Rule(K key, V value) {
+        this.key = key;
+        this.value = value;
+    }
 
-  /**
-   * 创建一个规则
-   *
-   * @param k
-   * @param v
-   * @param <K>
-   * @param <V>
-   * @return
-   */
-  public static <K, V> Rule<K, V> valueOf(K k, V v) {
-    return new Rule<>(k, v);
-  }
+    /**
+     * 创建一个规则
+     *
+     * @param k
+     * @param v
+     * @param <K>
+     * @param <V>
+     * @return
+     */
+    public static <K, V> Rule<K, V> valueOf(K k, V v) {
+        return new Rule<>(k, v);
+    }
 
-  public K getKey() {
-    return key;
-  }
+    public K getKey() {
+        return key;
+    }
 
-  public void setKey(K key) {
-    this.key = key;
-  }
+    public void setKey(K key) {
+        this.key = key;
+    }
 
-  public V getValue() {
-    return value;
-  }
+    public V getValue() {
+        return value;
+    }
 
-  public void setValue(V value) {
-    this.value = value;
-  }
+    public void setValue(V value) {
+        this.value = value;
+    }
 }

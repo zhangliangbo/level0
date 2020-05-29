@@ -7,14 +7,14 @@ import org.apache.commons.io.FilenameUtils;
  */
 
 public class FileExtension {
-  /**
-   * 给出一个文件的扩展名.
-   *
-   * @param file
-   * @return
-   */
-  public static String fileExtension(String file) {
-    ObjectHelper.requireNonNull(file);
-    return FilenameUtils.getExtension(file);
-  }
+    /**
+     * 给出一个文件的扩展名.
+     *
+     * @param file
+     * @return
+     */
+    public static String fileExtension(String file) {
+        ObjectHelper.requireNonNull(file);
+        return FilenameUtils.getExtension(file);
+    }
 }

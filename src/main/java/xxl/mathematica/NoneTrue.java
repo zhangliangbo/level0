@@ -9,23 +9,23 @@ import java.util.function.Predicate;
  */
 
 public class NoneTrue {
-  /**
-   * 判断list是否所有的元素都满足p
-   *
-   * @param list
-   * @param p
-   * @param <T>
-   * @return
-   */
-  public static <T> boolean noneTrue(List<T> list, Predicate<T> p) {
-    ObjectHelper.requireNonNull(list, p);
+    /**
+     * 判断list是否所有的元素都满足p
+     *
+     * @param list
+     * @param p
+     * @param <T>
+     * @return
+     */
+    public static <T> boolean noneTrue(List<T> list, Predicate<T> p) {
+        ObjectHelper.requireNonNull(list, p);
 
-    for (T t : list) {
-      if (p.test(t)) {
-        return false;
-      }
+        for (T t : list) {
+            if (p.test(t)) {
+                return false;
+            }
+        }
+
+        return true;
     }
-
-    return true;
-  }
 }

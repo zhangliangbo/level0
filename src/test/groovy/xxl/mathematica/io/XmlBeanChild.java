@@ -6,17 +6,17 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType
 public class XmlBeanChild {
 
-  @XmlElement
-  public String name;
+    @XmlElement
+    public String name;
 
-  @XmlElement
-  public int weight;
+    @XmlElement
+    public int weight;
 
-  @Override
-  public String toString() {
-    return "XmlBeanChild{" +
-        "name='" + name + '\'' +
-        ", weight=" + weight +
-        '}';
-  }
+    @Override
+    public String toString() {
+        return "XmlBeanChild{" +
+                "name='" + name + '\'' +
+                ", weight=" + weight +
+                '}';
+    }
 }

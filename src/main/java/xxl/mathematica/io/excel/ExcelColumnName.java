@@ -8,17 +8,17 @@ import java.lang.annotation.Target;
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ExcelColumnName {
-  /**
-   * 列的名称
-   *
-   * @return
-   */
-  String value() default "";
+    /**
+     * 列的名称
+     *
+     * @return
+     */
+    String value() default "";
 
-  /**
-   * 字段的排列顺序，越大越靠后
-   *
-   * @return
-   */
-  int order() default 0;
+    /**
+     * 字段的排列顺序，越大越靠后
+     *
+     * @return
+     */
+    int order() default 0;
 }
