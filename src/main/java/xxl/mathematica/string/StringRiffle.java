@@ -1,6 +1,5 @@
 package xxl.mathematica.string;
 
-import xxl.mathematica.ObjectHelper;
 import xxl.mathematica.function.Function;
 
 import java.util.List;

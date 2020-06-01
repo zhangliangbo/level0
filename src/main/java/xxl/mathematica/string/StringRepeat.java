@@ -1,10 +1,7 @@
 package xxl.mathematica.string;
 
 import io.vavr.control.Try;
-import xxl.mathematica.ObjectHelper;
 import xxl.mathematica.function.Function;
-
-import java.util.concurrent.Callable;
 
 /**
  * 重复字符串
