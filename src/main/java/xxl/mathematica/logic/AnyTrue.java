@@ -1,5 +1,7 @@
-package xxl.mathematica;
+package xxl.mathematica.logic;
 
+
+import xxl.mathematica.ObjectHelper;
 
 import java.util.List;
 import java.util.function.Predicate;
@@ -18,14 +20,8 @@ public class AnyTrue {
      * @return
      */
     public static <T> boolean anyTrue(List<T> list, Predicate<T> predicate) {
-        ObjectHelper.requireNonNull(list, predicate);
-
-        for (T t : list) {
-            if (predicate.test(t)) {
-                return true;
-            }
-        }
-
-        return false;
+        return io.vavr.collection.List.ofAll(list)
+                .find(predicate::test)
+                .isDefined();
     }
 }

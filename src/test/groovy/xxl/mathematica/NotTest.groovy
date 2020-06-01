@@ -2,8 +2,8 @@ package xxl.mathematica
 
 import org.junit.Test
 
-import static xxl.mathematica.And.and
-import static xxl.mathematica.Not.not
+import static xxl.mathematica.logic.And.and
+import static xxl.mathematica.logic.Not.not
 
 /**
  * Created by zhang on 2017/9/11.

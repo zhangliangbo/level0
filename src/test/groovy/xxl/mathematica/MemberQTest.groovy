@@ -4,6 +4,7 @@ import org.junit.Test
 import xxl.mathematica.function.Function
 import xxl.mathematica.function.Predicate
 import xxl.mathematica.list.Array
+import xxl.mathematica.logic.AnyTrue
 
 /**
  * Created by zhang on 2017/9/10.

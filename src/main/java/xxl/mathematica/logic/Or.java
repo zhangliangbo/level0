@@ -1,4 +1,9 @@
-package xxl.mathematica;
+package xxl.mathematica.logic;
+
+import xxl.mathematica.ObjectHelper;
+
+import java.util.Arrays;
+import java.util.function.Predicate;
 
 /**
  * 逻辑或
@@ -13,12 +18,6 @@ public class Or {
      * @return
      */
     public static <T> boolean or(Boolean... predicates) {
-        ObjectHelper.requireNonNull((Object) predicates);
-        for (boolean predicate : predicates) {
-            if (predicate) {
-                return true;
-            }
-        }
-        return false;
+        return AnyTrue.anyTrue(Arrays.asList(predicates), aBoolean -> aBoolean);
     }
 }

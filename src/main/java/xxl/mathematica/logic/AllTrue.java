@@ -1,5 +1,7 @@
-package xxl.mathematica;
+package xxl.mathematica.logic;
 
+
+import xxl.mathematica.ObjectHelper;
 
 import java.util.List;
 import java.util.function.Predicate;
@@ -18,12 +20,6 @@ public class AllTrue {
      * @return
      */
     public static <T> boolean allTrue(List<T> list, Predicate<T> p) {
-        ObjectHelper.requireNonNull(list, p);
-        for (T t : list) {
-            if (!p.test(t)) {
-                return false;
-            }
-        }
-        return true;
+        return NoneTrue.noneTrue(list, t -> !p.test(t));
     }
 }

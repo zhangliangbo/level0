@@ -1,5 +1,7 @@
-package xxl.mathematica;
+package xxl.mathematica.logic;
 
+
+import xxl.mathematica.ObjectHelper;
 
 import java.util.List;
 import java.util.function.Predicate;
@@ -18,14 +20,8 @@ public class NoneTrue {
      * @return
      */
     public static <T> boolean noneTrue(List<T> list, Predicate<T> p) {
-        ObjectHelper.requireNonNull(list, p);
-
-        for (T t : list) {
-            if (p.test(t)) {
-                return false;
-            }
-        }
-
-        return true;
+        return io.vavr.collection.List.ofAll(list)
+                .find(p)
+                .isEmpty();
     }
 }

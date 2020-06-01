@@ -4,6 +4,9 @@ import org.junit.Test
 import xxl.mathematica.function.Function
 import xxl.mathematica.list.Array
 import xxl.mathematica.list.Count
+import xxl.mathematica.logic.AllTrue
+import xxl.mathematica.logic.AnyTrue
+import xxl.mathematica.logic.NoneTrue
 
 import java.util.function.Predicate
 

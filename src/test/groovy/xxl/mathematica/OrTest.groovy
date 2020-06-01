@@ -2,7 +2,7 @@ package xxl.mathematica
 
 import org.junit.Test
 
-import static xxl.mathematica.Or.or
+import static xxl.mathematica.logic.Or.or
 
 /**
  * Created by zhang on 2017/9/11.

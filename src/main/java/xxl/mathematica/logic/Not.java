@@ -1,4 +1,4 @@
-package xxl.mathematica;
+package xxl.mathematica.logic;
 
 /**
  * 逻辑非

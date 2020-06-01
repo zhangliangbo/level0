@@ -1,6 +1,8 @@
 package xxl.mathematica.predication;
 
 
+import xxl.mathematica.logic.AnyTrue;
+
 import java.util.List;
 import java.util.function.BiPredicate;
 import java.util.function.Predicate;
@@ -19,9 +21,7 @@ public class MemberQ {
      * @return
      */
     public static <T> boolean memberQ(List<T> list, T item, BiPredicate<T, T> p) {
-        return io.vavr.collection.List.ofAll(list)
-                .find(t -> p.test(item, t))
-                .isDefined();
+        return AnyTrue.anyTrue(list, t -> p.test(item, t));
     }
 
     /**

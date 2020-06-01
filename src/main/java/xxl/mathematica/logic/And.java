@@ -1,4 +1,6 @@
-package xxl.mathematica;
+package xxl.mathematica.logic;
+
+import java.util.Arrays;
 
 /**
  * 逻辑与
@@ -13,12 +15,6 @@ public class And {
      * @return And()=true, and nothing==true;
      */
     public static Boolean and(Boolean... ps) {
-        ObjectHelper.requireNonNull((Object) ps);
-        for (boolean predicate : ps) {
-            if (!predicate) {
-                return false;
-            }
-        }
-        return true;
+        return AllTrue.allTrue(Arrays.asList(ps), aBoolean -> aBoolean);
     }
 }

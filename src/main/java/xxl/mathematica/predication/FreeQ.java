@@ -1,6 +1,7 @@
 package xxl.mathematica.predication;
 
 import xxl.mathematica.ObjectHelper;
+import xxl.mathematica.logic.NoneTrue;
 
 import java.util.List;
 import java.util.function.BiPredicate;
@@ -21,9 +22,7 @@ public class FreeQ {
      * @return
      */
     public static <T> boolean freeQ(List<T> list, T item, BiPredicate<T, T> p) {
-        return io.vavr.collection.List.ofAll(list)
-                .find(t -> p.test(item, t))
-                .isEmpty();
+        return NoneTrue.noneTrue(list, t -> p.test(item, t));
     }
 
     /**
