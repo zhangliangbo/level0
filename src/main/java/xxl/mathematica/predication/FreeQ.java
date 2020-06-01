@@ -1,9 +1,10 @@
 package xxl.mathematica.predication;
 
 import xxl.mathematica.ObjectHelper;
-import xxl.mathematica.function.BiPredicate;
 
 import java.util.List;
+import java.util.function.BiPredicate;
+import java.util.function.Predicate;
 
 
 /**
@@ -20,13 +21,9 @@ public class FreeQ {
      * @return
      */
     public static <T> boolean freeQ(List<T> list, T item, BiPredicate<T, T> p) {
-        ObjectHelper.requireNonNull(list, item, p);
-        for (T t : list) {
-            if (p.test(t, item)) {
-                return false;
-            }
-        }
-        return true;
+        return io.vavr.collection.List.ofAll(list)
+                .find(t -> p.test(item, t))
+                .isEmpty();
     }
 
     /**
@@ -38,11 +35,6 @@ public class FreeQ {
      * @return
      */
     public static <T> boolean freeQ(List<T> list, T item) {
-        return freeQ(list, item, new BiPredicate<T, T>() {
-            @Override
-            public boolean test(T t, T t2) {
-                return t.equals(t2);
-            }
-        });
+        return freeQ(list, item, Object::equals);
     }
 }

@@ -1,9 +1,9 @@
 package xxl.mathematica.predication;
 
-import xxl.mathematica.ObjectHelper;
-import xxl.mathematica.function.BiPredicate;
 
 import java.util.List;
+import java.util.function.BiPredicate;
+import java.util.function.Predicate;
 
 /**
  * 成员判定
@@ -19,13 +19,9 @@ public class MemberQ {
      * @return
      */
     public static <T> boolean memberQ(List<T> list, T item, BiPredicate<T, T> p) {
-        ObjectHelper.requireNonNull(list, item, p);
-        for (T t : list) {
-            if (p.test(t, item)) {
-                return true;
-            }
-        }
-        return false;
+        return io.vavr.collection.List.ofAll(list)
+                .find(t -> p.test(item, t))
+                .isDefined();
     }
 
     /**
@@ -37,11 +33,6 @@ public class MemberQ {
      * @return
      */
     public static <T> boolean memberQ(List<T> list, T item) {
-        return memberQ(list, item, new BiPredicate<T, T>() {
-            @Override
-            public boolean test(T t, T t2) {
-                return t.equals(t2);
-            }
-        });
+        return memberQ(list, item, Object::equals);
     }
 }

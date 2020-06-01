@@ -1,10 +1,10 @@
 package xxl.mathematica;
 
-import xxl.mathematica.function.BiPredicate;
 import xxl.mathematica.predication.FreeQ;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.BiPredicate;
 
 /**
  * 删除重复元素
