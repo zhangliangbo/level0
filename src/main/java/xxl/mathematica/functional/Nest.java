@@ -1,8 +1,9 @@
 package xxl.mathematica.functional;
 
 
-import xxl.mathematica.ObjectHelper;
+import io.vavr.control.Try;
 
+import java.util.concurrent.Callable;
 import java.util.function.Function;
 
 /**
@@ -20,15 +21,15 @@ public class Nest {
      * @return
      */
     public static <T> T nest(Function<T, T> function, T initValue, int n) {
-        ObjectHelper.requireNonNull(function, initValue);
-        ObjectHelper.requireNonNegative(n);
-
-        T input = initValue;
-        T output = initValue;
-        for (int i = 0; i < n; i++) {
-            output = function.apply(input);
-            input = output;
-        }
-        return output;
+        return Try.ofCallable(new Callable<T>() {
+            @Override
+            public T call() throws Exception {
+                T temp = initValue;
+                for (int i = 0; i < n; i++) {
+                    temp = function.apply(temp);
+                }
+                return temp;
+            }
+        }).getOrNull();
     }
 }

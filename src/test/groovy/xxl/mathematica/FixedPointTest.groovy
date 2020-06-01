@@ -1,8 +1,9 @@
 package xxl.mathematica
 
 import org.junit.Test
-import xxl.mathematica.function.BiPredicate
-import xxl.mathematica.function.Function
+
+import java.util.function.BiPredicate
+import java.util.function.Function
 
 import static xxl.mathematica.BaseTest.newton3
 

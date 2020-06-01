@@ -1,11 +1,14 @@
 package xxl.mathematica
 
 import org.junit.Test
-import xxl.mathematica.function.BiPredicate
-import xxl.mathematica.function.Function
-import xxl.mathematica.function.Predicate
+import xxl.mathematica.functional.NestWhile
+import xxl.mathematica.functional.NestWhileList
 import xxl.mathematica.predication.EvenQ
 import xxl.mathematica.predication.PrimerQ
+
+import java.util.function.BiPredicate
+import java.util.function.Function
+import java.util.function.Predicate
 
 /**
  * Created by zhang on 2017/8/27.
@@ -139,7 +142,7 @@ class NestWhileTest {
             boolean test(List<Double> doubles) {
                 return doubles.get(0).doubleValue() != doubles.get(1).doubleValue()
             }
-        }, 2, 3)
+        }, 2)
         System.out.print("重复运用Cos到初始值1，3次，的结果为: " + d)
 
     }
@@ -176,7 +179,7 @@ class NestWhileTest {
             boolean test(List<Double> doubles) {
                 return doubles.get(0).doubleValue() != doubles.get(1).doubleValue()
             }
-        }, 2, 100, -94)//
+        }, 2)//
         System.out.println("重复运用Cos到初始值1，直到相邻两数相等: " + "length: " + list.size())
     }
 

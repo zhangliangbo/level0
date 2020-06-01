@@ -1,10 +1,11 @@
 package xxl.mathematica
 
 import org.junit.Test
-import xxl.mathematica.function.Function
+
+import java.util.function.Function
 
 import static xxl.mathematica.BaseTest.printList
-import static xxl.mathematica.NestList.nestList
+import static xxl.mathematica.functional.NestList.nestList
 import static xxl.mathematica.list.Append.append
 import static xxl.mathematica.list.Prepend.prepend
 

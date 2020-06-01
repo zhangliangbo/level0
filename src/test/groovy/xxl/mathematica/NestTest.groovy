@@ -2,6 +2,7 @@ package xxl.mathematica
 
 import org.junit.Test
 import xxl.mathematica.functional.Nest
+import xxl.mathematica.functional.NestList
 
 import java.util.function.Function
 
