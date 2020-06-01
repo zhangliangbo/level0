@@ -180,7 +180,7 @@ class NestWhileTest {
                 return doubles.get(0).doubleValue() != doubles.get(1).doubleValue()
             }
         }, 2)//
-        System.out.println("重复运用Cos到初始值1，直到相邻两数相等: " + "length: " + list.size())
+        System.out.println("重复运用Cos到初始值1，直到相邻两数相等: " + "length: " + list)
     }
 
 
