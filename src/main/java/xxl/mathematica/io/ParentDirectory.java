@@ -1,9 +1,5 @@
 package xxl.mathematica.io;
 
-import xxl.mathematica.ObjectHelper;
-
-import java.io.File;
-
 /**
  * 父目录
  */
