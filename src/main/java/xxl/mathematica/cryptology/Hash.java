@@ -1,4 +1,4 @@
-package xxl.mathematica;
+package xxl.mathematica.cryptology;
 
 
 import org.apache.commons.codec.Charsets;

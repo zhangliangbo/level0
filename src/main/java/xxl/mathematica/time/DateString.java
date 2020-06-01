@@ -18,7 +18,7 @@ public class DateString {
      * @return
      */
     public static String dateString(Date date, String format) {
-        return DateFormatUtils.format(date, format, TimeZone.getTimeZone("GMT+8"));
+        return DateFormatUtils.format(date, format);
     }
 
     /**

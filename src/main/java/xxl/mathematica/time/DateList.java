@@ -1,9 +1,11 @@
 package xxl.mathematica.time;
 
+import io.vavr.control.Try;
 import org.apache.commons.lang3.time.DateUtils;
 
 import java.text.ParseException;
 import java.util.Date;
+import java.util.concurrent.Callable;
 
 /**
  * 日期列表
@@ -17,11 +19,7 @@ public class DateList {
      * @return
      */
     public static Date dateList(String dateString, String format) {
-        try {
-            return DateUtils.parseDate(dateString, format);
-        } catch (ParseException e) {
-            return null;
-        }
+        return Try.ofCallable(() -> DateUtils.parseDate(dateString, format)).getOrNull();
     }
 
     /**

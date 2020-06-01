@@ -1,7 +1,9 @@
 package xxl.mathematica.string;
 
+import io.vavr.control.Try;
 import xxl.mathematica.ObjectHelper;
 
+import java.util.concurrent.Callable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -17,12 +19,13 @@ public class StringCount {
      * @return
      */
     public static int stringCount(String source, String regex) {
-        ObjectHelper.requireNonNull(source, regex);
-        Matcher matcher = Pattern.compile(regex).matcher(source);
-        int count = 0;
-        while (matcher.find()) {
-            ++count;
-        }
-        return count;
+        return Try.ofCallable(() -> {
+            Matcher matcher = Pattern.compile(regex).matcher(source);
+            int count = 0;
+            while (matcher.find()) {
+                ++count;
+            }
+            return count;
+        }).getOrNull();
     }
 }

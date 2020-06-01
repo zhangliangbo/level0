@@ -1,9 +1,8 @@
 package xxl.mathematica.string;
 
-import xxl.mathematica.ObjectHelper;
+import io.vavr.control.Option;
 
 import java.util.function.Function;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
@@ -35,8 +34,6 @@ public class StringContainsQ {
      * @return
      */
     public static boolean stringContainsQ(String source, String regex) {
-        ObjectHelper.requireNonNull(source, regex);
-        Matcher matcher = Pattern.compile(regex).matcher(source);
-        return matcher.matches();
+        return Option.of(Pattern.compile(regex).matcher(source).matches()).getOrNull();
     }
 }

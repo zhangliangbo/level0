@@ -1,10 +1,12 @@
 package xxl.mathematica.string;
 
-import xxl.mathematica.ObjectHelper;
-import xxl.mathematica.function.Function;
+import io.vavr.control.Try;
+
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -20,12 +22,7 @@ public class StringCases {
      * @return
      */
     public static List<String> stringCases(String source, String regex) {
-        return stringCases(source, regex, new Function<String, String>() {
-            @Override
-            public String apply(String s) {
-                return s;
-            }
-        });
+        return stringCases(source, regex, s -> s);
     }
 
     /**
@@ -38,12 +35,13 @@ public class StringCases {
      * @return
      */
     public static <R> List<R> stringCases(String source, String regex, Function<String, R> f) {
-        ObjectHelper.requireNonNull(source, regex, f);
-        Matcher matcher = Pattern.compile(regex).matcher(source);
-        List<R> sub = new ArrayList<>();
-        while (matcher.find()) {
-            sub.add(f.apply(matcher.group()));
-        }
-        return sub;
+        return Try.ofCallable(() -> {
+            Matcher matcher = Pattern.compile(regex).matcher(source);
+            List<R> sub = new ArrayList<>();
+            while (matcher.find()) {
+                sub.add(f.apply(matcher.group()));
+            }
+            return sub;
+        }).getOrNull();
     }
 }
