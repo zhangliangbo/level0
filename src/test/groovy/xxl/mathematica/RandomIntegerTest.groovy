@@ -4,6 +4,7 @@ import org.junit.Test
 import xxl.mathematica.function.Function
 import xxl.mathematica.function.Predicate
 import xxl.mathematica.list.Table
+import xxl.mathematica.random.RandomInteger
 
 import static xxl.mathematica.BaseTest.printList
 

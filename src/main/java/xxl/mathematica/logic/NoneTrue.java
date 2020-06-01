@@ -1,8 +1,6 @@
 package xxl.mathematica.logic;
 
 
-import xxl.mathematica.ObjectHelper;
-
 import java.util.List;
 import java.util.function.Predicate;
 

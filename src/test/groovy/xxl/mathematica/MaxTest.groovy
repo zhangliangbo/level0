@@ -1,6 +1,7 @@
 package xxl.mathematica
 
 import org.junit.Test
+import xxl.mathematica.random.RandomInteger
 
 import static xxl.mathematica.BaseTest.printList
 

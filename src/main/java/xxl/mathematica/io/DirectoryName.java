@@ -1,8 +1,10 @@
-package xxl.mathematica;
+package xxl.mathematica.io;
 
+import io.vavr.control.Try;
 import xxl.mathematica.functional.Nest;
 
 import java.io.File;
+import java.util.concurrent.Callable;
 import java.util.function.Function;
 
 /**
@@ -18,15 +20,9 @@ public class DirectoryName {
      * @return
      */
     public static String directoryName(String file, int n) {
-        ObjectHelper.requireNonNull(file);
-        ObjectHelper.requirePositive(n);
-        File result = Nest.nest(new Function<File, File>() {
-            @Override
-            public File apply(File file) {
-                return file == null ? null : file.getParentFile();
-            }
-        }, new File(file), n);
-        return result == null ? null : result.getAbsolutePath();//取绝对路径
+        return Try.ofCallable(() -> {
+            return Nest.nest(t -> t == null ? null : t.getParentFile(), new File(file), n).getAbsolutePath();//取绝对路径
+        }).getOrNull();
     }
 
     /**

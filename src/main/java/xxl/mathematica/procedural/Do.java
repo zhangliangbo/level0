@@ -1,5 +1,6 @@
-package xxl.mathematica;
+package xxl.mathematica.procedural;
 
+import xxl.mathematica.ObjectHelper;
 import xxl.mathematica.function.Consumer;
 
 import java.util.List;

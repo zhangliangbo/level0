@@ -7,6 +7,7 @@ import xxl.mathematica.list.Count
 import xxl.mathematica.logic.AllTrue
 import xxl.mathematica.logic.AnyTrue
 import xxl.mathematica.logic.NoneTrue
+import xxl.mathematica.random.RandomInteger
 
 import java.util.function.Predicate
 

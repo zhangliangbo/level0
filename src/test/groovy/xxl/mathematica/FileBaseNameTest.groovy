@@ -1,6 +1,7 @@
 package xxl.mathematica
 
 import org.junit.Test
+import xxl.mathematica.io.FileBaseName
 
 /**
  * Created by zhang on 2017/9/22.

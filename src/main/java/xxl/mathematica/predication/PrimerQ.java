@@ -2,8 +2,6 @@ package xxl.mathematica.predication;
 
 import io.vavr.control.Try;
 
-import java.util.concurrent.Callable;
-
 /**
  * 素数判定
  */

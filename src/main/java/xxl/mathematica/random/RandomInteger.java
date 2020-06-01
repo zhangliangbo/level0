@@ -1,4 +1,4 @@
-package xxl.mathematica;
+package xxl.mathematica.random;
 
 import org.apache.commons.lang3.RandomUtils;
 

@@ -1,11 +1,9 @@
 package xxl.mathematica.predication;
 
-import xxl.mathematica.ObjectHelper;
 import xxl.mathematica.logic.NoneTrue;
 
 import java.util.List;
 import java.util.function.BiPredicate;
-import java.util.function.Predicate;
 
 
 /**
