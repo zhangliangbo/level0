@@ -32,4 +32,17 @@ public class Subdivide {
                 .map(Math::round).asJava();
     }
 
+    /**
+     * 整型
+     *
+     * @param min
+     * @param max
+     * @param n
+     * @return
+     */
+    public static List<Integer> subdivide(int min, int max, int n) {
+        return io.vavr.collection.List.ofAll(subdivide((double) min, max, n))
+                .map(aDouble -> (int) Math.round(aDouble)).asJava();
+    }
+
 }
