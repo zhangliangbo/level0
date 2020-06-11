@@ -41,4 +41,32 @@ void testComplement() {
 ```
 ## Sort 排序一个列表
 # 逻辑
-## AllTrue 所有元素是否都为真
+## AllTrue 是否所有元素都为真
+## AnyTrue 是否有一个元素为真
+## NoneTrue 是否没有一个元素为真
+## And 逻辑与
+## Or 逻辑或
+## Not 逻辑非
+# 断言
+## MemberQ 列表是否存在元素
+## FreeQ 列表是否不存在元素
+## EvenQ 是否为偶数
+## OddQ 是否为奇数
+## PrimerQ 是否为素数
+# 时间
+## DateList 字符串转时间
+```
+void testDateList() {
+    println(DateList.dateList("2020-06-01 12:00:00", "yyyy-MM-dd HH:mm:ss"))
+}
+
+Mon Jun 01 12:00:00 CST 2020
+```
+## DateString 时间转字符串
+```
+void testDateString() {
+    println(DateString.dateString(new Date(),"yyyy-MM-dd HH:mm:ss"))
+}
+
+2020-06-11 09:08:16
+```
