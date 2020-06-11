@@ -78,3 +78,18 @@ void testDateString() {
 
 2020-06-11 09:08:16
 ```
+# 随机
+## RandomSample 不重复随机采样
+```
+void testRandomSample() {
+    println(RandomSample.randomSample(Range.range(10), 4))
+}
+
+[7, 0, 4, 8]
+
+void testRandomSample() {
+    println(RandomSample.randomSample(Range.range(10), 11))
+}
+
+[1, 2, 9, 3, 5, 4, 0, 8, 6, 7]
+```

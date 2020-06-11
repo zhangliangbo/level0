@@ -6,7 +6,7 @@ import java.util.List;
  * 范围，严格以上不允许实例化
  */
 
-public class Range<T> {
+public class Range {
 
     private Range() {
     }
