@@ -6,6 +6,14 @@
 ## Insert 给定位置插入元素
 ## Delete 给定位置删除元素
 ## Range 根据起始，结束和步长生成范围
+## Subdivide 把一个范围等分划分为n等份
+```
+void testSubdivide() {
+    println(Subdivide.subdivide(0, 1440, 10))
+}
+
+[0, 144, 288, 432, 576, 720, 864, 1008, 1152, 1296, 1440]
+```
 ## Take 获取列表给定范围的元素
 ## Drop 删除给定范围的元素
 ## Position 获取给定元素在列表的位置
