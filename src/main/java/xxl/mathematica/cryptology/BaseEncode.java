@@ -1,6 +1,7 @@
 package xxl.mathematica.cryptology;
 
-import org.apache.commons.codec.binary.Base64;
+
+import xxl.apache.commons.codec.binary.Base64;
 
 /**
  * 字节数组加密成Base64字节数组

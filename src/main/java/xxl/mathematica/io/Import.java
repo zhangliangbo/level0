@@ -1,8 +1,8 @@
 package xxl.mathematica.io;
 
 import com.google.gson.reflect.TypeToken;
-import org.apache.commons.codec.Charsets;
 import org.apache.commons.io.IOUtils;
+import xxl.apache.commons.codec.Charsets;
 import xxl.mathematica.io.excel.AbsExcel;
 import xxl.mathematica.io.excel.IExcel;
 import xxl.mathematica.single.GsonSingle;

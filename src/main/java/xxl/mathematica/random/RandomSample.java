@@ -1,13 +1,11 @@
 package xxl.mathematica.random;
 
 import io.vavr.control.Try;
-import org.apache.poi.ss.formula.functions.T;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
 import java.util.function.Function;
-import java.util.function.Predicate;
 
 /**
  * 伪随机采样

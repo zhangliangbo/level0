@@ -1,9 +1,9 @@
 package xxl.mathematica.cryptology;
 
 
-import org.apache.commons.codec.Charsets;
-import org.apache.commons.codec.binary.Hex;
-import org.apache.commons.codec.digest.DigestUtils;
+import xxl.apache.commons.codec.Charsets;
+import xxl.apache.commons.codec.binary.Hex;
+import xxl.apache.commons.codec.digest.DigestUtils;
 
 import java.io.FileInputStream;
 import java.io.IOException;
