@@ -39,7 +39,7 @@ public class ExportString {
                     }
                     try {
                         return Tuple.of(field.getName(), field.get(object).toString());
-                    } catch (IllegalAccessException e) {
+                    } catch (Exception e) {
                         return Tuple.of(field.getName(), null);
                     }
                 });
@@ -59,7 +59,7 @@ public class ExportString {
                     }
                     try {
                         return Tuple.of(field.getName(), field.get(object));
-                    } catch (IllegalAccessException e) {
+                    } catch (Exception e) {
                         return Tuple.of(field.getName(), null);
                     }
                 });

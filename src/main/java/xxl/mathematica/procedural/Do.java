@@ -1,9 +1,9 @@
 package xxl.mathematica.procedural;
 
-import xxl.mathematica.ObjectHelper;
-import xxl.mathematica.function.Consumer;
+import io.vavr.control.Try;
 
 import java.util.List;
+import java.util.function.Consumer;
 
 /**
  * Do循环
@@ -40,18 +40,18 @@ public class Do {
      * @param d
      */
     public static void loop(Consumer<Integer> consumer, int min, int max, int d) {
-        ObjectHelper.requireNonNull(consumer);
-        ObjectHelper.requireAscend(min, max, "min", "max");
-        ObjectHelper.requireNonZero(d, "d");
-        if (d < 0) {
-            for (int i = max; i > min; i += d) {
-                consumer.accept(i);
+        Try.ofCallable(() -> {
+            if (d < 0) {
+                for (int i = max; i > min; i += d) {
+                    consumer.accept(i);
+                }
+            } else {
+                for (int i = min; i < max; i += d) {
+                    consumer.accept(i);
+                }
             }
-        } else {
-            for (int i = min; i < max; i += d) {
-                consumer.accept(i);
-            }
-        }
+            return null;
+        }).get();
     }
 
     /**
@@ -61,9 +61,11 @@ public class Do {
      * @param list
      */
     public static void loop(Consumer<Integer> consumer, List<Integer> list) {
-        ObjectHelper.requireNonNull(consumer, list);
-        for (Integer integer : list) {
-            consumer.accept(integer);
-        }
+        Try.ofCallable(() -> {
+            for (Integer integer : list) {
+                consumer.accept(integer);
+            }
+            return null;
+        }).get();
     }
 }
