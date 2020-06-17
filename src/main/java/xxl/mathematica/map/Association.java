@@ -35,17 +35,7 @@ public class Association {
      * @return
      */
     public static Map<String, Object> association(Object obj) {
-        return io.vavr.collection.List.of(obj.getClass().getDeclaredFields())
-                .toJavaMap((Function<Field, Tuple2<String, Object>>) field -> {
-                    if (!field.isAccessible()) {
-                        field.setAccessible(true);
-                    }
-                    try {
-                        return Tuple.of(field.getName(), field.get(obj));
-                    } catch (Throwable e) {
-                        return Tuple.of(field.getName(), null);
-                    }
-                });
+        return association(obj, obj.getClass());
     }
 
     /**
@@ -69,6 +59,27 @@ public class Association {
                         } catch (NoSuchFieldException | IllegalAccessException e) {
                             return Tuple.of(s, null);
                         }
+                    }
+                });
+    }
+
+    /**
+     * 有一个类的所有字段指定键的集合
+     *
+     * @param obj
+     * @param cls
+     * @return
+     */
+    public static Map<String, Object> association(Object obj, Class<?> cls) {
+        return io.vavr.collection.List.of(cls.getDeclaredFields())
+                .toJavaMap((Function<Field, Tuple2<String, Object>>) field -> {
+                    if (!field.isAccessible()) {
+                        field.setAccessible(true);
+                    }
+                    try {
+                        return Tuple.of(field.getName(), field.get(obj));
+                    } catch (Throwable e) {
+                        return Tuple.of(field.getName(), null);
                     }
                 });
     }
