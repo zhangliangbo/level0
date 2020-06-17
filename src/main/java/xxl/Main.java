@@ -1,30 +1,16 @@
 package xxl;
 
-import io.vavr.collection.List;
+import xxl.mathematica.map.Association;
 
-import java.util.function.BiFunction;
+import java.util.Arrays;
+import java.util.Map;
 
 public class Main {
 
 
     public static void main(String[] args) throws InterruptedException {
-        System.err.println(
-                List.rangeBy(0, 10, 1)
-                        .reduce(new BiFunction<Integer, Integer, Integer>() {
-                            @Override
-                            public Integer apply(Integer integer, Integer integer2) {
-                                return integer + integer2;
-                            }
-                        })
-        );
-        System.err.println(
-                List.rangeBy(0, 10, 1)
-                        .fold(0, new BiFunction<Integer, Integer, Integer>() {
-                            @Override
-                            public Integer apply(Integer integer, Integer integer2) {
-                                return integer + integer2;
-                            }
-                        })
-        );
+        PO po = new PO();
+        Map<String, Object> association = Association.association(po, Arrays.asList("name", "age"));
+        System.err.println(association);
     }
 }

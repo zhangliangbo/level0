@@ -2,9 +2,9 @@ package xxl.mathematica.io;
 
 import com.google.gson.reflect.TypeToken;
 import org.apache.commons.lang3.ClassUtils;
-import xxl.mathematica.AssociationMap;
-import xxl.mathematica.KeySelect;
-import xxl.mathematica.Keys;
+import xxl.mathematica.map.AssociationMap;
+import xxl.mathematica.map.KeySelect;
+import xxl.mathematica.map.Keys;
 import xxl.mathematica.single.GsonSingle;
 
 import javax.xml.bind.JAXBContext;

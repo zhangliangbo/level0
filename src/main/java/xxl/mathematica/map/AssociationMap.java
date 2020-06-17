@@ -1,10 +1,11 @@
-package xxl.mathematica;
+package xxl.mathematica.map;
 
-import xxl.mathematica.function.Function;
+import io.vavr.Tuple;
+import xxl.mathematica.Rule;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Function;
 
 /**
  * 关联映射
@@ -20,12 +21,8 @@ public class AssociationMap {
      * @return
      */
     public static <K, V> Map<K, V> associationMap(Function<K, V> f, List<K> list) {
-        ObjectHelper.requireNonNull(f, list);
-        Map<K, V> result = new HashMap<>();
-        for (K k : list) {
-            result.put(k, f.apply(k));
-        }
-        return result;
+        return io.vavr.collection.List.ofAll(list)
+                .toJavaMap(k -> Tuple.of(k, f.apply(k)));
     }
 
     /**
@@ -40,12 +37,11 @@ public class AssociationMap {
      * @return
      */
     public static <K1, V1, K2, V2> Map<K2, V2> associationMap(Function<Rule<K1, V1>, Rule<K2, V2>> f, Map<K1, V1> map) {
-        ObjectHelper.requireNonNull(f, map);
-        Map<K2, V2> result = new HashMap<>();
-        for (Map.Entry<K1, V1> entry1 : map.entrySet()) {
-            Rule<K2, V2> entry2 = f.apply(Rule.valueOf(entry1.getKey(), entry1.getValue()));
-            result.put(entry2.getKey(), entry2.getValue());
-        }
-        return result;
+        return io.vavr.collection.HashMap.ofAll(map)
+                .map((k1, v1) -> {
+                    Rule<K2, V2> res = f.apply(Rule.valueOf(k1, v1));
+                    return Tuple.of(res.getKey(), res.getValue());
+                })
+                .toJavaMap();
     }
 }

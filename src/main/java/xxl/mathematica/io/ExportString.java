@@ -1,15 +1,14 @@
 package xxl.mathematica.io;
 
-import io.vavr.Tuple;
-import io.vavr.Tuple2;
+import xxl.mathematica.Rule;
+import xxl.mathematica.map.Association;
+import xxl.mathematica.map.AssociationMap;
 import xxl.mathematica.single.GsonSingle;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 import java.io.StringWriter;
-import java.lang.reflect.Field;
 import java.util.Map;
-import java.util.function.Function;
 
 /**
  * 导出字符串
@@ -32,17 +31,7 @@ public class ExportString {
      * @return
      */
     public static Map<String, String> exportStringMap(Object object) {
-        return io.vavr.collection.List.of(object.getClass().getDeclaredFields())
-                .toJavaMap((Function<Field, Tuple2<String, String>>) field -> {
-                    if (!field.isAccessible()) {
-                        field.setAccessible(true);
-                    }
-                    try {
-                        return Tuple.of(field.getName(), field.get(object).toString());
-                    } catch (Throwable e) {
-                        return Tuple.of(field.getName(), null);
-                    }
-                });
+        return AssociationMap.associationMap(rule -> Rule.valueOf(rule.getKey(), rule.getValue().toString()), Association.association(object));
     }
 
     /**
@@ -52,17 +41,7 @@ public class ExportString {
      * @return
      */
     public static Map<String, Object> exportObjectMap(Object object) {
-        return io.vavr.collection.List.of(object.getClass().getDeclaredFields())
-                .toJavaMap((Function<Field, Tuple2<String, Object>>) field -> {
-                    if (!field.isAccessible()) {
-                        field.setAccessible(true);
-                    }
-                    try {
-                        return Tuple.of(field.getName(), field.get(object));
-                    } catch (Throwable e) {
-                        return Tuple.of(field.getName(), null);
-                    }
-                });
+        return Association.association(object);
     }
 
     /**

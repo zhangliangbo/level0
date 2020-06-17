@@ -1,8 +1,8 @@
-package xxl.mathematica;
+package xxl.mathematica.map;
 
+import io.vavr.Tuple;
 import xxl.mathematica.function.Function;
 
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -21,12 +21,9 @@ public class KeyMap<K1, K2> {
      * @return
      */
     public static <K1, K2, V> Map<K2, V> keyMap(Function<K1, K2> f, Map<K1, V> map) {
-        ObjectHelper.requireNonNull(f, map);
-        Map<K2, V> result = new HashMap<>();
-        for (Map.Entry<K1, V> entry : map.entrySet()) {
-            result.put(f.apply(entry.getKey()), entry.getValue());
-        }
-        return result;
+        return io.vavr.collection.HashMap.ofAll(map)
+                .map((k1, v) -> Tuple.of(f.apply(k1), v))
+                .toJavaMap();
     }
 
 }

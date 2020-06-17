@@ -1,5 +1,7 @@
 package xxl.mathematica
 
+import xxl.mathematica.map.AssociationMap
+
 class AssociationMapTest extends GroovyTestCase {
     void testAssociationMap() {
         def old = AssociationMap.associationMap({ t -> Math.sqrt(t) }, [1, 2, 3, 4])

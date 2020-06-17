@@ -1,10 +1,9 @@
-package xxl.mathematica;
+package xxl.mathematica.map;
 
 import xxl.mathematica.list.Sort;
 
 import java.util.Comparator;
 import java.util.Map;
-import java.util.TreeMap;
 
 /**
  * 键排序
@@ -20,10 +19,8 @@ public class KeySort {
      * @return
      */
     public static <K extends Comparable<? super K>, V> Map<K, V> keySort(Map<K, V> map, Comparator<K> comparator) {
-        ObjectHelper.requireNonNull(map, comparator);
-        Map<K, V> result = new TreeMap<>(comparator);
-        result.putAll(map);
-        return result;
+        return io.vavr.collection.TreeMap.ofAll(comparator, map)
+                .toJavaMap();
     }
 
     /**
