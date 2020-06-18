@@ -1,4 +1,4 @@
-package xxl.mathematica;
+package xxl.mathematica.list;
 
 import java.util.List;
 
@@ -15,12 +15,7 @@ public class Last {
      * @return
      */
     public static <T> T last(List<T> list) {
-        ObjectHelper.requireNonNull(list);
-        if (list.size() == 0) {
-            throw new IllegalArgumentException("list's size is zero, do not have last element");
-        } else {
-            return list.get(list.size() - 1);
-        }
+        return last(list, null);
     }
 
     /**
@@ -32,11 +27,8 @@ public class Last {
      * @return
      */
     public static <T> T last(List<T> list, T def) {
-        ObjectHelper.requireNonNull(list);
-        if (list.size() == 0) {
-            return def;
-        } else {
-            return list.get(list.size() - 1);
-        }
+        return io.vavr.collection.List.ofAll(list)
+                .lastOption()
+                .getOrElse(def);
     }
 }

@@ -2,6 +2,7 @@ package xxl.mathematica
 
 import org.junit.Test
 import xxl.mathematica.function.Function
+import xxl.mathematica.list.First
 import xxl.mathematica.list.Table
 import xxl.mathematica.list.Take
 

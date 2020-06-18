@@ -4,8 +4,8 @@ import jxl.*;
 import jxl.write.Label;
 import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
-import xxl.mathematica.First;
 import xxl.mathematica.Select;
+import xxl.mathematica.list.First;
 import xxl.mathematica.list.Position;
 
 import java.io.File;

@@ -1,15 +1,11 @@
 package xxl;
 
-import xxl.mathematica.map.Association;
-
-import java.util.Map;
+import xxl.mathematica.network.PingTime;
 
 public class Main {
 
 
-    public static void main(String[] args) throws InterruptedException {
-        PO po = new PO();
-        Map<String, Object> association = Association.association(po);
-        System.err.println(association);
+    public static void main(String[] args) throws Exception {
+        System.err.println(PingTime.pingTime("www.xxlun.com", 1));
     }
 }

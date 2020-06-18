@@ -1,4 +1,4 @@
-package xxl.mathematica;
+package xxl.mathematica.list;
 
 import java.util.List;
 
@@ -16,10 +16,9 @@ public class First {
      * @return
      */
     public static <T> T first(List<T> list, T def) {
-
-        ObjectHelper.requireNonNull(list);
-
-        return list.size() == 0 ? def : list.get(0);
+        return io.vavr.collection.List.ofAll(list)
+                .headOption()
+                .getOrElse(def);
     }
 
     /**
@@ -30,11 +29,6 @@ public class First {
      * @return
      */
     public static <T> T first(List<T> list) {
-        ObjectHelper.requireNonNull(list);
-        if (list.size() == 0) {
-            throw new IllegalArgumentException("list's size is zero, do not have first element.");
-        } else {
-            return list.get(0);
-        }
+        return first(list, null);
     }
 }
