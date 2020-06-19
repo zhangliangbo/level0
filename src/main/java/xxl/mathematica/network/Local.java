@@ -126,9 +126,9 @@ public class Local {
                 List<Map<String, String>> res = new ArrayList<>();
                 Enumeration<NetworkInterface> interfaces = NetworkInterface.getNetworkInterfaces();
                 while (interfaces.hasMoreElements()) {
-                    Map<String, String> map = new HashMap<>();
                     NetworkInterface e = interfaces.nextElement();
                     if (!e.isVirtual() && !e.isLoopback() && e.isUp()) {
+                        Map<String, String> map = new HashMap<>();
                         map.put("name", e.getDisplayName());
                         map.put("mac", io.vavr.collection.List.ofAll(e.getHardwareAddress())
                                 .map(new Function<Byte, String>() {
@@ -143,12 +143,11 @@ public class Local {
                             InetAddress inetAddress = inetAddresses.nextElement();
                             if (inetAddress instanceof Inet6Address) {
                                 map.put("ipv6", inetAddress.getHostAddress());
-                                res.add(map);
                             } else if (inetAddress instanceof Inet4Address) {
                                 map.put("ipv4", inetAddress.getHostAddress());
-                                res.add(map);
                             }
                         }
+                        res.add(map);
                     }
                 }
                 return res;
