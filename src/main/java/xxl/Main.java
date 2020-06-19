@@ -1,35 +1,39 @@
 package xxl;
 
-import xxl.mathematica.Rule;
-import xxl.mathematica.external.External;
-import xxl.mathematica.network.PingTime;
+import org.apache.poi.sl.draw.geom.IAdjustableShape;
 
-import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.NetworkInterface;
-import java.util.Enumeration;
 
 public class Main {
 
 
     public static void main(String[] args) throws Exception {
-        Enumeration<NetworkInterface> interfaces = NetworkInterface.getNetworkInterfaces();
-        while (interfaces.hasMoreElements()) {
-            NetworkInterface e = interfaces.nextElement();
+        try {
+            //设置IP地址网段
+            String ips = "192.168.8.";
+            String ip;
+            //遍历IP地址
+            for (int i = 1; i < 255; i++) {
+                ip = ips + i;
+                System.out.println(ip);
+                InetAddress remote = InetAddress.getByName(ip);
+                boolean status = remote.isReachable(1);
 
-            if (!e.isVirtual() && !e.isLoopback()&& e.isUp() ) {
-                System.err.println("=" + e.getDisplayName());
-                Enumeration<InetAddress> inetAddresses = e.getInetAddresses();
-                while (inetAddresses.hasMoreElements()) {
-                    InetAddress inetAddress = inetAddresses.nextElement();
-                    if (inetAddress instanceof Inet4Address) {
-                        System.err.println("==" + inetAddress.getHostAddress());
+                if (status) {
+                    NetworkInterface interfac = NetworkInterface.getByInetAddress(remote);
+                    if (interfac != null) {
+                        byte[] mac = interfac.getHardwareAddress();
+                        if (mac != null) {
+                            System.out.println("have mac");
+                            System.out.println(io.vavr.collection.List.ofAll(mac).map(x -> String.format("%02X", x)).mkString());
+                        }
                     }
+                    System.out.println("IP地址为:" + ip + "\t\t" + remote.getHostName() + "\t\t是否可用: " + (status ? "可用" : "不可用"));
                 }
-                System.err.println("------------------");
             }
+        } catch (java.io.IOException uhe) {
+            System.out.println("Unable to find: " + uhe.getLocalizedMessage());
         }
-        Rule<Integer, byte[]> rule = External.runProcess("arp -a");
-        System.err.println(new String(rule.getValue(), "GBK"));
     }
 }
