@@ -100,6 +100,15 @@ void testExtract() {
 [a, b]
 ```
 ## Count 列表元素个数
+```
+void testCount() {
+    println(Count.count([1, 2, 3, 4, 5, 6, 7, 8, 9, 8], 8))
+    println(Count.count([1, 2, 3, 4, 5, 6, 7, 8, 9, 8], 2))
+}
+
+2
+1
+```
 ## Array 函数作用于范围，生成列表
 ## Table 生成二维列表
 ## Reverse 反向排序

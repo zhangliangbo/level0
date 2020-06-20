@@ -20,4 +20,15 @@ public class Count {
         return io.vavr.collection.List.ofAll(list)
                 .count(p);
     }
+
+    /**
+     * 计算t的个数
+     * @param list
+     * @param t
+     * @param <T>
+     * @return
+     */
+    public static <T> int count(List<T> list, T t) {
+        return count(list, (Predicate<T>) cur -> cur.equals(t));
+    }
 }
