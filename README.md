@@ -63,8 +63,22 @@ void testTake() {
 [1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
 ## Drop 删除给定范围的元素
+```
+void testDrop() {
+    def list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    println(Drop.drop(list, 3))
+    println(Drop.drop(list, 1, 7, 2))
+    println(Drop.drop(list, 0, list.size()))
+}
 
+[4, 5, 6, 7, 8, 9]
+[1, 3, 5, 7, 8, 9]
+[]
+```
 ## Position 获取给定元素在列表的位置
+```
+
+```
 ## Extract 提取给定位置的元素
 ## Count 列表元素个数
 ## Array 函数作用于范围，生成列表
@@ -149,7 +163,7 @@ void testRandomInteger() throws Exception {
 
 [6, 3, 1, 9, 3, 5, 7, 8, 4, 3]
 ```
-## RandomChoice 伪随机算选择
+## RandomChoice 伪随机选择
 ```
 void testRandomChoice() {
     println(RandomChoice.randomChoice(["A", "B", "C", "D"], 10))
