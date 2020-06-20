@@ -244,7 +244,31 @@ false
 ```
 ## NoneTrue 是否没有一个元素为真
 ```
+void testNoneTrue() {
+    def list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    println(NoneTrue.noneTrue(list, new Predicate<Integer>() {
+        @Override
+        boolean test(Integer t) {
+            return t > 1
+        }
+    }))
+    println(NoneTrue.noneTrue(list, new Predicate<Integer>() {
+        @Override
+        boolean test(Integer t) {
+            return t > 8
+        }
+    }))
+    println(NoneTrue.noneTrue(list, new Predicate<Integer>() {
+        @Override
+        boolean test(Integer t) {
+            return t > 9
+        }
+    }))
+}
 
+false
+false
+true
 ```
 ## And 逻辑与
 ## Or 逻辑或
