@@ -18,6 +18,13 @@ void testPrepend() {
 [head, a, b, c, d]
 ```
 ## Insert 给定位置插入元素
+```
+void testInsert() {
+    println(Insert.insert(["a", "b", "c", "d"], "x", 1))
+}
+
+[a, x, b, c, d]
+```
 ## Delete 给定位置删除元素
 ## Range 根据起始，结束和步长生成范围
 ## Subdivide 把一个范围等分划分为n等份
