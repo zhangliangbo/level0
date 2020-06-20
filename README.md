@@ -152,6 +152,13 @@ void testReverse() {
 [d, c, b, a]
 ```
 ## Join 连接两个列表
+```
+void testJoin() {
+    println(Join.join([1, 2, 3], [4, 5, 6]))
+}
+
+[1, 2, 3, 4, 5, 6]
+```
 ## Intersection 给出两个列表的有序交集
 ```
 void testIntersection() {
