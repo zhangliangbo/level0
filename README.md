@@ -77,9 +77,28 @@ void testDrop() {
 ```
 ## Position 获取给定元素在列表的位置
 ```
+def list = ["a", "b", "c", "d"]
+println(Position.position(list, "a"))
+println(Position.position(list, "b"))
+println(Position.position(list, new Predicate<String>() {
+    @Override
+    boolean test(String t) {
+        return t.equals("c")
+    }
+}))
 
+[0]
+[1]
+[2]
 ```
 ## Extract 提取给定位置的元素
+```
+void testExtract() {
+    println(Extract.extract(["a", "b", "c", "d"], [0, 1]))
+}
+
+[a, b]
+```
 ## Count 列表元素个数
 ## Array 函数作用于范围，生成列表
 ## Table 生成二维列表
