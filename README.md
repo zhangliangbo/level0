@@ -304,10 +304,61 @@ true
 ```
 # 断言
 ## MemberQ 列表是否存在元素
+```
+void testMemberQ() {
+    println(MemberQ.memberQ([1, 2, 3, 4, 5], 5))
+    println(MemberQ.memberQ([1, 2, 3, 4, 5], 6))
+}
+
+true
+false
+```
 ## FreeQ 列表是否不存在元素
+```
+void testFreeQ(){
+    println(FreeQ.freeQ([1, 2, 3, 4, 5], 5))
+    println(FreeQ.freeQ([1, 2, 3, 4, 5], 6))
+}
+
+false
+true
+```
 ## EvenQ 是否为偶数
+```
+void testEvenQ() {
+    println(EvenQ.evenQ(2))
+    println(EvenQ.evenQ(3))
+    println(EvenQ.evenQ(4))
+}
+
+true
+false
+true
+```
 ## OddQ 是否为奇数
+```
+void testOddQ() {
+    println(OddQ.oddQ(2))
+    println(OddQ.oddQ(3))
+    println(OddQ.oddQ(4))
+}
+
+false
+true
+false
+```
 ## PrimerQ 是否为素数
+```
+void testPrimerQ() {
+    println(PrimerQ.primerQ(2))
+    println(PrimerQ.primerQ(3))
+    println(PrimerQ.primerQ(4))
+}
+
+true
+true
+false
+```
 # 时间
 ## DateList 字符串转时间
 ```
