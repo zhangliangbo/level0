@@ -2,7 +2,21 @@
 # java编码，groovy测试
 # 列表
 ## Append 列表末尾添加元素
+```
+void testAppend() {
+    println(Append.append(["a", "b", "c", "d"], "tail"))
+}
+
+[a, b, c, d, tail]
+```
 ## Prepend 列表起始添加元素
+```
+void testPrepend() {
+    println(Prepend.prepend(["a", "b", "c", "d"], "head"))
+}
+
+[head, a, b, c, d]
+```
 ## Insert 给定位置插入元素
 ## Delete 给定位置删除元素
 ## Range 根据起始，结束和步长生成范围
@@ -92,4 +106,20 @@ void testRandomSample() {
 }
 
 [1, 2, 9, 3, 5, 4, 0, 8, 6, 7]
+```
+## RandomInteger 伪随机整数
+```
+void testRandomInteger() throws Exception {
+    println(RandomInteger.randomInteger(0, 10, 10))
+}
+
+[6, 3, 1, 9, 3, 5, 7, 8, 4, 3]
+```
+## RandomChoice 伪随机算选择
+```
+void testRandomChoice() {
+    println(RandomChoice.randomChoice(["A", "B", "C", "D"], 10))
+}
+
+[A, A, C, C, A, B, C, A, C, D]
 ```

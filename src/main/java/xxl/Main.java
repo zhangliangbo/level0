@@ -1,6 +1,7 @@
 package xxl;
 
 import org.apache.poi.sl.draw.geom.IAdjustableShape;
+import xxl.mathematica.network.Local;
 
 import java.net.InetAddress;
 import java.net.NetworkInterface;
@@ -11,14 +12,14 @@ public class Main {
     public static void main(String[] args) throws Exception {
         try {
             //设置IP地址网段
-            String ips = "192.168.8.";
+            String ips = "192.168.199.";
             String ip;
             //遍历IP地址
             for (int i = 1; i < 255; i++) {
                 ip = ips + i;
                 System.out.println(ip);
                 InetAddress remote = InetAddress.getByName(ip);
-                boolean status = remote.isReachable(1);
+                boolean status = remote.isReachable(1000);
 
                 if (status) {
                     NetworkInterface interfac = NetworkInterface.getByInetAddress(remote);

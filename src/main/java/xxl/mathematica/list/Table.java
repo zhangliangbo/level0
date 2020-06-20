@@ -1,9 +1,8 @@
 package xxl.mathematica.list;
 
-import xxl.mathematica.function.BiFunction;
-import xxl.mathematica.function.Function;
-
 import java.util.List;
+import java.util.function.BiFunction;
+import java.util.function.Function;
 
 /**
  * 表格
@@ -22,7 +21,7 @@ public class Table {
      */
     public static <T, R> List<R> table(Function<T, R> function, List<T> list) {
         return io.vavr.collection.List.ofAll(list)
-                .map(function::apply)
+                .map(function)
                 .asJava();
     }
 
