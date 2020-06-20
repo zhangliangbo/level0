@@ -144,6 +144,13 @@ void testTable() {
 [[(0,0), (0,1), (0,2)], [(1,0), (1,1), (1,2)], [(2,0), (2,1), (2,2)]]
 ```
 ## Reverse 反向排序
+```
+void testReverse() {
+    println(Reverse.reverse(["a", "b", "c", "d"]))
+}
+
+[d, c, b, a]
+```
 ## Join 连接两个列表
 ## Intersection 给出两个列表的有序交集
 ```

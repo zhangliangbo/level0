@@ -1,7 +1,5 @@
 package xxl.mathematica.list;
 
-import org.apache.poi.ss.formula.functions.T;
-
 import java.util.List;
 
 /**
@@ -14,7 +12,7 @@ public class Reverse {
      * @param list
      * @return
      */
-    public static List<T> reverse(List<T> list) {
+    public static <T> List<T> reverse(List<T> list) {
         return io.vavr.collection.List.ofAll(list)
                 .reverse()
                 .asJava();
