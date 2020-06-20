@@ -281,6 +281,17 @@ true
 false
 ```
 ## Or 逻辑或
+```
+void testOr() {
+    println(or(1 > 0, 0 > 1, 1 + 1 == 2))
+    println(or(1 + 1 == 2, 2 + 2 == 4))
+    println(or(1 + 1 == 3, 2 + 2 == 3))
+}
+
+true
+true
+false
+```
 ## Not 逻辑非
 # 断言
 ## MemberQ 列表是否存在元素
