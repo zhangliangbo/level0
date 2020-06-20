@@ -407,3 +407,25 @@ void testRandomChoice() {
 
 [A, A, C, C, A, B, C, A, C, D]
 ```
+# 网络请求
+## URLDownload 下载网络文件
+```
+void testUrlDownload() {
+    println(URLDownload.urlDownload(
+            "https://repo1.maven.org/maven2/io/netty/netty-all/4.1.50.Final/netty-all-4.1.50.Final.jar",
+            "D:\\",
+            new Consumer<Float>() {
+                @Override
+                void accept(Float aFloat) {
+                    System.err.println(aFloat)
+                }
+            }
+    ))
+}
+
+99.94338
+99.96768
+99.97693
+100.0
+D:\netty-all-4.1.50.Final.jar
+```
