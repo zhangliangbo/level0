@@ -271,6 +271,15 @@ false
 true
 ```
 ## And 逻辑与
+```
+void testAnd() {
+    println(And.and(1 > 0, 2 < 3, 5 < 6, true))
+    println(And.and(1 > 0, 2 > 3, 5 < 6, true))
+}
+
+true
+false
+```
 ## Or 逻辑或
 ## Not 逻辑非
 # 断言
