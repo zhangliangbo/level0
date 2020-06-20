@@ -1,4 +1,4 @@
-package xxl.mathematica
+package xxl.mathematica.list
 
 import groovy.test.GroovyTestCase
 import org.junit.Test

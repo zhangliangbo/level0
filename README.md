@@ -26,7 +26,23 @@ void testInsert() {
 [a, x, b, c, d]
 ```
 ## Delete 给定位置删除元素
+```
+void testDelete() {
+    println(Delete.delete(["a", "b", "c", "d"], [1, 3]))
+}
+
+[a, c]
+```
 ## Range 根据起始，结束和步长生成范围
+```
+void testRange() {
+    println(Range.range(1, 10, 2))
+    println(Range.range('a' as char, 'z' as char))
+}
+
+[1, 3, 5, 7, 9]
+[a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y]
+```
 ## Subdivide 把一个范围等分划分为n等份
 ```
 void testSubdivide() {
