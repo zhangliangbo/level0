@@ -123,6 +123,26 @@ void testArray() {
 [a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z]
 ```
 ## Table 生成二维列表
+```
+void testTable() {
+    println(Table.table(new Function<Integer, String>() {
+        @Override
+        String apply(Integer t) {
+            return "index" + t
+        }
+    }, Range.range(10)))
+
+    println(Table.table(new BiFunction<Integer, Integer, String>() {
+        @Override
+        String apply(Integer f, Integer s) {
+            return "(" + f + "," + s + ")"
+        }
+    }, Range.range(10), Range.range(10)))
+}
+
+[index0, index1, index2, index3, index4, index5, index6, index7, index8, index9]
+[[(0,0), (0,1), (0,2)], [(1,0), (1,1), (1,2)], [(2,0), (2,1), (2,2)]]
+```
 ## Reverse 反向排序
 ## Join 连接两个列表
 ## Intersection 给出两个列表的有序交集
