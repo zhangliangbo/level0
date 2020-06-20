@@ -46,10 +46,10 @@ void testRange() {
 ## Subdivide 把一个范围等分划分为n等份
 ```
 void testSubdivide() {
-    println(Subdivide.subdivide(0, 1440, 10))
+    println(Subdivide.subdivide(0D, 10D, 3))
 }
 
-[0, 144, 288, 432, 576, 720, 864, 1008, 1152, 1296, 1440]
+[0.0, 3.3333333333333335, 6.666666666666667, 10.0]
 ```
 ## Take 获取列表给定范围的元素
 ## Drop 删除给定范围的元素
