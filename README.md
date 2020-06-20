@@ -293,6 +293,15 @@ true
 false
 ```
 ## Not 逻辑非
+```
+void testNot() throws Exception {
+    println(Not.not(1 + 1 == 2))
+    println(Not.not(Not.not(1 + 1 == 2)))//双重否定等于肯定
+}
+
+false
+true
+```
 # 断言
 ## MemberQ 列表是否存在元素
 ## FreeQ 列表是否不存在元素
