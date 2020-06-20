@@ -1,8 +1,5 @@
 package xxl;
 
-import org.apache.poi.sl.draw.geom.IAdjustableShape;
-import xxl.mathematica.network.Local;
-
 import java.net.InetAddress;
 import java.net.NetworkInterface;
 

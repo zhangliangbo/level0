@@ -1,7 +1,6 @@
 package xxl.mathematica.list
 
 import groovy.test.GroovyTestCase
-import org.junit.Test
 import xxl.mathematica.random.RandomInteger
 
 /**
