@@ -52,7 +52,18 @@ void testSubdivide() {
 [0.0, 3.3333333333333335, 6.666666666666667, 10.0]
 ```
 ## Take 获取列表给定范围的元素
+```
+void testTake() {
+    def list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    println(Take.take(list, 1, 7, 2))
+    println(Take.take(list, 0, list.size()))
+}
+
+[2, 4, 6]
+[1, 2, 3, 4, 5, 6, 7, 8, 9]
+```
 ## Drop 删除给定范围的元素
+
 ## Position 获取给定元素在列表的位置
 ## Extract 提取给定位置的元素
 ## Count 列表元素个数
