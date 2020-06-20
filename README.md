@@ -194,8 +194,58 @@ void testSort() {
 ```
 # 逻辑
 ## AllTrue 是否所有元素都为真
+```
+void testAllTrue() {
+    def list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    println(AllTrue.allTrue(list, new Predicate<Integer>() {
+        @Override
+        boolean test(Integer t) {
+            return t < 10
+        }
+    }))
+    println(AllTrue.allTrue(list, new Predicate<Integer>() {
+        @Override
+        boolean test(Integer t) {
+            return t < 9
+        }
+    }))
+}
+
+true
+false
+```
 ## AnyTrue 是否有一个元素为真
+```
+void testAnyTrue() {
+    def list = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+    println(AnyTrue.anyTrue(list, new Predicate<Integer>() {
+        @Override
+        boolean test(Integer t) {
+            return t > 1
+        }
+    }))
+    println(AnyTrue.anyTrue(list, new Predicate<Integer>() {
+        @Override
+        boolean test(Integer t) {
+            return t > 8
+        }
+    }))
+    println(AllTrue.allTrue(list, new Predicate<Integer>() {
+        @Override
+        boolean test(Integer t) {
+            return t > 9
+        }
+    }))
+}
+
+true
+true
+false
+```
 ## NoneTrue 是否没有一个元素为真
+```
+
+```
 ## And 逻辑与
 ## Or 逻辑或
 ## Not 逻辑非

@@ -19,7 +19,7 @@ public class AnyTrue {
      */
     public static <T> boolean anyTrue(List<T> list, Predicate<T> predicate) {
         return io.vavr.collection.List.ofAll(list)
-                .find(predicate::test)
+                .find(predicate)
                 .isDefined();
     }
 }
