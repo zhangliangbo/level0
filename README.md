@@ -184,6 +184,14 @@ void testComplement() {
 [3, 4, 5]
 ```
 ## Sort 排序一个列表
+```
+void testSort() {
+    def list = [6, 4, 7, 3, 9, 4, 6, 8, 1, 2, 3]
+    println(Sort.sort(list))
+}
+
+[1, 2, 3, 3, 4, 4, 6, 6, 7, 8, 9]
+```
 # 逻辑
 ## AllTrue 是否所有元素都为真
 ## AnyTrue 是否有一个元素为真
