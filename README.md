@@ -110,6 +110,18 @@ void testCount() {
 1
 ```
 ## Array 函数作用于范围，生成列表
+```
+void testArray() {
+    println(Array.array(new Function<Integer, Character>() {
+        @Override
+        Character apply(Integer integer) {
+            return integer as char
+        }
+    }, 26, 97))
+}
+
+[a, b, c, d, e, f, g, h, i, j, k, l, m, n, o, p, q, r, s, t, u, v, w, x, y, z]
+```
 ## Table 生成二维列表
 ## Reverse 反向排序
 ## Join 连接两个列表
