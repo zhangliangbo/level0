@@ -1,6 +1,6 @@
 package xxl.mathematica.io
 
-import org.junit.Test
+
 import xxl.mathematica.io.DirectoryName
 
 /**
