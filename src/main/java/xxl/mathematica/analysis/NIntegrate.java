@@ -1,8 +1,7 @@
 package xxl.mathematica.analysis;
 
-import org.apache.commons.math3.analysis.UnivariateFunction;
+import io.vavr.control.Try;
 import org.apache.commons.math3.analysis.integration.BaseAbstractUnivariateIntegrator;
-import xxl.mathematica.ObjectHelper;
 import xxl.mathematica.function.Function;
 
 /**
@@ -30,16 +29,9 @@ public class NIntegrate {
      * @return
      */
     public static double nIntegrate(Function<Double, Double> f, double min, double max, IntegrationMethod method) {
-        ObjectHelper.requireNonNull(f, method);
-        ObjectHelper.requireAscend(min, max, "min", "max");
-        return method.getIntegrator().integrate(BaseAbstractUnivariateIntegrator.DEFAULT_MAX_ITERATIONS_COUNT,
-                new UnivariateFunction() {
-                    @Override
-                    public double value(double x) {
-                        return f.apply(x);
-                    }
-                },
+        return Try.ofCallable(() -> method.getIntegrator().integrate(BaseAbstractUnivariateIntegrator.DEFAULT_MAX_ITERATIONS_COUNT,
+                f::apply,
                 min,
-                max);
+                max)).get();
     }
 }
