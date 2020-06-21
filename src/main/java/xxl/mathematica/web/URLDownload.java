@@ -55,7 +55,11 @@ public class URLDownload {
                     fos.write(buf, 0, len);
                     sum += len;
                     if (progress != null) {
-                        progress.accept(sum * 100f / total);
+                        if (total > 0) {
+                            progress.accept(sum * 100f / total);
+                        } else {
+                            progress.accept(0f);
+                        }
                     }
                 }
                 fos.flush();

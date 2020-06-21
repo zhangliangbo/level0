@@ -5,8 +5,8 @@ import java.util.function.Consumer
 class URLDownloadTest extends GroovyTestCase {
     void testUrlDownload() {
         println(URLDownload.urlDownload(
-                "https://jcenter.bintray.com/io/vavr/vavr/0.10.3/vavr-0.10.3.jar",
-                "D:\\www.jar",
+                "https://shop.yuyi666.cn/quilt/mongo/download/5eeefc5c3d583a3c8a4dd757",
+                "D:\\www.pdf",
                 new Consumer<Float>() {
                     @Override
                     void accept(Float aFloat) {
