@@ -498,6 +498,20 @@ three
 four
 five
 ```
+## FileExtension 文件后缀名
+```
+void testFileExtension() throws Exception {
+    println(FileExtension.fileExtension("file.txt"))
+    println(FileExtension.fileExtension("file.tar.gz"))
+    println(FileExtension.fileExtension("C:\\file\\file\\file.tar.gz"))
+    println(FileExtension.fileExtension("C:\\file\\file\\file.txt"))
+}
+
+txt
+gz
+gz
+txt
+```
 ## FileNameTake 文件名提取
 ```
 void testFileNameTake() {
@@ -539,4 +553,12 @@ void testParentDirectory() throws Exception {
 
 C:\Program Files
 C:\
+```
+## FileNames 查找目录下的所有文件
+```
+void testFileNames() {
+    println(FileNames.fileNames(".*doc", "C:\\Users\\Admin\\Downloads"))
+}
+
+[C:\Users\Admin\Downloads\6614839830876524544 (1).apk, C:\Users\Admin\Downloads\6614839830876524544 (2).apk, C:\Users\Admin\Downloads\6614839830876524544 (3).apk, C:\Users\Admin\Downloads\6614839830876524544 (4).apk, C:\Users\Admin\Downloads\6614839830876524544.apk, C:\Users\Admin\Downloads\6678970299108560896.apk, C:\Users\Admin\Downloads\app-rice-debug.apk]
 ```
