@@ -65,6 +65,9 @@ public class URLDownload {
                 fos.flush();
                 fos.close();
                 is.close();
+                if (progress != null) {
+                    progress.accept(100f);
+                }
                 return output.getAbsolutePath();
             }
         }).getOrNull();
