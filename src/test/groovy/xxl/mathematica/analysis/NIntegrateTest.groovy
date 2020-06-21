@@ -6,12 +6,20 @@ import xxl.mathematica.function.Function
 
 class NIntegrateTest extends GroovyTestCase {
     void testNIntegrate() {
-        println(NIntegrate.nIntegrate(new Function<Double, Double>() {
+        Function<Double, Double> f = new Function<Double, Double>() {
             @Override
             Double apply(Double aDouble) {
                 return Math.sin(Math.sin(aDouble))
             }
-        }, 0, 2, IntegrationMethod.IterativeLegendreGauss))
+        }
+        println(NIntegrate.nIntegrate(f, 0, 2, IntegrationMethod.IterativeLegendreGauss))
+        println(NIntegrate.nIntegrate(f, 0, 2, IntegrationMethod.MidPoint))
+        println(NIntegrate.nIntegrate(f, 0, 2, IntegrationMethod.Romberg))
+        println(NIntegrate.nIntegrate(f, 0, 2, IntegrationMethod.Simpson))
+        println(NIntegrate.nIntegrate(f, 0, 2, IntegrationMethod.Trapezoid))
+    }
+
+    void testIntegrate1() {
         GaussIntegratorFactory factory = new GaussIntegratorFactory();
         println(factory.legendre(100, 0, 2).integrate(new UnivariateFunction() {
             @Override
@@ -19,29 +27,5 @@ class NIntegrateTest extends GroovyTestCase {
                 return Math.sin(Math.sin(x))
             }
         }))
-        println(NIntegrate.nIntegrate(new Function<Double, Double>() {
-            @Override
-            Double apply(Double aDouble) {
-                return Math.sin(Math.sin(aDouble))
-            }
-        }, 0, 2, IntegrationMethod.MidPoint))
-        println(NIntegrate.nIntegrate(new Function<Double, Double>() {
-            @Override
-            Double apply(Double aDouble) {
-                return Math.sin(Math.sin(aDouble))
-            }
-        }, 0, 2, IntegrationMethod.Romberg))
-        println(NIntegrate.nIntegrate(new Function<Double, Double>() {
-            @Override
-            Double apply(Double aDouble) {
-                return Math.sin(Math.sin(aDouble))
-            }
-        }, 0, 2, IntegrationMethod.Simpson))
-        println(NIntegrate.nIntegrate(new Function<Double, Double>() {
-            @Override
-            Double apply(Double aDouble) {
-                return Math.sin(Math.sin(aDouble))
-            }
-        }, 0, 2, IntegrationMethod.Trapezoid))
     }
 }

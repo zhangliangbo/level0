@@ -429,3 +429,30 @@ void testUrlDownload() {
 100.0
 D:\netty-all-4.1.50.Final.jar
 ```
+# 数学分析
+## NIntegrate 求一元函数积分
+```
+void testNIntegrate() {
+    Function<Double, Double> f = new Function<Double, Double>() {
+        @Override
+        Double apply(Double aDouble) {
+            return Math.sin(Math.sin(aDouble))
+        }
+    };
+    println(NIntegrate.nIntegrate(f, 0, 2, IntegrationMethod.IterativeLegendreGauss))
+    println(NIntegrate.nIntegrate(f, 0, 2, IntegrationMethod.MidPoint))
+    println(NIntegrate.nIntegrate(f, 0, 2, IntegrationMethod.Romberg))
+    println(NIntegrate.nIntegrate(f, 0, 2, IntegrationMethod.Simpson))
+    println(NIntegrate.nIntegrate(f, 0, 2, IntegrationMethod.Trapezoid))
+}
+
+1.2470560538570927
+
+1.2470567278907687
+
+1.2470560580690107
+
+1.2470560656862713
+
+1.2470556590870487
+```
