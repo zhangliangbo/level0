@@ -193,7 +193,34 @@ void testSort() {
 [1, 2, 3, 3, 4, 4, 6, 6, 7, 8, 9]
 ```
 # 字符串操作
+## StringCases 字符串匹配
+```
+void testStringCases() {
+    println(StringCases.stringCases("the cat in the hat", "a.*e"))  //默认第0个组
+    println(StringCases.stringCases("the cat in the hat", "a(.*)e", 1)) //选择第1个组
+    println(StringCases.stringCases("abcdabcdcd", "abc|cd"))
+}
 
+[at in the]
+[t in th]
+[abc, abc, cd]
+```
+## StringRiffle 分隔符连接字符串
+```
+void testStringRiffle() {
+    System.out.println(StringRiffle.stringRiffle(Arrays.asList("zlb", "hwj", "dsx"), "|"))
+}
+
+zlb|hwj|dsx
+```
+## StringSplit 分隔符分割字符串
+```
+void testStringSplit() {
+    println(StringSplit.stringSplit("a-b:c-d:e-f-g", ":", "-"))
+}
+
+[a, b, c, d, e, f, g]
+```
 # 逻辑
 ## AllTrue 是否所有元素都为真
 ```
