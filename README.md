@@ -192,6 +192,8 @@ void testSort() {
 
 [1, 2, 3, 3, 4, 4, 6, 6, 7, 8, 9]
 ```
+# 字符串操作
+
 # 逻辑
 ## AllTrue 是否所有元素都为真
 ```
@@ -447,12 +449,55 @@ void testNIntegrate() {
 }
 
 1.2470560538570927
-
 1.2470567278907687
-
 1.2470560580690107
-
 1.2470560656862713
-
 1.2470556590870487
+```
+# 文件操作
+## FileBaseName 无后缀的文件名
+```
+void testFileBaseName() throws Exception {
+    println(FileBaseName.fileBaseName("first"))
+    println(FileBaseName.fileBaseName("second.tar.gz"))
+    println(FileBaseName.fileBaseName("three."))
+    println(FileBaseName.fileBaseName("four.txt"))
+    println(FileBaseName.fileBaseName("C:\\Users\\zhang\\Rdrnss\\Code\\Flavors\\app\\release\\five.txt"))
+}
+
+first
+second.tar
+three
+four
+five
+```
+## DirectoryName 目录名
+```
+void testDirectoryName() throws Exception {
+    println("dir:" + DirectoryName.directoryName("C:\\a\\b\\c\\d.txt", 0))
+    println("dir:" + DirectoryName.directoryName("C:\\a\\b\\c\\d.txt", 1))
+    println("dir:" + DirectoryName.directoryName("C:\\a\\b\\c\\d.txt", 2))
+    println("dir:" + DirectoryName.directoryName("C:\\a\\b\\c\\d.txt", 3))
+    println("dir:" + DirectoryName.directoryName("C:\\a\\b\\c\\d.txt", 4))
+    println("dir:" + DirectoryName.directoryName("C:\\a\\b\\c\\d.txt", 5))
+    println("dir:" + DirectoryName.directoryName("C:\\a\\b\\c\\d.txt", 6))
+}
+
+dir:C:\a\b\c\d.txt
+dir:C:\a\b\c
+dir:C:\a\b
+dir:C:\a
+dir:C:\
+dir:null
+dir:null
+```
+## ParentDirectory 父目录
+```
+void testParentDirectory() throws Exception {
+    System.out.println(ParentDirectory.parentDirectory("C:\\Program Files\\abc.txt"))
+    System.out.println(ParentDirectory.parentDirectory("C:\\Program Files"))
+}
+
+C:\Program Files
+C:\
 ```
