@@ -62,12 +62,12 @@ public class URLDownload {
                         }
                     }
                 }
-                fos.flush();
-                fos.close();
-                is.close();
                 if (progress != null) {
                     progress.accept(100f);
                 }
+                fos.flush();
+                fos.close();
+                is.close();
                 return output.getAbsolutePath();
             }
         }).getOrNull();

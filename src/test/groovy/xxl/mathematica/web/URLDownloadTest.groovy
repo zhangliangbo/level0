@@ -10,7 +10,7 @@ class URLDownloadTest extends GroovyTestCase {
                 new Consumer<Float>() {
                     @Override
                     void accept(Float aFloat) {
-                        System.err.println(aFloat)
+                        System.out.println(aFloat)
                     }
                 }
         ))
