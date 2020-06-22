@@ -192,6 +192,21 @@ void testSort() {
 
 [1, 2, 3, 3, 4, 4, 6, 6, 7, 8, 9]
 ```
+# 字典操作
+## Association 根据规则来生成字典
+## GroupBy 对列表进行分组
+```
+void testGroupBy() {
+    println(GroupBy.groupBy([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0], new Function<Integer, String>() {
+        @Override
+        String apply(Integer v) {
+            return String.valueOf(v)
+        }
+    }))
+}
+
+[0:[0, 0], 1:[1, 1], 2:[2, 2], 3:[3, 3], 4:[4, 4], 5:[5, 5], 6:[6, 6], 7:[7, 7], 8:[8, 8], 9:[9]]
+```
 # 字符串操作
 ## StringCases 字符串匹配
 ```
