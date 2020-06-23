@@ -28,7 +28,17 @@ public class Keys {
      * @return
      */
     public static List<String> keys(Object obj) {
-        return io.vavr.collection.List.of(obj.getClass().getDeclaredFields())
+        return keys(obj.getClass());
+    }
+
+    /**
+     * 列出一个类的所有字段
+     *
+     * @param cls
+     * @return
+     */
+    public static List<String> keys(Class<?> cls) {
+        return io.vavr.collection.List.of(cls.getDeclaredFields())
                 .map(Field::getName)
                 .asJava();
     }
