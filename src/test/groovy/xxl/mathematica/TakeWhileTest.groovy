@@ -6,6 +6,7 @@ import xxl.mathematica.function.Predicate
 import xxl.mathematica.list.Extract
 import xxl.mathematica.list.Table
 import xxl.mathematica.list.Take
+import xxl.mathematica.list.TakeWhile
 
 import static xxl.mathematica.BaseTest.printList
 

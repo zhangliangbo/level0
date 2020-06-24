@@ -3,6 +3,7 @@ package xxl.mathematica
 import org.junit.Test
 import xxl.mathematica.function.Predicate
 import xxl.mathematica.list.Range
+import xxl.mathematica.list.SelectFirst
 
 import static xxl.mathematica.BaseTest.printList
 

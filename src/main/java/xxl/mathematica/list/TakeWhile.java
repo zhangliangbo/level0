@@ -1,5 +1,7 @@
-package xxl.mathematica;
+package xxl.mathematica.list;
 
+
+import xxl.mathematica.ObjectHelper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,13 +21,8 @@ public class TakeWhile {
      * @return
      */
     public static <T> List<T> takeWhile(List<T> list, Predicate<T> criteria) {
-        ObjectHelper.requireNonNull(list, criteria);
-        List<T> result = new ArrayList<>();
-        for (T t : list) {
-            if (criteria.test(t)) {
-                result.add(t);
-            }
-        }
-        return result;
+        return io.vavr.collection.List.ofAll(list)
+                .filter(criteria)
+                .asJava();
     }
 }

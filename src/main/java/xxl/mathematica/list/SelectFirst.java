@@ -1,9 +1,9 @@
-package xxl.mathematica;
+package xxl.mathematica.list;
 
 import xxl.mathematica.exception.ItemNotFoundException;
-import xxl.mathematica.function.Predicate;
 
 import java.util.List;
+import java.util.function.Predicate;
 
 /**
  * 选择第一个
@@ -20,12 +20,7 @@ public class SelectFirst {
      * @throws ItemNotFoundException
      */
     public static <T> T selectFirst(List<T> list, Predicate<T> criteria) throws ItemNotFoundException {
-        T res = selectFirst(list, criteria, null);
-        if (res == null) {
-            throw new ItemNotFoundException("criteria");
-        } else {
-            return res;
-        }
+        return selectFirst(list, criteria, null);
     }
 
     /**
@@ -38,12 +33,8 @@ public class SelectFirst {
      * @return
      */
     public static <T> T selectFirst(List<T> list, Predicate<T> criteria, T def) {
-        ObjectHelper.requireNonNull(list, criteria);
-        for (T t : list) {
-            if (criteria.test(t)) {
-                return t;
-            }
-        }
-        return def;
+        return io.vavr.collection.List.ofAll(list)
+                .find(criteria)
+                .getOrElse(def);
     }
 }
