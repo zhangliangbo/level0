@@ -17,6 +17,9 @@ public class PopulateObject {
             Field[] fields = cls.getDeclaredFields();
             T t = cls.getDeclaredConstructor().newInstance();
             for (Field field : fields) {
+                if (!field.isAccessible()) {
+                    field.setAccessible(true);
+                }
                 field.set(t, map.get(field.getName()));
             }
             return t;
@@ -35,6 +38,9 @@ public class PopulateObject {
         return Try.ofCallable(() -> {
             Field[] fields = t.getClass().getDeclaredFields();
             for (Field field : fields) {
+                if (!field.isAccessible()) {
+                    field.setAccessible(true);
+                }
                 field.set(t, map.get(field.getName()));
             }
             return t;
