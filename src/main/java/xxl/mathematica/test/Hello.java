@@ -8,7 +8,6 @@ public class Hello {
     private int number;
 
 
-
     public String getName() {
         return name;
     }
