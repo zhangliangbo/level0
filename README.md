@@ -325,6 +325,14 @@ void testStringJoin() {
 
 abcdefgh
 ```
+## StringRepeat 重复字符串
+```
+void testStringRepeat() {
+    System.out.println(StringRepeat.stringRepeat("<a>", 10))
+}
+
+<a><a><a><a><a><a><a><a><a><a>
+```
 # 逻辑
 ## AllTrue 是否所有元素都为真
 ```
