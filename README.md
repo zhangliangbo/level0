@@ -674,3 +674,12 @@ void testFileNames() {
 
 [C:\Users\Admin\Downloads\6614839830876524544 (1).apk, C:\Users\Admin\Downloads\6614839830876524544 (2).apk, C:\Users\Admin\Downloads\6614839830876524544 (3).apk, C:\Users\Admin\Downloads\6614839830876524544 (4).apk, C:\Users\Admin\Downloads\6614839830876524544.apk, C:\Users\Admin\Downloads\6678970299108560896.apk, C:\Users\Admin\Downloads\app-rice-debug.apk]
 ```
+# 网络
+## HostLookup 根据域名查找IP地址
+```
+void testHostLookup() {
+    println(HostLookup.hostLookup("www.baidu.com"))
+}
+
+14.215.177.38
+```
