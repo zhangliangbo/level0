@@ -152,13 +152,13 @@ void testSelectFirst() {
 ## TakeWhile 选择元素直到第一个不满足
 ```
 void testTakeWhile() {
-    println(TakeWhile.takeWhile([1, 2, 3, 4, 5], new Predicate<Integer>() {
+    println(TakeWhile.takeWhile([0, 1, 2, 3, 4, 5, 4, 3, 2, 1, 0], new Predicate<Integer>() {
         @Override
         boolean test(Integer t) {
             return t > 3
         }
     }))
-    println(TakeWhile.takeWhile([1, 2, 3, 4, 5], new Predicate<Integer>() {
+    println(TakeWhile.takeWhile([0, 1, 2, 3, 4, 5, 4, 3, 2, 1, 0], new Predicate<Integer>() {
         @Override
         boolean test(Integer t) {
             return t <= 3
@@ -167,7 +167,7 @@ void testTakeWhile() {
 }
 
 []
-[1, 2, 3]
+[0, 1, 2, 3]
 ```
 ## Array 函数作用于范围，生成列表
 ```
