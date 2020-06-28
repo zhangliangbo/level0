@@ -109,6 +109,46 @@ void testCount() {
 2
 1
 ```
+## Select 选择元素
+```
+void testSelect() {
+    println(Select.select([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], new Predicate<Integer>() {
+        @Override
+        boolean test(Integer t) {
+            return t > 5;
+        }
+    }))
+    println(Select.select([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], new Predicate<Integer>() {
+        @Override
+        boolean test(Integer t) {
+            return t <= 5;
+        }
+    }))
+}
+
+[6, 7, 8, 9]
+[0, 1, 2, 3, 4, 5]
+```
+## SelectFirst 选择第一个元素
+```
+void testSelectFirst() {
+    println(SelectFirst.selectFirst([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], new Predicate<Integer>() {
+        @Override
+        boolean test(Integer t) {
+            return t > 5;
+        }
+    }))
+    println(SelectFirst.selectFirst([0, 1, 2, 3, 4, 5, 6, 7, 8, 9], new Predicate<Integer>() {
+        @Override
+        boolean test(Integer t) {
+            return t <= 5;
+        }
+    }))
+}
+
+6
+0
+```
 ## Array 函数作用于范围，生成列表
 ```
 void testArray() {
