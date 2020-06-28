@@ -254,6 +254,9 @@ void testSort() {
 ```
 # 字典操作
 ## Association 根据规则来生成字典
+```
+
+```
 ## GroupBy 对列表进行分组
 ```
 void testGroupBy() {
@@ -295,6 +298,32 @@ void testStringSplit() {
 }
 
 [a, b, c, d, e, f, g]
+```
+## StringContainsQ 字符串是否包含其他字符串
+```
+void testStringContainQ() {
+    println(StringContainsQ.stringContainsQ("abcdefghijk", "abc"))
+    println(StringContainsQ.stringContainsQ("abcdefghijk", "abcc"))
+}
+
+true
+false
+```
+## StringCount 字符串包含子字符串数量
+```
+void testStringCount() {
+    println(StringCount.stringCount("abc11abc22abc33abc44abc55", "abc"))
+}
+
+5
+```
+## StringJoin 连接字符串
+```
+void testStringJoin() {
+    println(StringJoin.stringJoin(["a", "b", "c", "d", "e", "f", "g", "h"]))
+}
+
+abcdefgh
 ```
 # 逻辑
 ## AllTrue 是否所有元素都为真

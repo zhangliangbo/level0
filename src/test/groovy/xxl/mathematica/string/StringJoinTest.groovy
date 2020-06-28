@@ -2,8 +2,6 @@ package xxl.mathematica.string
 
 class StringJoinTest extends GroovyTestCase {
     void testStringJoin() {
-    }
-
-    void testStringJoin1() {
+        println(StringJoin.stringJoin(["a", "b", "c", "d", "e", "f", "g", "h"]))
     }
 }

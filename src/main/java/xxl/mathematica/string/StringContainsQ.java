@@ -15,7 +15,7 @@ public class StringContainsQ {
      * @param regex
      * @return
      */
-    public static Function<String, Boolean> stringContainQ(String regex) {
+    public static Function<String, Boolean> stringContainsQ(String regex) {
         return new Function<String, Boolean>() {
             final Pattern pattern = Pattern.compile(regex);
 
@@ -34,6 +34,6 @@ public class StringContainsQ {
      * @return
      */
     public static boolean stringContainsQ(String source, String regex) {
-        return Option.of(Pattern.compile(regex).matcher(source).matches()).getOrNull();
+        return Option.of(Pattern.compile((".*") + regex + (".*")).matcher(source).matches()).getOrNull();
     }
 }
