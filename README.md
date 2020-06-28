@@ -149,6 +149,10 @@ void testSelectFirst() {
 6
 0
 ```
+## TakeWhile 选择元素直到第一个不满足
+```
+
+```
 ## Array 函数作用于范围，生成列表
 ```
 void testArray() {
