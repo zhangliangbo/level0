@@ -19,7 +19,7 @@ public class TakeWhile {
      */
     public static <T> List<T> takeWhile(List<T> list, Predicate<T> criteria) {
         return io.vavr.collection.List.ofAll(list)
-                .filter(criteria)
+                .takeWhile(criteria)
                 .asJava();
     }
 }
