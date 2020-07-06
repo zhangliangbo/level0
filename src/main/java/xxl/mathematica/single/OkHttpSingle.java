@@ -2,6 +2,8 @@ package xxl.mathematica.single;
 
 import okhttp3.OkHttpClient;
 
+import java.util.concurrent.TimeUnit;
+
 public class OkHttpSingle {
 
     public static OkHttpClient instance() {
@@ -9,6 +11,8 @@ public class OkHttpSingle {
     }
 
     private static class Holder {
-        private static final OkHttpClient client = new OkHttpClient.Builder().build();
+        private static final OkHttpClient client = new OkHttpClient.Builder()
+            .readTimeout(1, TimeUnit.MINUTES)
+            .build();
     }
 }
