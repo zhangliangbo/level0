@@ -45,7 +45,9 @@ public class JarDownload {
         String file = files[i];
         int max = 10;//最多尝试10次
         while (max-- >= 0) {
-          String res = URLDownload.urlDownload(base + file, tDir, aFloat -> f.accept(file, aFloat));
+          String url = base + file;
+          System.err.println(url);
+          String res = URLDownload.urlDownload(url, tDir, aFloat -> f.accept(file, aFloat));
           if (res == null) {
             System.out.println(max);
             Thread.sleep(1000);
