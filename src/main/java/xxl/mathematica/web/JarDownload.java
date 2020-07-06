@@ -3,6 +3,7 @@ package xxl.mathematica.web;
 import io.vavr.control.Try;
 import xxl.mathematica.Rule;
 import xxl.mathematica.cryptology.Hash;
+import xxl.mathematica.io.CopyFile;
 import xxl.mathematica.io.ParentDirectory;
 import xxl.mathematica.string.StringReplace;
 import xxl.mathematica.string.StringSplit;
@@ -46,10 +47,7 @@ public class JarDownload {
             Thread.sleep(1000);
           } else {
             String sha1 = Hash.encodeHexString(Hash.hashFile(res, Hash.Algorithm.SHA1));
-            File sha1Dir = new File(ParentDirectory.parentDirectory(res) + File.separator + sha1);
-            if (sha1Dir.mkdirs()) {
-
-            }
+            CopyFile.copyFile()
             break;
           }
         }
