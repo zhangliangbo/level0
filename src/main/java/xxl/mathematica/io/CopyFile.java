@@ -35,4 +35,15 @@ public class CopyFile {
       return dst;
     }).getOrNull();
   }
+
+  /**
+   * 默认存在时覆盖
+   *
+   * @param src
+   * @param dst
+   * @return
+   */
+  public static String copyFile(String src, String dst) {
+    return copyFile(src, dst, true);
+  }
 }

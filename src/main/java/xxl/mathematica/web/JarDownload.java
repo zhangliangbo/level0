@@ -5,12 +5,13 @@ import xxl.mathematica.Rule;
 import xxl.mathematica.cryptology.Hash;
 import xxl.mathematica.io.CopyFile;
 import xxl.mathematica.io.ParentDirectory;
+import xxl.mathematica.logic.AllTrue;
 import xxl.mathematica.string.StringReplace;
 import xxl.mathematica.string.StringSplit;
 
 import java.io.File;
+import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.Callable;
 import java.util.function.BiConsumer;
 
 /**
@@ -30,29 +31,37 @@ public class JarDownload {
    * @param f
    */
   public static String jarDownload(String coordinate, String dir, BiConsumer<String, Float> f) {
-    return Try.ofCallable((Callable<String>) () -> {
+    return Try.ofCallable(() -> {
       List<String> coordinates = StringSplit.stringSplit(coordinate, ":");
       String group = coordinates.get(0);
       String artifact = coordinates.get(1);
       String version = coordinates.get(2);
       String base = maven + StringReplace.stringReplace(group, Rule.valueOf("\\.", "/")) + "/" + artifact + "/" + version + "/";
       String fileName = artifact + "-" + version;
+      String tDir = dir + File.separator + StringReplace.stringReplace(group, Rule.valueOf("\\.", File.separator)) + File.separator + artifact + File.separator + version + File.separator;
       String[] files = new String[]{fileName + ".jar", fileName + "-sources.jar", fileName + ".pom"};
-      for (String file : files) {
-        int i = 10;//最多尝试10次
-        while (i-- >= 0) {
-          String res = URLDownload.urlDownload(base + file, dir, aFloat -> f.accept(file, aFloat));
+      String[] copies = new String[files.length];
+      for (int i = 0; i < files.length; i++) {
+        String file = files[i];
+        int max = 10;//最多尝试10次
+        while (max-- >= 0) {
+          String res = URLDownload.urlDownload(base + file, tDir, aFloat -> f.accept(file, aFloat));
           if (res == null) {
             System.out.println(i);
             Thread.sleep(1000);
           } else {
             String sha1 = Hash.encodeHexString(Hash.hashFile(res, Hash.Algorithm.SHA1));
-            CopyFile.copyFile()
+            String parent = ParentDirectory.parentDirectory(res);
+            copies[i] = CopyFile.copyFile(res, parent + File.separator + sha1 + file);
             break;
           }
         }
       }
-      return null;
+      if (AllTrue.allTrue(Arrays.asList(copies), s -> s != null)) {
+        return tDir;
+      } else {
+        return null;
+      }
     }).getOrNull();
   }
 }
