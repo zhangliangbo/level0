@@ -53,6 +53,7 @@ public class JarDownload {
             String sha1 = Hash.encodeHexString(Hash.hashFile(res, Hash.Algorithm.SHA1));
             String parent = ParentDirectory.parentDirectory(res);
             copies[i] = CopyFile.copyFile(res, parent + File.separator + sha1 + file);
+            new File(res).delete();
             break;
           }
         }
