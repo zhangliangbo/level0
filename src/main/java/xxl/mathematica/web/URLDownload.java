@@ -8,7 +8,6 @@ import xxl.mathematica.single.OkHttpSingle;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
-import java.util.concurrent.Callable;
 import java.util.function.Consumer;
 
 /**
@@ -28,14 +27,18 @@ public class URLDownload {
             String name = url.substring(url.lastIndexOf("/") + 1);
             if (file != null) {
                 File f = new File(file);
-                if (f.isDirectory()) {
-                    if (!f.exists() && !f.mkdirs()) {
+                if (f.exists()) {
+                    if (f.isDirectory()) {
+                        dir = f.getAbsolutePath();
+                    } else {
+                        dir = f.getParent();
+                        name = f.getName();
+                    }
+                } else {
+                    if (!f.mkdirs()) {
                         return null;
                     }
                     dir = f.getAbsolutePath();
-                } else {
-                    dir = f.getParent();
-                    name = f.getName();
                 }
             }
             Request request = new Request.Builder().url(url).get().build();

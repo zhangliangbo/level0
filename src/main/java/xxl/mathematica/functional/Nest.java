@@ -3,7 +3,6 @@ package xxl.mathematica.functional;
 
 import io.vavr.control.Try;
 
-import java.util.concurrent.Callable;
 import java.util.function.Function;
 
 /**
