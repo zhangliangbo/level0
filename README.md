@@ -570,6 +570,20 @@ void testUrlDownload() {
 100.0
 D:\netty-all-4.1.50.Final.jar
 ```
+
+## JarDownload 下载Jar包（可以查看进度）
+```
+void testJarDownload() {
+    println(JarDownload.jarDownload("io.netty:netty-all:4.1.50.Final", "C:\\Users\\Admin\\Desktop\\a", new BiConsumer<String, Float>() {
+        @Override
+        void accept(String s, Float aFloat) {
+            System.out.println(s + "\t" + aFloat)
+        }
+    }))
+}
+
+C:\Users\Admin\Desktop\a\io\netty\netty-all\4.1.50.Final（默认返回目录，下挂三个sha1文件夹）
+```
 # 数学分析
 ## NIntegrate 求一元函数积分
 ```
@@ -594,6 +608,30 @@ void testNIntegrate() {
 1.2470556590870487
 ```
 # 文件操作
+## DeleteFile 删除文件
+```
+void testDeleteFile() {
+    println(DeleteFile.deleteFile("C:\\Users\\Admin\\Desktop\\a\\org\\apache\\commons\\commons-lang3\\3.10\\commons-lang3-3.10.jar"))
+}
+
+true
+```
+## CopyFile 复制文件
+```
+void testCopyFile() {
+    println(CopyFile.copyFile("C:\\a.jar","D:\\b.jar"))
+}
+
+D:\b.jar
+```
+## FileExistsQ
+```
+void testFileExistsQ() {
+    println(FileExistsQ.fileExistsQ("C:\\a\\b\\c\\d"))
+}
+
+false
+```
 ## FileBaseName 无后缀的文件名
 ```
 void testFileBaseName() throws Exception {
