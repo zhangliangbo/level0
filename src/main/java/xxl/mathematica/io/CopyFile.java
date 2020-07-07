@@ -20,12 +20,13 @@ public class CopyFile {
    * @return
    */
   public static String copyFile(String src, String dst, boolean overwrite) {
-    return Try.ofCallable((Callable<String>) () -> {
+    return Try.ofCallable(() -> {
       String parentDirectory = ParentDirectory.parentDirectory(dst);
-      if (new File(parentDirectory).mkdirs()) {
+      File parent=new File(parentDirectory);
+      if (!parent.exists()&&!parent.mkdirs()) {
         return null;
       }
-      if (new File(dst).exists() && !overwrite) {
+      if (FileExistsQ.fileExistsQ(dst) && !overwrite) {
         return null;
       }
       int len = IOUtils.copy(new FileInputStream(src), new FileOutputStream(dst));
