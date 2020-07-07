@@ -12,8 +12,8 @@ public class OkHttpSingle {
 
     private static class Holder {
         private static final OkHttpClient client = new OkHttpClient.Builder()
-            .connectTimeout(1,TimeUnit.MINUTES)
-            .readTimeout(1, TimeUnit.MINUTES)
-            .build();
+                .connectTimeout(1, TimeUnit.MINUTES)
+                .readTimeout(1, TimeUnit.MINUTES)
+                .build();
     }
 }
