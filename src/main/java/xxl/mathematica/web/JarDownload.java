@@ -20,7 +20,7 @@ import java.util.function.BiConsumer;
  * 下载jar
  */
 public class JarDownload {
-    //默认阿里
+    //默认阿里云仓库，快速
     static final String maven = "https://maven.aliyun.com/nexus/content/groups/public/";
 
     /**
@@ -29,7 +29,7 @@ public class JarDownload {
      * .-sources.jar
      * .pom
      *
-     * @param coordinate 类似 io.netty:netty-all:4.1.49.Final
+     * @param coordinate 类似 io.netty:netty-all:4.1.50.Final
      * @param dir
      * @param f
      */
@@ -41,7 +41,7 @@ public class JarDownload {
             String version = coordinates.get(2);
             String base = maven + StringReplace.stringReplace(group, Rule.valueOf("\\.", "/")) + "/" + artifact + "/" + version + "/";
             String fileName = artifact + "-" + version;
-            String tDir = dir + File.separator + StringReplace.stringReplace(group, Rule.valueOf("\\.", File.separator)) + File.separator + artifact + File.separator + version + File.separator;
+            String tDir = dir + File.separator + StringReplace.stringReplace(group, Rule.valueOf("\\.", File.separator)) + File.separator + artifact + File.separator + version;
             String[] files = new String[]{fileName + ".jar", fileName + "-sources.jar", fileName + ".pom"};
             String[] copies = new String[files.length];
             for (int i = 0; i < files.length; i++) {
@@ -49,7 +49,6 @@ public class JarDownload {
                 int max = 10;//最多尝试10次
                 while (max-- >= 0) {
                     String url = base + file;
-                    System.err.println(url);
                     String res = URLDownload.urlDownload(url, tDir, aFloat -> f.accept(file, aFloat));
                     if (res == null) {
                         System.out.println(max);
@@ -57,10 +56,9 @@ public class JarDownload {
                     } else {
                         String sha1 = Hash.encodeHexString(Hash.hashFile(res, Hash.Algorithm.SHA1));
                         String parent = ParentDirectory.parentDirectory(res);
-//                        copies[i] = CopyFile.copyFile(res, parent + File.separator + sha1 + File.separator + file);
-                        while (FileExistsQ.fileExistsQ(res)) {
-                            DeleteFile.deleteFile(res);
-                            Thread.sleep(1000);
+                        copies[i] = CopyFile.copyFile(res, parent + File.separator + sha1 + File.separator + file);
+                        if (!DeleteFile.deleteFile(res)) {
+                            copies[i] = null;
                         }
                         break;
                     }

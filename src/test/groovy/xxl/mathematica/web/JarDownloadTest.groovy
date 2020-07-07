@@ -4,10 +4,10 @@ import java.util.function.BiConsumer
 
 class JarDownloadTest extends GroovyTestCase {
     void testJarDownload() {
-        println(JarDownload.jarDownload("org.apache.commons:commons-lang3:3.10", "C:\\Users\\Admin\\Desktop\\a", new BiConsumer<String, Float>() {
+        println(JarDownload.jarDownload("io.netty:netty-all:4.1.50.Final", "C:\\Users\\Admin\\Desktop\\a", new BiConsumer<String, Float>() {
             @Override
             void accept(String s, Float aFloat) {
-//                System.out.println(aFloat)
+                System.out.println(s + "\t" + aFloat)
             }
         }))
     }
