@@ -5,6 +5,7 @@ import xxl.mathematica.Rule;
 import xxl.mathematica.cryptology.Hash;
 import xxl.mathematica.io.CopyFile;
 import xxl.mathematica.io.DeleteFile;
+import xxl.mathematica.io.FileExistsQ;
 import xxl.mathematica.io.ParentDirectory;
 import xxl.mathematica.logic.AllTrue;
 import xxl.mathematica.string.StringReplace;
@@ -56,9 +57,10 @@ public class JarDownload {
                     } else {
                         String sha1 = Hash.encodeHexString(Hash.hashFile(res, Hash.Algorithm.SHA1));
                         String parent = ParentDirectory.parentDirectory(res);
-                        copies[i] = CopyFile.copyFile(res, parent + File.separator + sha1 + File.separator + file);
-                        if (!DeleteFile.deleteFile(res)) {
-                            copies[i] = null;
+//                        copies[i] = CopyFile.copyFile(res, parent + File.separator + sha1 + File.separator + file);
+                        while (FileExistsQ.fileExistsQ(res)) {
+                            DeleteFile.deleteFile(res);
+                            Thread.sleep(1000);
                         }
                         break;
                     }

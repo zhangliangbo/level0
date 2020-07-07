@@ -29,6 +29,7 @@ public class CopyFile {
             InputStream is = new FileInputStream(src);
             OutputStream os = new FileOutputStream(dst);
             int len = IOUtils.copy(is, os);
+            os.flush();
             is.close();
             os.close();
             if (len == -1) {

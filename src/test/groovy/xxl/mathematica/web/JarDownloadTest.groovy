@@ -7,7 +7,7 @@ class JarDownloadTest extends GroovyTestCase {
         println(JarDownload.jarDownload("org.apache.commons:commons-lang3:3.10", "C:\\Users\\Admin\\Desktop\\a", new BiConsumer<String, Float>() {
             @Override
             void accept(String s, Float aFloat) {
-                System.out.println(aFloat)
+//                System.out.println(aFloat)
             }
         }))
     }

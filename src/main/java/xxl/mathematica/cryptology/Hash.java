@@ -4,6 +4,7 @@ package xxl.mathematica.cryptology;
 import xxl.apache.commons.codec.Charsets;
 import xxl.apache.commons.codec.binary.Hex;
 import xxl.apache.commons.codec.digest.DigestUtils;
+import xxl.mathematica.io.FileExistsQ;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -34,7 +35,10 @@ public class Hash {
      * @throws IOException
      */
     public static byte[] hashFile(String file, Algorithm algorithm) throws IOException {
-        return hashStream(new FileInputStream(file), algorithm);
+        FileInputStream fis = new FileInputStream(file);
+        byte[] res = hashStream(fis, algorithm);
+        fis.close();
+        return res;
     }
 
     /**
