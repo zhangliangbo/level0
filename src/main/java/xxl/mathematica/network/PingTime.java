@@ -16,13 +16,24 @@ public class PingTime {
      *
      * @return
      */
-    public static Long pingTime(String dst) {
+    public static Double pingTime(String dst) {
         return Try.ofCallable(() -> {
-            Rule<Integer, byte[]> rule = External.runProcess("ping " + dst);
-            if (rule.getKey() == 0) {
-                String res = new String(rule.getValue(), Charset.forName("GBK"));
-//                if(Os.arch()){
-                return Long.valueOf(Last.last(StringCases.stringCases(res, "= (\\d*)ms", 1)));
+            if (Os.isWindows()) {
+                Rule<Integer, byte[]> rule = External.runProcess("ping " + dst);
+                if (rule.getKey() == 0) {
+                    String res = new String(rule.getValue(), Charset.forName("GBK"));
+                    return Double.valueOf(Last.last(StringCases.stringCases(res, "= (\\d*)ms", 1)));
+                } else {
+                    return null;
+                }
+            } else if (Os.isLinux()) {
+                Rule<Integer, byte[]> rule = External.runProcess("ping -c 10" + dst);
+                if (rule.getKey() == 0) {
+                    String res = new String(rule.getValue(), Charset.forName("GBK"));
+                    return Double.valueOf(Last.last(StringCases.stringCases(res, "= .*/(.*)/.*/.* ms", 1)));
+                } else {
+                    return null;
+                }
             } else {
                 return null;
             }
@@ -36,7 +47,7 @@ public class PingTime {
      * @param times
      * @return
      */
-    public static List<Long> pingTime(String dst, long times) {
+    public static List<Double> pingTime(String dst, long times) {
         return io.vavr.collection.List.range(0, times)
                 .map(aLong -> pingTime(dst))
                 .asJava();
