@@ -1,5 +1,6 @@
 package xxl.mathematica.external;
 
+import io.vavr.control.Try;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.ObjectUtils;
@@ -12,6 +13,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.Callable;
 
 public class External {
 
@@ -22,9 +24,8 @@ public class External {
      *
      * @param command
      * @return
-     * @throws IOException
      */
-    public static int run(String command) throws IOException, InterruptedException {
+    public static int run(String command) {
         return run(null, command);
     }
 
@@ -34,15 +35,15 @@ public class External {
      * @param dir
      * @param command
      * @return
-     * @throws IOException
      */
-    public static int run(File dir, String command) throws IOException, InterruptedException {
-        if (ObjectUtils.isEmpty(command)) throw new IllegalArgumentException("command is empty");
-        String[] commands = command.split(" ");
-        pb.directory(dir);
-        pb.command(commands);
-        Process sub = pb.start();
-        return sub.waitFor();
+    public static int run(File dir, String command) {
+        return Try.ofCallable(() -> {
+            String[] commands = command.split(" ");
+            pb.directory(dir);
+            pb.command(commands);
+            Process sub = pb.start();
+            return sub.waitFor();
+        }).getOrNull();
     }
 
     /**
@@ -50,9 +51,8 @@ public class External {
      *
      * @param command
      * @return
-     * @throws IOException
      */
-    public static Rule<Integer, byte[]> runProcess(String command) throws Exception {
+    public static Rule<Integer, byte[]> runProcess(String command) {
         return runProcess(null, command);
     }
 
@@ -62,24 +62,24 @@ public class External {
      * @param dir
      * @param command
      * @return
-     * @throws IOException
      */
-    public static Rule<Integer, byte[]> runProcess(String dir, String command) throws Exception {
-        if (ObjectUtils.isEmpty(command)) throw new IllegalArgumentException("command is empty");
-        String[] commands = command.split(" ");
-        if (dir != null) {
-            pb.directory(new File(dir));
-        }
-        pb.command(commands);
-        Process sub = pb.start();
-        int code = sub.waitFor();
-        byte[] in = IOUtils.toByteArray(sub.getInputStream());
-        byte[] error = IOUtils.toByteArray(sub.getErrorStream());
-        if (ArrayUtils.isEmpty(in)) {
-            return Rule.valueOf(code, error);
-        } else {
-            return Rule.valueOf(code, in);
-        }
+    public static Rule<Integer, byte[]> runProcess(String dir, String command) {
+        return Try.ofCallable(() -> {
+            String[] commands = command.split(" ");
+            if (dir != null) {
+                pb.directory(new File(dir));
+            }
+            pb.command(commands);
+            Process sub = pb.start();
+            int code = sub.waitFor();
+            byte[] in = IOUtils.toByteArray(sub.getInputStream());
+            byte[] error = IOUtils.toByteArray(sub.getErrorStream());
+            if (ArrayUtils.isEmpty(in)) {
+                return Rule.valueOf(code, error);
+            } else {
+                return Rule.valueOf(code, in);
+            }
+        }).getOrNull();
     }
 
     /**
