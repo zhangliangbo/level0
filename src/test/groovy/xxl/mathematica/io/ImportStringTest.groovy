@@ -18,7 +18,7 @@ class ImportStringTest extends GroovyTestCase {
         println(xmlBean)
     }
 
-    void testImportStr() {
+    void testImportStringXml() {
         Map map = ImportString.importStringXml("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n" +
                 "<xmlBean state=\"12\">\n" +
                 "    <name>xxl</name>\n" +
@@ -32,6 +32,30 @@ class ImportStringTest extends GroovyTestCase {
                 "        <weight>10</weight>\n" +
                 "    </goods>\n" +
                 "</xmlBean>")
+        println(map)
+    }
+
+    void testImportStringJson() {
+        def map = ImportString.importStringMapObject("{\n" +
+                "    \"status\": \"0000\",\n" +
+                "    \"message\": \"success\",\n" +
+                "    \"data\": {\n" +
+                "        \"title\": {\n" +
+                "            \"id\": \"001\",\n" +
+                "            \"name\" : \"白菜\"\n" +
+                "        },\n" +
+                "        \"content\": [\n" +
+                "            {\n" +
+                "                \"id\": \"001\",\n" +
+                "                \"value\":\"你好 白菜\"\n" +
+                "            },\n" +
+                "            {\n" +
+                "                \"id\": \"002\",\n" +
+                "                 \"value\":\"你好 萝卜\" \n" +
+                "            }\n" +
+                "        ]\n" +
+                "    }\n" +
+                "}\n")
         println(map)
     }
 }

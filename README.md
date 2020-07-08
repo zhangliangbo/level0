@@ -608,6 +608,72 @@ void testNIntegrate() {
 1.2470556590870487
 ```
 # 文件操作
+## ImportString 导入字符串
+```
+void testImportStringXml() {
+    Map map = ImportString.importStringXml("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n" +
+            "<xmlBean state=\"12\">\n" +
+            "    <name>xxl</name>\n" +
+            "    <age>18</age>\n" +
+            "    <goods>\n" +
+            "        <name>child1</name>\n" +
+            "        <weight>5</weight>\n" +
+            "    </goods>\n" +
+            "    <goods>\n" +
+            "        <name>child2</name>\n" +
+            "        <weight>10</weight>\n" +
+            "    </goods>\n" +
+            "</xmlBean>")
+    println(map)
+}
+
+[name:xxl, goods:[[name:child1, weight:5], [name:child2, weight:10]], age:18]
+
+void testImportString() {
+    XmlBean xmlBean = ImportString.importStringXml("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n" +
+            "<xmlBean state=\"12\">\n" +
+            "    <name>xxl</name>\n" +
+            "    <age>18</age>\n" +
+            "    <goods>\n" +
+            "        <name>child1</name>\n" +
+            "        <weight>5</weight>\n" +
+            "    </goods>\n" +
+            "    <goods>\n" +
+            "        <name>child2</name>\n" +
+            "        <weight>10</weight>\n" +
+            "    </goods>\n" +
+            "</xmlBean>", XmlBean.class)
+    println(xmlBean)
+}
+
+XmlBean{name='xxl', age=18, state=12, goods=[XmlBeanChild{name='child1', weight=5}, XmlBeanChild{name='child2', weight=10}]}
+
+void testImportStringJson() {
+    def map = ImportString.importStringMapObject("{\n" +
+            "    \"status\": \"0000\",\n" +
+            "    \"message\": \"success\",\n" +
+            "    \"data\": {\n" +
+            "        \"title\": {\n" +
+            "            \"id\": \"001\",\n" +
+            "            \"name\" : \"白菜\"\n" +
+            "        },\n" +
+            "        \"content\": [\n" +
+            "            {\n" +
+            "                \"id\": \"001\",\n" +
+            "                \"value\":\"你好 白菜\"\n" +
+            "            },\n" +
+            "            {\n" +
+            "                \"id\": \"002\",\n" +
+            "                 \"value\":\"你好 萝卜\" \n" +
+            "            }\n" +
+            "        ]\n" +
+            "    }\n" +
+            "}\n")
+    println(map)
+}
+
+[status:0000, message:success, data:[title:[id:001, name:白菜], content:[[id:001, value:你好 白菜], [id:002, value:你好 萝卜]]]]
+```
 ## DeleteFile 删除文件
 ```
 void testDeleteFile() {
