@@ -41,7 +41,7 @@ public class JarDownload {
             String version = coordinates.get(2);
             String base = maven + StringReplace.stringReplace(group, Rule.valueOf("\\.", "/")) + "/" + artifact + "/" + version + "/";
             String fileName = artifact + "-" + version;
-            String tDir = dir + File.separator + StringReplace.stringReplace(group, Rule.valueOf("\\.", File.separator)) + File.separator + artifact + File.separator + version;
+            String tDir = dir + File.separator + group + File.separator + artifact + File.separator + version;
             String[] files = new String[]{fileName + ".jar", fileName + "-sources.jar", fileName + ".pom"};
             String[] copies = new String[files.length];
             for (int i = 0; i < files.length; i++) {
