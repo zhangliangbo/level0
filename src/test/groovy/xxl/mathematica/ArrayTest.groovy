@@ -1,9 +1,10 @@
 package xxl.mathematica
 
 import org.junit.Test
-import xxl.mathematica.function.BiFunction
-import xxl.mathematica.function.Function
 import xxl.mathematica.list.Array
+
+import java.util.function.BiFunction
+import java.util.function.Function
 
 import static xxl.mathematica.BaseTest.printList
 
@@ -19,7 +20,7 @@ class ArrayTest {
             Double apply(Double d) {
                 return d
             }
-        }, 10, 0, 1)
+        } as Function<Integer, Object>, 10, 0)
         printList(list)
     }
 
@@ -30,7 +31,7 @@ class ArrayTest {
             Double apply(Double d1, Double d2) {
                 return d1 + d2
             }
-        }, 10, 10, 0, 10, 10, 20)
+        }, 10, 10)
         printList(list)
 
     }

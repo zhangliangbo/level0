@@ -1,11 +1,11 @@
 package xxl.mathematica.functional;
 
 import io.vavr.control.Try;
-import xxl.mathematica.function.BiFunction;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
+import java.util.function.BiFunction;
 
 /**
  * 折叠列表

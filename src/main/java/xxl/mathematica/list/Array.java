@@ -1,8 +1,8 @@
 package xxl.mathematica.list;
 
-import xxl.mathematica.function.Function;
 
 import java.util.List;
+import java.util.function.Function;
 
 /**
  * 数组
