@@ -2,12 +2,10 @@ package xxl.mathematica.io;
 
 import com.google.gson.reflect.TypeToken;
 import io.vavr.control.Try;
-import org.apache.commons.collections4.MapIterator;
-import org.apache.commons.collections4.MultiValuedMap;
-import org.apache.commons.collections4.map.MultiValueMap;
-import org.apache.commons.collections4.multimap.ArrayListValuedHashMap;
 import org.apache.commons.lang3.ClassUtils;
-import org.dom4j.*;
+import org.dom4j.Document;
+import org.dom4j.DocumentHelper;
+import org.dom4j.Element;
 import xxl.mathematica.map.AssociationMap;
 import xxl.mathematica.map.KeySelect;
 import xxl.mathematica.map.Keys;
