@@ -27,7 +27,7 @@ public class PingTime {
                     return null;
                 }
             } else if (Os.isLinux()) {
-                Rule<Integer, byte[]> rule = External.runProcess("ping -c 10 " + dst);
+                Rule<Integer, byte[]> rule = External.runProcess("ping -c 5 " + dst);
                 if (rule.getKey() == 0) {
                     String res = new String(rule.getValue(), Charset.forName("GBK"));
                     return Double.valueOf(Last.last(StringCases.stringCases(res, "= .*/(.*)/.*/.* ms", 1)));
