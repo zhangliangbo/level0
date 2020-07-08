@@ -721,3 +721,11 @@ void testHostLookup() {
 
 14.215.177.38
 ```
+## PingTime ping时间(支持window和linux)
+```
+void testPingTime() {
+    System.err.println(PingTime.pingTime("www.baidu.com"))
+}
+
+24.0
+```
