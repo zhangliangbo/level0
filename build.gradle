@@ -59,7 +59,7 @@ tasks.withType(JavaCompile) {
 shadowJar {
     zip64 true
     manifest {
-        attributes(['Main-Class': 'xxl.reactornetty.TcpServerDemo'])
+        attributes(['Main-Class': 'xxl.mathematica.network.PingTime'])
     }
 }
 
