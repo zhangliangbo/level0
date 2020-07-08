@@ -729,3 +729,19 @@ void testPingTime() {
 
 24.0
 ```
+# 外部程序
+## External 运行外部程序
+```
+void testRunProcess() {
+    def rule = External.runProcess("git help")
+    println(rule.key + "\n" + new String(rule.value))
+}
+
+
+0
+usage: git [--version] [--help] [-C <path>] [-c <name>=<value>]
+           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]
+           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
+           <command> [<args>]
+```
