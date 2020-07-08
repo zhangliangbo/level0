@@ -795,6 +795,16 @@ void testPingTime() {
 
 24.0
 ```
+## Telnet 主机端口是否打开
+```
+void testTelnet() {
+    println(Telnet.telnet("www.baidu.com",80))
+    println(Telnet.telnet("www.baidu.com",8000))
+}
+
+true
+false
+```
 # 外部程序
 ## External 运行外部程序
 ```
