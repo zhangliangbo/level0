@@ -51,7 +51,6 @@ public class JarDownload {
                     String url = base + file;
                     String res = URLDownload.urlDownload(url, tDir, aFloat -> f.accept(file, aFloat));
                     if (res == null) {
-                        System.out.println(max);
                         Thread.sleep(1000);
                     } else {
                         String sha1 = Hash.encodeHexString(Hash.hashFile(res, Hash.Algorithm.SHA1));
