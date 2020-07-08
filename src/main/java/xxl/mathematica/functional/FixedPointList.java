@@ -2,12 +2,13 @@ package xxl.mathematica.functional;
 
 import io.vavr.control.Try;
 import xxl.mathematica.exception.MaxStepException;
-import xxl.mathematica.function.BiPredicate;
+
 import xxl.mathematica.function.Function;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
+import java.util.function.BiPredicate;
 
 import static xxl.mathematica.functional.Constant.MaxStep;
 
