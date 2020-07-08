@@ -5,6 +5,7 @@ import xxl.mathematica.Rule;
 import xxl.mathematica.external.External;
 import xxl.mathematica.list.Last;
 import xxl.mathematica.string.StringCases;
+import xxl.mathematica.system.Os;
 
 import java.nio.charset.Charset;
 import java.util.List;
@@ -20,6 +21,7 @@ public class PingTime {
             Rule<Integer, byte[]> rule = External.runProcess("ping " + dst);
             if (rule.getKey() == 0) {
                 String res = new String(rule.getValue(), Charset.forName("GBK"));
+//                if(Os.arch()){
                 return Long.valueOf(Last.last(StringCases.stringCases(res, "= (\\d*)ms", 1)));
             } else {
                 return null;
