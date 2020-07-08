@@ -2,7 +2,6 @@ package xxl.mathematica.functional;
 
 import io.vavr.control.Try;
 import xxl.mathematica.exception.MaxStepException;
-
 import xxl.mathematica.function.Function;
 
 import java.util.ArrayList;

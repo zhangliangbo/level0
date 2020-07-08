@@ -4,7 +4,6 @@ package xxl.mathematica.cryptology;
 import xxl.apache.commons.codec.Charsets;
 import xxl.apache.commons.codec.binary.Hex;
 import xxl.apache.commons.codec.digest.DigestUtils;
-import xxl.mathematica.io.FileExistsQ;
 
 import java.io.FileInputStream;
 import java.io.IOException;

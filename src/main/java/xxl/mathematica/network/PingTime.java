@@ -52,12 +52,4 @@ public class PingTime {
                 .map(aLong -> pingTime(dst))
                 .asJava();
     }
-
-    public static void main(String[] args) {
-        String url = "www.baidu.com";
-        if (args.length > 0) {
-            url = args[0];
-        }
-        System.out.println(PingTime.pingTime(url));
-    }
 }

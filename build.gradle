@@ -13,6 +13,7 @@ sourceCompatibility = "8"
 targetCompatibility = "8"
 
 repositories {
+    maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
     jcenter()
     mavenCentral()
 }
@@ -43,6 +44,11 @@ dependencies {
     implementation 'net.sourceforge.jexcelapi:jxl:2.6.12'
     implementation 'org.apache.poi:poi-ooxml:4.1.1'
     implementation 'com.relops:snowflake:1.1'
+    implementation 'org.dom4j:dom4j:2.1.3'
+    implementation 'javax.xml.bind:jaxb-api:2.3.0'
+    implementation 'com.sun.xml.bind:jaxb-impl:2.3.0'
+    implementation 'org.glassfish.jaxb:jaxb-runtime:2.3.0'
+    implementation 'javax.activation:activation:1.1.1'
     //google core api for java
     implementation 'com.google.guava:guava:29.0-jre'
     //just use in test to study grammar
