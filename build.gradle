@@ -2,12 +2,13 @@ plugins {
     id 'java'
     id 'groovy'
     id 'com.github.johnrengelman.shadow' version '5.1.0'
+    id 'signing'
     id 'com.bmuschko.nexus' version '2.3.1'
-//    id 'io.codearte.nexus-staging' version '0.21.1'
+//    id 'io.codearte.nexus-staging' version '0.21.2'
 }
 
-group 'xxl.level0'
-version '1.0.0-SNAPSHOT'
+group 'io.github.zhangliangbo'
+version '1.0.0'
 
 sourceCompatibility = "8"
 targetCompatibility = "8"
@@ -69,8 +70,47 @@ shadowJar {
     }
 }
 
+modifyPom {
+    project {
+        name 'java implementation of mma'
+        description 'a simple implementation of mma, for hobby.'
+        url 'https://github.com/zhangliangbo/level0'
+        inceptionYear '2016'
+
+        scm {
+            url 'https://github.com/zhangliangbo/level0'
+            connection 'scm:https://github.com/zhangliangbo/level0.git'
+            developerConnection 'scm:https://github.com/zhangliangbo/level0.git'
+        }
+
+        licenses {
+            license {
+                name 'The Apache Software License, Version 2.0'
+                url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                distribution 'repo'
+            }
+        }
+
+        developers {
+            developer {
+                id 'zhangliangbo'
+                name 'zhangliangbo'
+                email '2472110501@qq.com'
+            }
+        }
+    }
+}
+
+extraArchive {
+    sources = true
+    tests = true
+    javadoc = true
+}
+
 nexus {
     sign = true
-    repositoryUrl = 'http://localhost:8081/repository/maven-releases/'
-    snapshotRepositoryUrl = 'http://localhost:8081/repository/maven-snapshots/'
+//    repositoryUrl = 'http://localhost:8081/repository/maven-releases/'
+//    snapshotRepositoryUrl = 'http://localhost:8081/repository/maven-snapshots/'
+    repositoryUrl = 'https://oss.sonatype.org/service/local/staging/deploy/maven2/'
+    snapshotRepositoryUrl = 'http://oss.sonatype.org/content/repositories/snapshots/'
 }
