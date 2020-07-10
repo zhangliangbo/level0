@@ -1,5 +1,17 @@
 # mathematica的简单java实现，一个兴趣项目，不做商业用途
 # java编码，groovy测试
+# gradle地址
+```
+implementation 'io.github.zhangliangbo:level0:1.0.0'
+```
+# maven地址
+```
+<dependency>
+  <groupId>io.github.zhangliangbo</groupId>
+  <artifactId>level0</artifactId>
+  <version>1.0.0</version>
+</dependency>
+```
 # 列表
 ## Append 列表末尾添加元素
 ```
