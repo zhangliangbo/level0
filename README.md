@@ -644,7 +644,7 @@ void testExportXlsx() {
 年龄	名称	性别
 18	zlb	男
 ```
-### 导出数据到word（标题，表格，标题，表格）
+### 导出数据到word（标题，表格，标题，表格，。。。）
 ```
 void testExportWord() {
     List<Object> content = new ArrayList<>()
