@@ -18,5 +18,9 @@ class ExportTest extends GroovyTestCase {
         content.add([["c1", "c2", "c3"], ["fff", "fff", "ff"], ["ggg", "ggg", "eee"]] as String[][])
         println(Export.exportWord("D:\\helloworld.doc", content))
     }
+
+    void testExportText(){
+        println(Export.exportText("D:\\a.txt","abcdefgh"))
+    }
 }
 

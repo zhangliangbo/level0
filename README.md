@@ -671,6 +671,14 @@ c1	c2	c3
 fff	fff	ff
 ggg	ggg	eee
 ```
+### 导出到为文本
+```
+void testExportText(){
+    println(Export.exportText("D:\\a.txt","abcdefgh"))
+}
+
+abcdefgh
+```
 ## ImportString 导入字符串
 ### 导入XML为Map
 ```
