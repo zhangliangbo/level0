@@ -18,18 +18,6 @@ import java.util.List;
 public class Export {
 
     /**
-     * 默认导出所有字段，包括不带{@link xxl.mathematica.io.excel.ExcelColumnName}标注的
-     *
-     * @param file
-     * @param sheets
-     * @return
-     * @throws Exception
-     */
-    public static boolean exportExcel(int method, String file, List<List<Object>> sheets) throws Exception {
-        return exportExcel(method, file, false, sheets);
-    }
-
-    /**
      * 导出xlsx
      *
      * @param method
@@ -38,8 +26,20 @@ public class Export {
      * @return
      * @throws Exception
      */
-    public static boolean exportExcel(int method, String file, boolean withAnnotationQ, List<List<Object>> sheets) throws Exception {
+    public static String exportExcel(int method, String file, boolean withAnnotationQ, List<List<Object>> sheets) throws Exception {
         return AbsExcel.getExcelImpl(method).exportExcel(file, withAnnotationQ, sheets);
+    }
+
+    /**
+     * 默认导出所有字段，包括不带{@link xxl.mathematica.io.excel.ExcelColumnName}标注的
+     *
+     * @param file
+     * @param sheets
+     * @return
+     * @throws Exception
+     */
+    public static String exportExcel(int method, String file, List<List<Object>> sheets) throws Exception {
+        return exportExcel(method, file, false, sheets);
     }
 
     /**
@@ -51,7 +51,7 @@ public class Export {
      * @return
      * @throws Exception
      */
-    public static boolean exportExcel(String file, boolean withAnnotationQ, List<List<Object>> sheets) throws Exception {
+    public static String exportExcel(String file, boolean withAnnotationQ, List<List<Object>> sheets) throws Exception {
         return exportExcel(IExcel.JXL, file, withAnnotationQ, sheets);
     }
 
@@ -63,7 +63,7 @@ public class Export {
      * @return
      * @throws Exception
      */
-    public static boolean exportExcel(String file, List<List<Object>> sheets) throws Exception {
+    public static String exportExcel(String file, List<List<Object>> sheets) throws Exception {
         return exportExcel(IExcel.JXL, file, sheets);
     }
 
@@ -74,7 +74,7 @@ public class Export {
      * @param contents
      * @return
      */
-    public static boolean exportWord(String file, List<Object> contents) throws Exception {
+    public static String exportWord(String file, List<Object> contents) throws Exception {
         XWPFDocument doc = new XWPFDocument();// 创建Word文件
         if (contents != null) {
             for (Object object : contents) {
@@ -113,7 +113,7 @@ public class Export {
         FileOutputStream out = new FileOutputStream(file);
         doc.write(out);
         out.close();
-        return true;
+        return file;
     }
 
     /**
@@ -123,12 +123,12 @@ public class Export {
      * @param text
      * @return
      */
-    public static boolean exportText(String file, String text,boolean append) {
+    public static String exportText(String file, String text,boolean append) {
         try (FileOutputStream fos = new FileOutputStream(file,append)) {
             IOUtils.write(text, fos, "UTF-8");
-            return true;
+            return file;
         } catch (IOException e) {
-            return false;
+            return null;
         }
     }
 }

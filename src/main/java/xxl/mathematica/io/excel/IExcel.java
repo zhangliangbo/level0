@@ -20,7 +20,7 @@ public interface IExcel {
      * @param sheets          表格
      * @return
      */
-    boolean exportExcel(String file, boolean withAnnotationQ, List<List<Object>> sheets) throws Exception;
+    String exportExcel(String file, boolean withAnnotationQ, List<List<Object>> sheets) throws Exception;
 
     /**
      * 导入excel为文本

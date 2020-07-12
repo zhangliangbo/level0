@@ -641,6 +641,7 @@ void testExportXlsx() {
     println(Export.exportExcel(IExcel.JXL, "D:\\helloworld.xlsx", false, [[new Pojo("zlb", 18, "男")]]))
 }
 
+（文件内容）
 年龄	名称	性别
 18	zlb	男
 ```
@@ -657,7 +658,7 @@ void testExportWord() {
     println(Export.exportWord("D:\\helloworld.doc", content))
 }
 
-
+（文件内容）
 table 1
 c1	c2	c3
 aaa	aa	a
@@ -678,6 +679,7 @@ void testExportText(){
     println(Export.exportText("D:\\a.txt","123456789",true))
 }
 
+（文件内容）
 abcdefgh123456789
 ```
 ## ImportString 导入字符串

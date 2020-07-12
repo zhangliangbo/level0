@@ -36,8 +36,7 @@ final class PoiExcel implements IExcel {
     }
 
     @Override
-    public boolean exportExcel(String file, boolean withAnnotationQ, List<List<Object>> sheets) throws Exception {
-        ObjectHelper.requireNonNull(file, sheets);
+    public String exportExcel(String file, boolean withAnnotationQ, List<List<Object>> sheets) throws Exception {
         // 创建新的Excel 工作簿
         XSSFWorkbook workbook = new XSSFWorkbook();
         for (int k = 0; k < sheets.size(); k++) {
@@ -117,7 +116,7 @@ final class PoiExcel implements IExcel {
         fos.flush();
         // 操作结束，关闭文件
         fos.close();
-        return true;
+        return file;
     }
 
     @Override
