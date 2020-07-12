@@ -4,7 +4,7 @@ import xxl.mathematica.external.Pojo
 
 class ExportTest extends GroovyTestCase {
     void testExportXlsx() {
-        println(Export.exportExcel("C:\\Users\\Admin\\Desktop\\helloworld.xlsx", true, [[new Pojo("zlb", 18, "男")]]))
+        println(Export.exportExcel("D:\\helloworld.xlsx", [[new Pojo("zlb", 18, "男")]]))
     }
 
     void testExportWord() {

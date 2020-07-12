@@ -620,6 +620,31 @@ void testNIntegrate() {
 1.2470556590870487
 ```
 # 文件操作
+## Export 导出数据
+```
+public class Pojo {
+
+    @ExcelColumnName(value = "名称", order = 2)
+    private String name;
+
+    @ExcelColumnName(value = "年龄", order = 1)
+    private int age;
+
+    @ExcelColumnName(value = "性别", order = 3)
+    private String sex;
+
+}
+```
+### 导出数据到excel（默认jxl，兼容android，不用注解@ExcelColumnName选择）
+```
+void testExportXlsx() {
+    println(Export.exportExcel("D:\\helloworld.xlsx", [[new Pojo("zlb", 18, "男")]]))
+}
+
+年龄	名称	性别
+18	zlb	男
+```
+
 ## ImportString 导入字符串
 ### 导入XML为Map
 ```
