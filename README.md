@@ -644,7 +644,33 @@ void testExportXlsx() {
 年龄	名称	性别
 18	zlb	男
 ```
+### 导出数据到word（标题，表格，标题，表格）
+```
+void testExportWord() {
+    List<Object> content = new ArrayList<>()
+    content.add("table 1")
+    content.add([["c1", "c2", "c3"], ["aaa", "aa", "a"], ["aaa", "bbb", "ccc"]] as String[][])
+    content.add("table2")
+    content.add([["c1", "c2", "c3"], ["aaa", "bbb", "ccc"], ["aaa", "bbb", "ccc"]] as String[][])
+    content.add("table3")
+    content.add([["c1", "c2", "c3"], ["fff", "fff", "ff"], ["ggg", "ggg", "eee"]] as String[][])
+    println(Export.exportWord("D:\\helloworld.doc", content))
+}
 
+
+table 1
+c1	c2	c3
+aaa	aa	a
+aaa	bbb	ccc
+table2
+c1	c2	c3
+aaa	bbb	ccc
+aaa	bbb	ccc
+table3
+c1	c2	c3
+fff	fff	ff
+ggg	ggg	eee
+```
 ## ImportString 导入字符串
 ### 导入XML为Map
 ```
