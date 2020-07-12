@@ -674,10 +674,11 @@ ggg	ggg	eee
 ### 导出到为文本
 ```
 void testExportText(){
-    println(Export.exportText("D:\\a.txt","abcdefgh"))
+    println(Export.exportText("D:\\a.txt","abcdefgh",false))
+    println(Export.exportText("D:\\a.txt","123456789",true))
 }
 
-abcdefgh
+abcdefgh123456789
 ```
 ## ImportString 导入字符串
 ### 导入XML为Map

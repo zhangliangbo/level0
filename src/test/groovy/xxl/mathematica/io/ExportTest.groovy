@@ -20,7 +20,8 @@ class ExportTest extends GroovyTestCase {
     }
 
     void testExportText(){
-        println(Export.exportText("D:\\a.txt","abcdefgh"))
+        println(Export.exportText("D:\\a.txt","abcdefgh",false))
+        println(Export.exportText("D:\\a.txt","123456789",true))
     }
 }
 
