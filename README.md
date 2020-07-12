@@ -635,7 +635,7 @@ public class Pojo {
 
 }
 ```
-### 导出数据到excel（默认jxl，兼容android，不用注解@ExcelColumnName选择）
+### 导出数据到excel（默认jxl，兼容android，注解@ExcelColumnName用来选择字段）
 ```
 void testExportXlsx() {
     println(Export.exportExcel(IExcel.JXL, "D:\\helloworld.xlsx", false, [[new Pojo("zlb", 18, "男")]]))
