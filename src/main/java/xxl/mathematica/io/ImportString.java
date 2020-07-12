@@ -21,12 +21,23 @@ import java.util.*;
  */
 public class ImportString {
     /**
+     * 导入字符串
+     * @param json
+     * @param cls
+     * @param <T>
+     * @return
+     */
+    public static <T> T importJsonObject(String json, Class<T> cls){
+        return GsonSingle.instance().fromJson(json,cls);
+    }
+
+    /**
      * 导入json字符串为Map对象
      *
      * @param json
      * @return
      */
-    public static Map<String, Object> importStringMapObject(String json) {
+    public static Map<String, Object> importJsonMapObject(String json) {
         return GsonSingle.instance().fromJson(json, new TypeToken<Map<String, Object>>() {
         }.getType());
     }
@@ -37,8 +48,8 @@ public class ImportString {
      * @param json
      * @return
      */
-    public static Map<String, String> importStringMapString(String json) {
-        Map<String, Object> res = importStringMapObject(json);
+    public static Map<String, String> importJsonMapString(String json) {
+        Map<String, Object> res = importJsonMapObject(json);
         Map<String, Object> select = KeySelect.keySelect(res, s -> {
             if (res.get(s) != null) {
                 Class<?> cls = res.get(s).getClass();
@@ -57,7 +68,7 @@ public class ImportString {
      * @param <T>
      * @return
      */
-    public static <T> T importStringXml(String xml, Class<T> cls) {
+    public static <T> T importXml(String xml, Class<T> cls) {
         try {
             JAXBContext context = JAXBContext.newInstance(cls);
             Unmarshaller unmarshaller = context.createUnmarshaller();
@@ -118,7 +129,7 @@ public class ImportString {
      * @param xml
      * @return
      */
-    public static Map<String, Object> importStringXml(String xml) {
+    public static Map<String, Object> importXml(String xml) {
         return Try.ofCallable(() -> {
             Document document = DocumentHelper.parseText(xml);
             Map<String, Object> map = new HashMap<>();

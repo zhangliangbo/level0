@@ -1,8 +1,10 @@
 package xxl.mathematica.io
 
+import xxl.mathematica.test.Hello
+
 class ImportStringTest extends GroovyTestCase {
     void testImportString() {
-        XmlBean xmlBean = ImportString.importStringXml("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n" +
+        XmlBean xmlBean = ImportString.importXml("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n" +
                 "<xmlBean>\n" +
                 "    <name>xxl</name>\n" +
                 "    <age>18</age>\n" +
@@ -19,7 +21,7 @@ class ImportStringTest extends GroovyTestCase {
     }
 
     void testImportStringXml() {
-        Map map = ImportString.importStringXml("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n" +
+        Map map = ImportString.importXml("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n" +
                 "<xmlBean>\n" +
                 "    <name>xxl</name>\n" +
                 "    <age>18</age>\n" +
@@ -36,7 +38,7 @@ class ImportStringTest extends GroovyTestCase {
     }
 
     void testImportStringJson() {
-        def map = ImportString.importStringMapObject("{\n" +
+        def map = ImportString.importJsonMapObject("{\n" +
                 "    \"status\": \"0000\",\n" +
                 "    \"message\": \"success\",\n" +
                 "    \"data\": {\n" +
@@ -59,8 +61,13 @@ class ImportStringTest extends GroovyTestCase {
         println(map)
     }
 
-    void testImportStringMapString(){
-        def map = ImportString.importStringMapString("{\n" +
+    void testImportStringObject() {
+        Hello hello = ImportString.importJsonObject("{\"name\":\"zlb\",\"age\":111,\"info\":\"some info\",\"number\":1}", Hello.class)
+        println(hello)
+    }
+
+    void testImportStringMapString() {
+        def map = ImportString.importJsonMapString("{\n" +
                 "    \"status\": \"0000\",\n" +
                 "    \"message\": \"success\",\n" +
                 "    \"data\": {\n" +

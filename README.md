@@ -624,7 +624,7 @@ void testNIntegrate() {
 ### 导入XML为Map
 ```
 void testImportStringXml() {
-    Map map = ImportString.importStringXml("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n" +
+    Map map = ImportString.importXml("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n" +
             "<xmlBean>\n" +
             "    <name>xxl</name>\n" +
             "    <age>18</age>\n" +
@@ -645,7 +645,7 @@ void testImportStringXml() {
 ### 导入XML为对象(配合注解@XmlRootElement，@XmlType，@XmlAccessorType，@XmlElement等注解)
 ```
 void testImportString() {
-    XmlBean xmlBean = ImportString.importStringXml("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n" +
+    XmlBean xmlBean = ImportString.importXml("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n" +
             "<xmlBean>\n" +
             "    <name>xxl</name>\n" +
             "    <age>18</age>\n" +
@@ -663,10 +663,19 @@ void testImportString() {
 
 XmlBean{name='xxl', age=18, state=12, goods=[XmlBeanChild{name='child1', weight=5}, XmlBeanChild{name='child2', weight=10}]}
 ```
+### 导入json为对象
+```
+void testImportStringObject() {
+    Hello hello = ImportString.importJsonObject("{\"name\":\"zlb\",\"age\":111,\"info\":\"some info\",\"number\":1}", Hello.class)
+    println(hello)
+}
+
+Hello{name='zlb', age=111, info='some info', number=1}
+```
 ### 导入json为Map(值为Object)
 ```
 void testImportStringJson() {
-    def map = ImportString.importStringMapObject("{\n" +
+    def map = ImportString.importJsonMapObject("{\n" +
             "    \"status\": \"0000\",\n" +
             "    \"message\": \"success\",\n" +
             "    \"data\": {\n" +
@@ -694,7 +703,7 @@ void testImportStringJson() {
 ### 导入json为Map(只包含第一层的基本类型，不包含复合类型)
 ```
 void testImportStringMapString(){
-    def map = ImportString.importStringMapString("{\n" +
+    def map = ImportString.importJsonMapString("{\n" +
             "    \"status\": \"0000\",\n" +
             "    \"message\": \"success\",\n" +
             "    \"data\": {\n" +
