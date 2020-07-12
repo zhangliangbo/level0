@@ -25,26 +25,6 @@ public class ExportString {
     }
 
     /**
-     * 导出为map字符串
-     *
-     * @param object
-     * @return
-     */
-    public static Map<String, String> exportStringMap(Object object) {
-        return AssociationMap.associationMap(rule -> Rule.valueOf(rule.getKey(), rule.getValue().toString()), Association.association(object));
-    }
-
-    /**
-     * 导出为map对象
-     *
-     * @param object
-     * @return
-     */
-    public static Map<String, Object> exportObjectMap(Object object) {
-        return Association.association(object);
-    }
-
-    /**
      * 导出为xml格式
      *
      * @param obj
