@@ -624,7 +624,7 @@ void testNIntegrate() {
 ```
 public class Pojo {
 
-    @ExcelColumnName(value = "名称", order = 2)
+    @ExcelColumnName(value = "名称", order = 2)   //用于选择要导出的字段
     private String name;
 
     @ExcelColumnName(value = "年龄", order = 1)
@@ -638,7 +638,7 @@ public class Pojo {
 ### 导出数据到excel（默认jxl，兼容android，不用注解@ExcelColumnName选择）
 ```
 void testExportXlsx() {
-    println(Export.exportExcel("D:\\helloworld.xlsx", [[new Pojo("zlb", 18, "男")]]))
+    println(Export.exportExcel(IExcel.JXL, "D:\\helloworld.xlsx", false, [[new Pojo("zlb", 18, "男")]]))
 }
 
 年龄	名称	性别
