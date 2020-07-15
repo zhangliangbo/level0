@@ -2,10 +2,16 @@ package xxl.mathematica
 
 import xxl.mathematica.cryptology.Hash
 
+import java.nio.ByteBuffer
+
 class HashTest extends GroovyTestCase {
 
     void testByteArray() {
         println(Hash.encodeHexString(Hash.hashByteArray("hello world".getBytes(), Hash.Algorithm.MD5)))
+    }
+
+    void testByteBuffer() {
+        println(Hash.encodeHexString(Hash.hashByteBuffer(ByteBuffer.wrap("hello world".getBytes()), Hash.Algorithm.MD5)))
     }
 
     void testHashString() {

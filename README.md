@@ -1048,7 +1048,19 @@ MD2("MD2"), MD5("MD5"), SHA1("SHA-1"), SHA224("SHA-224"), SHA256("SHA-256"), SHA
 ```
 ### 哈希字节数组
 ```
+void testByteArray() {
+    println(Hash.encodeHexString(Hash.hashByteArray("hello world".getBytes(), Hash.Algorithm.MD5)))
+}
 
+5eb63bbbe01eeed093cb22bb8f5acdc3
+```
+### 哈希字节缓冲
+```
+void testByteBuffer() {
+    println(Hash.encodeHexString(Hash.hashByteBuffer(ByteBuffer.wrap("hello world".getBytes()), Hash.Algorithm.MD5)))
+}
+
+5eb63bbbe01eeed093cb22bb8f5acdc3
 ```
 ### 哈希字符串
 ```
