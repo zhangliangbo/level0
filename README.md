@@ -1062,3 +1062,13 @@ void testHashFile() {
 
 5eb63bbbe01eeed093cb22bb8f5acdc3
 ```
+### 哈希流
+```
+void testHashStream() {
+    def stream = new FileInputStream("D:\\hhh.txt")
+    println(Hash.encodeHexString(Hash.hashStream(stream, Hash.Algorithm.MD5)))
+    stream.close()
+}
+
+5eb63bbbe01eeed093cb22bb8f5acdc3
+```
