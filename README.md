@@ -833,3 +833,22 @@ usage: git [--version] [--help] [-C <path>] [-c <name>=<value>]
            [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
            <command> [<args>]
 ```
+# 密码
+## BaseDecode 解密（base64）
+```
+void testBaseEncode() {
+    byte[] bytes = BaseEncode.baseEncode("hello world".getBytes())
+    println(new String(bytes))
+}
+
+aGVsbG8gd29ybGQ=
+```
+## BaseDecode 加密(base64)
+```
+void testBaseDecode() {
+    def bytes = BaseDecode.baseDecode("aGVsbG8gd29ybGQ=".getBytes())
+    println(new String(bytes))
+}
+
+hello world
+```
