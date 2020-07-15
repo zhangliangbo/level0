@@ -1046,7 +1046,19 @@ hello world
 支持的方法
 MD2("MD2"), MD5("MD5"), SHA1("SHA-1"), SHA224("SHA-224"), SHA256("SHA-256"), SHA384("SHA-384"), SHA512("SHA-512"), SHA3224("SHA3-224"), SHA3256("SHA3-256"), SHA3384("SHA3-384"), SHA3512("SHA3-512");
 ```
-### MD5
+### 哈希字符串
 ```
+void testHashString() {
+    println(Hash.encodeHexString(Hash.hashString("hello world", Hash.Algorithm.MD5)))
+}
 
+5eb63bbbe01eeed093cb22bb8f5acdc3
+```
+### 哈希文件
+```
+void testHashFile() {
+    println(Hash.encodeHexString(Hash.hashFile("D:\\hhh.txt", Hash.Algorithm.MD5))) //文件里面的内容是'hello world'
+}
+
+5eb63bbbe01eeed093cb22bb8f5acdc3
 ```
