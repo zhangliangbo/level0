@@ -1008,6 +1008,7 @@ false
 ```
 # 外部程序
 ## External 运行外部程序
+### 运行外部程序，返回状态码和应答
 ```
 void testRunProcess() {
     def rule = External.runProcess("git help")
@@ -1021,6 +1022,22 @@ usage: git [--version] [--help] [-C <path>] [-c <name>=<value>]
            [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]
            [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
            <command> [<args>]
+```
+### 运行外部程序，只返回状态码
+```
+void testRun() {
+    println(External.run('git --help'))
+}
+
+0
+```
+### 发送电子邮件
+```
+void testSendMail() {
+    println(External.sendMail("forbidden@aliyun.com", "附件", "<img src=\"https://himg2.huanqiucdn.cn/attachment2010/2019/1101/20191101072831653.jpg\"/>", [new File("C:\\Users\\zhang\\Desktop\\shu.jpg")], "someone@qq.com", "smtp.aliyun.com", "forbidden@aliyun.com", "forbidden"))
+}
+
+（邮件id）
 ```
 # 密码
 ## BaseDecode 解密（base64）
