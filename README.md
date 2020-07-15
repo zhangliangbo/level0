@@ -1031,7 +1031,7 @@ void testRun() {
 
 0
 ```
-### 发送电子邮件
+### 发送电子邮件（邮件服务器要开启相应的服务才行）
 ```
 void testSendMail() {
     println(External.sendMail("forbidden@aliyun.com", "附件", "<img src=\"https://himg2.huanqiucdn.cn/attachment2010/2019/1101/20191101072831653.jpg\"/>", [new File("C:\\Users\\zhang\\Desktop\\shu.jpg")], "someone@qq.com", "smtp.aliyun.com", "forbidden@aliyun.com", "forbidden"))
