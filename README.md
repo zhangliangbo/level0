@@ -620,11 +620,74 @@ void testNIntegrate() {
 1.2470556590870487
 ```
 # 文件操作
+## Export 导出数据
+```
+public class Pojo {
+
+    @ExcelColumnName(value = "名称", order = 2)   //用于选择要导出的字段
+    private String name;
+
+    @ExcelColumnName(value = "年龄", order = 1)
+    private int age;
+
+    @ExcelColumnName(value = "性别", order = 3)
+    private String sex;
+
+}
+```
+### 导出数据到excel（默认jxl，兼容android，注解@ExcelColumnName用来选择字段）
+```
+void testExportXlsx() {
+    println(Export.exportExcel(IExcel.JXL, "D:\\helloworld.xlsx", false, [[new Pojo("zlb", 18, "男")]]))
+}
+
+（文件内容）
+年龄	名称	性别
+18	zlb	男
+```
+### 导出数据到word（标题，表格，标题，表格，。。。）
+```
+void testExportWord() {
+    List<Object> content = new ArrayList<>()
+    content.add("table 1")
+    content.add([["c1", "c2", "c3"], ["aaa", "aa", "a"], ["aaa", "bbb", "ccc"]] as String[][])
+    content.add("table2")
+    content.add([["c1", "c2", "c3"], ["aaa", "bbb", "ccc"], ["aaa", "bbb", "ccc"]] as String[][])
+    content.add("table3")
+    content.add([["c1", "c2", "c3"], ["fff", "fff", "ff"], ["ggg", "ggg", "eee"]] as String[][])
+    println(Export.exportWord("D:\\helloworld.doc", content))
+}
+
+（文件内容）
+table 1
+c1	c2	c3
+aaa	aa	a
+aaa	bbb	ccc
+table2
+c1	c2	c3
+aaa	bbb	ccc
+aaa	bbb	ccc
+table3
+c1	c2	c3
+fff	fff	ff
+ggg	ggg	eee
+```
+### 导出到为文本
+```
+void testExportText(){
+    println(Export.exportText("D:\\a.txt","abcdefgh",false))
+    println(Export.exportText("D:\\a.txt","123456789",true))
+}
+
+（文件内容）
+abcdefgh123456789
+```
 ## ImportString 导入字符串
+### 导入XML为Map
 ```
 void testImportStringXml() {
-    Map map = ImportString.importStringXml("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n" +
-            "<xmlBean state=\"12\">\n" +
+    Map map = ImportString.importXml("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n" +
+            "<xmlBean>\n" +
             "    <name>xxl</name>\n" +
             "    <age>18</age>\n" +
             "    <goods>\n" +
@@ -640,10 +703,12 @@ void testImportStringXml() {
 }
 
 [name:xxl, goods:[[name:child1, weight:5], [name:child2, weight:10]], age:18]
-
+```
+### 导入XML为对象(配合注解@XmlRootElement，@XmlType，@XmlAccessorType，@XmlElement等注解)
+```
 void testImportString() {
-    XmlBean xmlBean = ImportString.importStringXml("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n" +
-            "<xmlBean state=\"12\">\n" +
+    XmlBean xmlBean = ImportString.importXml("<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n" +
+            "<xmlBean>\n" +
             "    <name>xxl</name>\n" +
             "    <age>18</age>\n" +
             "    <goods>\n" +
@@ -659,9 +724,20 @@ void testImportString() {
 }
 
 XmlBean{name='xxl', age=18, state=12, goods=[XmlBeanChild{name='child1', weight=5}, XmlBeanChild{name='child2', weight=10}]}
+```
+### 导入json为对象
+```
+void testImportStringObject() {
+    Hello hello = ImportString.importJsonObject("{\"name\":\"zlb\",\"age\":111,\"info\":\"some info\",\"number\":1}", Hello.class)
+    println(hello)
+}
 
+Hello{name='zlb', age=111, info='some info', number=1}
+```
+### 导入json为Map(值为Object)
+```
 void testImportStringJson() {
-    def map = ImportString.importStringMapObject("{\n" +
+    def map = ImportString.importJsonMapObject("{\n" +
             "    \"status\": \"0000\",\n" +
             "    \"message\": \"success\",\n" +
             "    \"data\": {\n" +
@@ -685,6 +761,119 @@ void testImportStringJson() {
 }
 
 [status:0000, message:success, data:[title:[id:001, name:白菜], content:[[id:001, value:你好 白菜], [id:002, value:你好 萝卜]]]]
+```
+### 导入json为Map(只包含第一层的基本类型，不包含复合类型)
+```
+void testImportStringMapString(){
+    def map = ImportString.importJsonMapString("{\n" +
+            "    \"status\": \"0000\",\n" +
+            "    \"message\": \"success\",\n" +
+            "    \"data\": {\n" +
+            "        \"title\": {\n" +
+            "            \"id\": \"001\",\n" +
+            "            \"name\" : \"白菜\"\n" +
+            "        },\n" +
+            "        \"content\": [\n" +
+            "            {\n" +
+            "                \"id\": \"001\",\n" +
+            "                \"value\":\"你好 白菜\"\n" +
+            "            },\n" +
+            "            {\n" +
+            "                \"id\": \"002\",\n" +
+            "                 \"value\":\"你好 萝卜\" \n" +
+            "            }\n" +
+            "        ]\n" +
+            "    }\n" +
+            "}\n")
+    println(map)
+}
+
+[message:success, status:0000]
+```
+## ExportString 导出字符串
+### 对象转json
+```
+void testExportStringJson() {
+    Hello hello = new Hello()
+    hello.setName("zlb")
+    hello.setAge(111)
+    hello.setInfo("some info")
+    hello.setNumber(1)
+    println(ExportString.exportStringJson(hello))
+}
+
+{"name":"zlb","age":111,"info":"some info","number":1}
+```
+### 对象转xml
+```
+@XmlRootElement
+@XmlType
+@XmlAccessorType(XmlAccessType.FIELD)
+public class XmlBean {
+
+    @XmlElement
+    public int age;
+    @XmlElement
+    public List<XmlBeanChild> goods;
+    @XmlElement
+    public String name;
+
+    @Override
+    public String toString() {
+        return "XmlBean{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", goods=" + goods +
+                '}';
+    }
+}
+
+@XmlType
+public class XmlBeanChild {
+
+    @XmlElement
+    public String name;
+
+    @XmlElement
+    public int weight;
+
+    @Override
+    public String toString() {
+        return "XmlBeanChild{" +
+                "name='" + name + '\'' +
+                ", weight=" + weight +
+                '}';
+    }
+}
+
+void testExportStringXml() {
+    XmlBean xmlBean = new XmlBean()
+    xmlBean.name = "xxl"
+    xmlBean.age = 18
+    XmlBeanChild c1 = new XmlBeanChild();
+    c1.name = "child1"
+    c1.weight = 5
+    XmlBeanChild c2 = new XmlBeanChild();
+    c2.name = "child2"
+    c2.weight = 10
+    xmlBean.goods = [c1, c2]
+    println(ExportString.exportStringXml(xmlBean))
+}
+
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xmlBean>
+    <age>18</age>
+    <goods>
+        <name>child1</name>
+        <weight>5</weight>
+    </goods>
+    <goods>
+        <name>child2</name>
+        <weight>10</weight>
+    </goods>
+    <name>xxl</name>
+</xmlBean>
+
 ```
 ## DeleteFile 删除文件
 ```

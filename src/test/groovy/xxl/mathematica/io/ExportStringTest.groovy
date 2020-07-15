@@ -1,19 +1,22 @@
 package xxl.mathematica.io
 
+import xxl.mathematica.test.Hello
+
 class ExportStringTest extends GroovyTestCase {
+
     void testExportStringJson() {
-        Map<String, String> map = new HashMap<>()
-        map.put("a", "b")
-        map.put("c", "d")
-        map.put("e", "f")
-        println(ExportString.exportStringJson(map))
+        Hello hello = new Hello()
+        hello.setName("zlb")
+        hello.setAge(111)
+        hello.setInfo("some info")
+        hello.setNumber(1)
+        println(ExportString.exportStringJson(hello))
     }
 
     void testExportStringXml() {
         XmlBean xmlBean = new XmlBean()
         xmlBean.name = "xxl"
         xmlBean.age = 18
-        xmlBean.state = 12
         XmlBeanChild c1 = new XmlBeanChild();
         c1.name = "child1"
         c1.weight = 5

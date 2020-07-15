@@ -29,7 +29,7 @@ final class JxlExcel implements IExcel {
     }
 
     @Override
-    public boolean exportExcel(String file, boolean withAnnotationQ, List<List<Object>> sheets) throws Exception {
+    public String exportExcel(String file, boolean withAnnotationQ, List<List<Object>> sheets) throws Exception {
         WritableWorkbook workbook = Workbook.createWorkbook(new File(file));
         for (int k = 0; k < sheets.size(); k++) {
             List<Object> list = sheets.get(k);
@@ -90,7 +90,7 @@ final class JxlExcel implements IExcel {
         }
         workbook.write();
         workbook.close();
-        return true;
+        return file;
     }
 
     @Override
