@@ -39,31 +39,6 @@ public class Association {
     }
 
     /**
-     * 把对象指定字段的数据封装为Map
-     *
-     * @param src
-     * @param fields
-     * @return
-     */
-    public static Map<String, Object> association(Object src, List<String> fields) {
-        return io.vavr.collection.List.ofAll(fields)
-                .toJavaMap(new Function<String, Tuple2<String, Object>>() {
-                    @Override
-                    public Tuple2<String, Object> apply(String s) {
-                        try {
-                            Field field = src.getClass().getField(s);
-                            if (!field.isAccessible()) {
-                                field.setAccessible(true);
-                            }
-                            return Tuple.of(s, field.get(src));
-                        } catch (NoSuchFieldException | IllegalAccessException e) {
-                            return Tuple.of(s, null);
-                        }
-                    }
-                });
-    }
-
-    /**
      * 有一个类的所有字段指定键的集合
      *
      * @param obj
@@ -80,6 +55,28 @@ public class Association {
                         return Tuple.of(field.getName(), field.get(obj));
                     } catch (Throwable e) {
                         return Tuple.of(field.getName(), null);
+                    }
+                });
+    }
+
+    /**
+     * 把对象指定字段的数据封装为Map
+     *
+     * @param src
+     * @param fields
+     * @return
+     */
+    public static Map<String, Object> association(Object src, List<String> fields) {
+        return io.vavr.collection.List.ofAll(fields)
+                .toJavaMap((Function<String, Tuple2<String, Object>>) s -> {
+                    try {
+                        Field field = src.getClass().getField(s);
+                        if (!field.isAccessible()) {
+                            field.setAccessible(true);
+                        }
+                        return Tuple.of(s, field.get(src));
+                    } catch (NoSuchFieldException | IllegalAccessException e) {
+                        return Tuple.of(s, null);
                     }
                 });
     }

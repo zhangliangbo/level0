@@ -273,9 +273,29 @@ void testOrdering() {
 [1, 2, 0]
 ```
 # 字典操作
-## Association 根据规则来生成字典
+## Association 生成字典
+### 根据规则生成字典
 ```
+void testAssociation() {
+    def map = Association.association(Rule.valueOf("a", 1), Rule.valueOf("b", 2), Rule.valueOf("c", 3))
+    println(map)
+}
 
+[a:1, b:2, c:3]
+```
+### 对象转map
+```
+void testAssociation1() {
+    Hello hello = new Hello()
+    hello.setName("xxl")
+    hello.setAge(18)
+    hello.setInfo("info")
+    hello.setNumber(2)
+    def map = Association.association(hello)
+    println(map)
+}
+
+[number:2, name:xxl, age:18, info:info]
 ```
 ## GroupBy 对列表进行分组
 ```
