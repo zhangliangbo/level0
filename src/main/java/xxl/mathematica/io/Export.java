@@ -123,8 +123,8 @@ public class Export {
      * @param text
      * @return
      */
-    public static String exportText(String file, String text,boolean append) {
-        try (FileOutputStream fos = new FileOutputStream(file,append)) {
+    public static String exportText(String file, String text, boolean append) {
+        try (FileOutputStream fos = new FileOutputStream(file, append)) {
             IOUtils.write(text, fos, "UTF-8");
             return file;
         } catch (IOException e) {

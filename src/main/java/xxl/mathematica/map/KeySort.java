@@ -1,7 +1,5 @@
 package xxl.mathematica.map;
 
-import xxl.mathematica.list.Sort;
-
 import java.util.Comparator;
 import java.util.Map;
 
@@ -32,6 +30,6 @@ public class KeySort {
      * @return
      */
     public static <K extends Comparable<? super K>, V> Map<K, V> keySort(Map<K, V> map) {
-        return keySort(map, Sort.naturalOrder());
+        return keySort(map, Comparator.naturalOrder());
     }
 }

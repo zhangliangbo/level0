@@ -1,14 +1,10 @@
 package xxl.mathematica.io;
 
-import xxl.mathematica.Rule;
-import xxl.mathematica.map.Association;
-import xxl.mathematica.map.AssociationMap;
 import xxl.mathematica.single.GsonSingle;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 import java.io.StringWriter;
-import java.util.Map;
 
 /**
  * 导出字符串

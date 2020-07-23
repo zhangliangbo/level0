@@ -1,7 +1,6 @@
 package xxl.mathematica;
 
 import xxl.mathematica.function.Function;
-import xxl.mathematica.list.Sort;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -42,6 +41,6 @@ public class SortBy {
      * @return
      */
     public static <T, R extends Comparable<? super R>> List<T> sortBy(List<T> list, Function<T, R> f) {
-        return sortBy(list, f, Sort.naturalOrder());
+        return sortBy(list, f, Comparator.naturalOrder());
     }
 }

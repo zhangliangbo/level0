@@ -19,9 +19,9 @@ class ExportTest extends GroovyTestCase {
         println(Export.exportWord("D:\\helloworld.doc", content))
     }
 
-    void testExportText(){
-        println(Export.exportText("D:\\a.txt","abcdefgh",false))
-        println(Export.exportText("D:\\a.txt","123456789",true))
+    void testExportText() {
+        println(Export.exportText("D:\\a.txt", "abcdefgh", false))
+        println(Export.exportText("D:\\a.txt", "123456789", true))
     }
 }
 

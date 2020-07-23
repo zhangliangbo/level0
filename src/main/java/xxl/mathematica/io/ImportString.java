@@ -22,13 +22,14 @@ import java.util.*;
 public class ImportString {
     /**
      * 导入字符串
+     *
      * @param json
      * @param cls
      * @param <T>
      * @return
      */
-    public static <T> T importJsonObject(String json, Class<T> cls){
-        return GsonSingle.instance().fromJson(json,cls);
+    public static <T> T importJsonObject(String json, Class<T> cls) {
+        return GsonSingle.instance().fromJson(json, cls);
     }
 
     /**
