@@ -374,6 +374,36 @@ void testKeyMap() {
 
 [16.0:d, 1.0:a, 4.0:b, 9.0:c]
 ```
+## Keys 键列表
+### Map的键列表
+```
+void testKeys() {
+    println(Keys.keys(["a": 1, "b": 2, "c": 3, "d": 4, "e": 5]))
+}
+
+[a, b, c, d, e]
+```
+### 对象的字段列表
+```
+void testKeys1() {
+    Hello hello = new Hello()
+    hello.setName("xxl")
+    hello.setAge(111)
+    hello.setNumber(1)
+    hello.setInfo("hello world")
+    println(Keys.keys(hello))
+}
+
+[name, age, info, number]
+```
+### 类的字段列表
+```
+void testKeys2() {
+    println(Keys.keys(Hello.class))
+}
+
+[name, age, info, number]
+```
 ## GroupBy 对列表进行分组
 ```
 void testGroupBy() {
