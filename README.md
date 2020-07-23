@@ -361,6 +361,19 @@ void testAssociationMap1() {
 
 [1:a, 2:b, 3:c, 4:d]
 ```
+## KeyMap 映射键
+```
+void testKeyMap() {
+    println(KeyMap.keyMap(new Function<Integer, String>() {
+        @Override
+        String apply(Integer k1) {
+            return Math.pow(k1, 2)
+        }
+    }, [1: "a", 2: "b", 3: "c", 4: "d"]))
+}
+
+[16.0:d, 1.0:a, 4.0:b, 9.0:c]
+```
 ## GroupBy 对列表进行分组
 ```
 void testGroupBy() {
