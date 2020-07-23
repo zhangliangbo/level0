@@ -438,6 +438,19 @@ void testKeySortBy() {
 
 [4:d, 3:c, 2:b, 1:a]
 ```
+## KeyValueMap 映射键值对
+```
+void testKeyValueMap() {
+    println(KeyValueMap.keyValueMap(new BiFunction<Integer, String, String>() {
+        @Override
+        String apply(Integer k, String v) {
+            return k + v
+        }
+    }, [1: "a", 2: "b", 3: "c", 4: "b"]))
+}
+
+[1a, 2b, 3c, 4b]
+```
 ## GroupBy 对列表进行分组
 ```
 void testGroupBy() {
