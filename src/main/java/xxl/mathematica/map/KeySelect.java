@@ -1,8 +1,7 @@
 package xxl.mathematica.map;
 
-import xxl.mathematica.function.Predicate;
-
 import java.util.Map;
+import java.util.function.Predicate;
 
 /**
  * 键选择

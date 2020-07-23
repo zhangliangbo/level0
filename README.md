@@ -404,6 +404,19 @@ void testKeys2() {
 
 [name, age, info, number]
 ```
+## KeySelect 根据条件选择键
+```
+void testKeySelect() {
+    println(KeySelect.keySelect([1: "a", 2: "b", 3: "c", 4: "d", 5: "e"], new Predicate<Integer>() {
+        @Override
+        boolean test(Integer integer) {
+            return integer > 3
+        }
+    }))
+}
+
+[4:d, 5:e]
+```
 ## GroupBy 对列表进行分组
 ```
 void testGroupBy() {
