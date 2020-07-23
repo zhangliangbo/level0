@@ -486,6 +486,53 @@ void testTestValues1() {
 
 [xxl, 111]
 ```
+## PopulateObject 填充对象
+### 从字典获取值（给定类）
+```
+void testPopulateObject() {
+    def map = [name: "aaa", age: 1, info: "lllll", number: 5]
+    println(PopulateObject.populateObject(map, Hello.class))
+}
+
+Hello{name='aaa', age=1, info='lllll', number=5}
+```
+### 从字典获取值（给定对象）
+```
+void testPopulateObject1() {
+    def map = [name: "aaa", age: 1, info: "lllll", number: 5]
+    Hello hello = new Hello()
+    println(PopulateObject.populateObject(map, hello))
+}
+
+Hello{name='aaa', age=1, info='lllll', number=5}
+```
+### 从对象获取值（给定类）
+```
+void testPopulateObject2() {
+    Hello src = new Hello()
+    src.setName("xxl")
+    src.setAge(111)
+    src.setNumber(1)
+    src.setInfo("hello world")
+    println(PopulateObject.populateObject(src, Hello.class))
+}
+
+Hello{name='xxl', age=111, info='hello world', number=1}
+```
+### 从对象获取值（给定对象）
+```
+void testPopulateObject3() {
+    Hello src = new Hello()
+    src.setName("xxl")
+    src.setAge(111)
+    src.setNumber(1)
+    src.setInfo("hello world")
+    Hello dst = new Hello()
+    println(PopulateObject.populateObject(src, dst))
+}
+
+Hello{name='xxl', age=111, info='hello world', number=1}
+```
 ## GroupBy 对列表进行分组
 ```
 void testGroupBy() {
