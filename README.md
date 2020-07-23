@@ -342,6 +342,25 @@ void testAssociation2() {
 
 [name:xxl, age:18]
 ```
+## AssociationMap 关系映射
+### 映射键
+```
+void testAssociationMap() {
+    def map = AssociationMap.associationMap({ t -> Math.sqrt(t) }, [1, 2, 3, 4])
+    println(map)
+}
+
+[1:1.0, 2:1.4142135623730951, 3:1.7320508075688772, 4:2.0]
+```
+### 映射键值对
+```
+void testAssociationMap1() {
+    def now = AssociationMap.associationMap({ t -> Rule.valueOf(t.getValue(), t.getKey()) }, ["a": 1, "b": 2, "c": 3, "d": 4])
+    println(now)
+}
+
+[1:a, 2:b, 3:c, 4:d]
+```
 ## GroupBy 对列表进行分组
 ```
 void testGroupBy() {
