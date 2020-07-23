@@ -31,11 +31,23 @@ public class Association {
     /**
      * 把对象指定字段的数据封装为Map
      *
-     * @param obj
+     * @param src
+     * @param fields
      * @return
      */
-    public static Map<String, Object> association(Object obj) {
-        return association(obj, obj.getClass());
+    public static Map<String, Object> association(Object src, List<String> fields) {
+        return io.vavr.collection.List.ofAll(fields)
+                .toJavaMap((Function<String, Tuple2<String, Object>>) s -> {
+                    try {
+                        Field field = src.getClass().getDeclaredField(s);
+                        if (!field.isAccessible()) {
+                            field.setAccessible(true);
+                        }
+                        return Tuple.of(s, field.get(src));
+                    } catch (NoSuchFieldException | IllegalAccessException e) {
+                        return Tuple.of(s, null);
+                    }
+                });
     }
 
     /**
@@ -46,39 +58,17 @@ public class Association {
      * @return
      */
     public static Map<String, Object> association(Object obj, Class<?> cls) {
-        return io.vavr.collection.List.of(cls.getDeclaredFields())
-                .toJavaMap((Function<Field, Tuple2<String, Object>>) field -> {
-                    if (!field.isAccessible()) {
-                        field.setAccessible(true);
-                    }
-                    try {
-                        return Tuple.of(field.getName(), field.get(obj));
-                    } catch (Throwable e) {
-                        return Tuple.of(field.getName(), null);
-                    }
-                });
+        return association(obj, xxl.mathematica.functional.Map.map(Field::getName, Arrays.asList(cls.getDeclaredFields())));
     }
 
     /**
      * 把对象指定字段的数据封装为Map
      *
-     * @param src
-     * @param fields
+     * @param obj
      * @return
      */
-    public static Map<String, Object> association(Object src, List<String> fields) {
-        return io.vavr.collection.List.ofAll(fields)
-                .toJavaMap((Function<String, Tuple2<String, Object>>) s -> {
-                    try {
-                        Field field = src.getClass().getField(s);
-                        if (!field.isAccessible()) {
-                            field.setAccessible(true);
-                        }
-                        return Tuple.of(s, field.get(src));
-                    } catch (NoSuchFieldException | IllegalAccessException e) {
-                        return Tuple.of(s, null);
-                    }
-                });
+    public static Map<String, Object> association(Object obj) {
+        return association(obj, obj.getClass());
     }
 
 }

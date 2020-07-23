@@ -274,6 +274,23 @@ void testOrdering() {
 ```
 # 字典操作
 ## Association 生成字典
+```
+public class Hello {
+
+    private String name;
+    private int age;
+    private String info;
+    private int number;
+
+}
+
+public class Interest {
+
+    private String name;
+    private int age;
+
+}
+```
 ### 根据规则生成字典
 ```
 void testAssociation() {
@@ -282,6 +299,20 @@ void testAssociation() {
 }
 
 [a:1, b:2, c:3]
+```
+### 返回指定字段的Map
+```
+void testAssociation3() {
+    Hello hello = new Hello()
+    hello.setName("xxl")
+    hello.setAge(18)
+    hello.setInfo("info")
+    hello.setNumber(2)
+    def map = Association.association(hello, ["name", "age"])
+    println(map)
+}
+
+[name:xxl, age:18]
 ```
 ### 对象转map
 ```
@@ -299,7 +330,17 @@ void testAssociation1() {
 ```
 ### 返回目标类的所有字段的map，没有填null
 ```
+void testAssociation2() {
+    Hello hello = new Hello()
+    hello.setName("xxl")
+    hello.setAge(18)
+    hello.setInfo("info")
+    hello.setNumber(2)
+    def map = Association.association(hello, Interest.class)
+    println(map)
+}
 
+[name:xxl, age:18]
 ```
 ## GroupBy 对列表进行分组
 ```
