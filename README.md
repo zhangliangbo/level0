@@ -328,7 +328,7 @@ void testAssociation1() {
 
 [number:2, name:xxl, age:18, info:info]
 ```
-### 返回目标类的所有字段的map，没有填null
+### 返回目标类的所有字段的map
 ```
 void testAssociation2() {
     Hello hello = new Hello()
