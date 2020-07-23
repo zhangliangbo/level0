@@ -417,6 +417,14 @@ void testKeySelect() {
 
 [4:d, 5:e]
 ```
+## KeySort 键排序
+```
+void testKeySort() {
+    println(KeySort.keySort(["b": 1, "c": 2, "a": 3]))
+}
+
+[a:3, b:1, c:2]
+```
 ## GroupBy 对列表进行分组
 ```
 void testGroupBy() {
