@@ -451,6 +451,40 @@ void testKeyValueMap() {
 
 [1a, 2b, 3c, 4b]
 ```
+## Values 值列表
+### 字典的
+```
+void testValues() {
+    println(Values.values([1: "a", 2: "b", 3: "c", 4: "d", 5: "c"]))
+}
+
+[a, b, c, d, c]
+```
+### 对象的
+```
+void testTestValues() {
+    Hello hello = new Hello()
+    hello.setName("xxl")
+    hello.setAge(111)
+    hello.setNumber(1)
+    hello.setInfo("hello world")
+}
+
+[1, xxl, 111, hello world]
+```
+### 指定字段的值列表
+```
+void testTestValues1() {
+    Hello hello = new Hello()
+    hello.setName("xxl")
+    hello.setAge(111)
+    hello.setNumber(1)
+    hello.setInfo("hello world")
+    println(Values.values(hello, ["name", "age"]))
+}
+
+[xxl, 111]
+```
 ## GroupBy 对列表进行分组
 ```
 void testGroupBy() {
