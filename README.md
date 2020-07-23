@@ -425,6 +425,19 @@ void testKeySort() {
 
 [a:3, b:1, c:2]
 ```
+## KeySortBy 根据键条件排序
+```
+void testKeySortBy() {
+    println(KeySortBy.keySortBy([1: "a", 2: "b", 3: "c", 4: "d"], new Function<Integer, Integer>() {
+        @Override
+        Integer apply(Integer k) {
+            return -k
+        }
+    }))
+}
+
+[4:d, 3:c, 2:b, 1:a]
+```
 ## GroupBy 对列表进行分组
 ```
 void testGroupBy() {

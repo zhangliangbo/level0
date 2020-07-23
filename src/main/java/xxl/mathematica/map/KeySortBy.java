@@ -19,11 +19,6 @@ public class KeySortBy {
      * @return
      */
     public static <K, V, S extends Comparable<? super S>> Map<K, V> keySortBy(Map<K, V> map, Function<K, S> f) {
-        return io.vavr.collection.TreeMap.ofAll(new Comparator<K>() {
-            @Override
-            public int compare(K o1, K o2) {
-                return f.apply(o1).compareTo(f.apply(o2));
-            }
-        }, map).toJavaMap();
+        return io.vavr.collection.TreeMap.ofAll(Comparator.comparing(f), map).toJavaMap();
     }
 }
