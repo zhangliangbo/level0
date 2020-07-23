@@ -468,6 +468,7 @@ void testTestValues() {
     hello.setAge(111)
     hello.setNumber(1)
     hello.setInfo("hello world")
+    println(Values.values(hello))
 }
 
 [1, xxl, 111, hello world]
