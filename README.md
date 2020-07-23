@@ -264,6 +264,14 @@ void testSort() {
 
 [1, 2, 3, 3, 4, 4, 6, 6, 7, 8, 9]
 ```
+## Ordering 排序索引(不返回数据项本身，而是数据项所在的位置)
+```
+void testOrdering() {
+    println(Ordering.ordering(["c", "a", "b"]))
+}
+
+[1, 2, 0]
+```
 # 字典操作
 ## Association 根据规则来生成字典
 ```
