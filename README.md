@@ -87,6 +87,18 @@ void testDrop() {
 [1, 3, 5, 7, 8, 9]
 []
 ```
+## FirstPosition 获取满足条件的第一个元素的位置
+```
+void testFirstPosition() throws Exception {
+    println(FirstPosition.firstPosition([1, 2, 3, 4, 5], { integer -> integer > 0 }))
+    println(FirstPosition.firstPosition([1, 2, 3, 4, 5], { integer -> integer > 6 }, -1))
+    println(FirstPosition.firstPosition([1, 2, 3, 4, 5], { integer -> integer > 6 }))
+}
+
+0
+-1
+java.util.NoSuchElementException: No value present
+```
 ## Position 获取给定元素在列表的位置
 ```
 def list = ["a", "b", "c", "d"]
