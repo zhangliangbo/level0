@@ -1,5 +1,8 @@
 package xxl.mathematica.predication;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+
 /**
  * 偶数判定
  */
