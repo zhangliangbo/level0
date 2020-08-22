@@ -26,20 +26,17 @@ public class NestWhile {
      * @return
      */
     public static <T> T nestWhile(Function<T, T> function, T initValue, Predicate<T> test) {
-        return Try.ofCallable(new Callable<T>() {
-            @Override
-            public T call() throws Exception {
-                T cur = initValue;
-                int steps = 0;
-                while (test.test(cur)) {
-                    cur = function.apply(cur);
-                    ++steps;
-                    if (steps >= Constant.MaxStep) {
-                        throw new MaxStepException(Constant.MaxStep);//达到最大迭代次数，直接抛出异常
-                    }
+        return Try.ofCallable(() -> {
+            T cur = initValue;
+            int steps = 0;
+            while (test.test(cur)) {
+                cur = function.apply(cur);
+                ++steps;
+                if (steps >= Constant.MaxStep) {
+                    throw new MaxStepException(Constant.MaxStep);//达到最大迭代次数，直接抛出异常
                 }
-                return cur;
             }
+            return cur;
         }).getOrNull();
     }
 
@@ -54,23 +51,20 @@ public class NestWhile {
      * @return
      */
     public static <T> T nestWhile(Function<T, T> function, T initValue, BiPredicate<T, T> test) {
-        return Try.ofCallable(new Callable<T>() {
-            @Override
-            public T call() throws Exception {
-                int steps = 0;
-                T cur1 = initValue;
-                T cur2 = function.apply(cur1);
+        return Try.ofCallable(() -> {
+            int steps = 0;
+            T cur1 = initValue;
+            T cur2 = function.apply(cur1);
+            ++steps;
+            while (test.test(cur1, cur2)) {
+                cur1 = cur2;
+                cur2 = function.apply(cur1);
                 ++steps;
-                while (test.test(cur1, cur2)) {
-                    cur1 = cur2;
-                    cur2 = function.apply(cur1);
-                    ++steps;
-                    if (steps >= Constant.MaxStep) {
-                        throw new MaxStepException(Constant.MaxStep);
-                    }
+                if (steps >= Constant.MaxStep) {
+                    throw new MaxStepException(Constant.MaxStep);
                 }
-                return cur2;
             }
+            return cur2;
         }).getOrNull();
     }
 
@@ -84,33 +78,30 @@ public class NestWhile {
      * @return
      */
     public static <T> T nestWhile(Function<T, T> function, T initValue, Predicate<List<T>> test, int m) {
-        return Try.ofCallable(new Callable<T>() {
-            @Override
-            public T call() throws Exception {
-                List<T> cache = new ArrayList<T>(0);
-                cache.add(initValue);
-                //先把参数栈填满
-                int steps = 0;
-                while (cache.size() < m) {
-                    T temp = function.apply(cache.get(cache.size() - 1));
-                    ++steps;
-                    if (steps >= Constant.MaxStep) {
-                        throw new MaxStepException(Constant.MaxStep);
-                    }
-                    cache.add(temp);
+        return Try.ofCallable(() -> {
+            List<T> cache = new ArrayList<T>(0);
+            cache.add(initValue);
+            //先把参数栈填满
+            int steps = 0;
+            while (cache.size() < m) {
+                T temp = function.apply(cache.get(cache.size() - 1));
+                ++steps;
+                if (steps >= Constant.MaxStep) {
+                    throw new MaxStepException(Constant.MaxStep);
                 }
-                while (test.test(cache)) {
-                    T last = cache.get(cache.size() - 1);
-                    T cur = function.apply(last);
-                    steps++;
-                    if (steps >= Constant.MaxStep) {
-                        throw new MaxStepException(Constant.MaxStep);
-                    }
-                    cache.remove(0);//移除最开始
-                    cache.add(cur);//加入最新的
-                }
-                return cache.get(cache.size() - 1);
+                cache.add(temp);
             }
+            while (test.test(cache)) {
+                T last = cache.get(cache.size() - 1);
+                T cur = function.apply(last);
+                steps++;
+                if (steps >= Constant.MaxStep) {
+                    throw new MaxStepException(Constant.MaxStep);
+                }
+                cache.remove(0);//移除最开始
+                cache.add(cur);//加入最新的
+            }
+            return cache.get(cache.size() - 1);
         }).getOrNull();
     }
 }
