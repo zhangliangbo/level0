@@ -8,7 +8,7 @@ plugins {
 }
 
 group 'io.github.zhangliangbo'
-version '1.0.0'
+version '1.0.1'
 
 sourceCompatibility = "8"
 targetCompatibility = "8"
