@@ -32,6 +32,7 @@ dependencies {
     implementation 'org.apache.commons:commons-jcs-core:2.2.1'
     implementation 'org.apache.commons:commons-compress:1.20'
     implementation 'org.apache.commons:commons-email:1.5'
+    implementation 'org.apache.commons:commons-pool2:2.8.1'
     implementation 'commons-dbutils:commons-dbutils:1.7'
     implementation 'commons-io:commons-io:2.6'
     implementation 'commons-cli:commons-cli:1.4'
