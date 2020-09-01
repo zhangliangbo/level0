@@ -1381,3 +1381,36 @@ void testHashStream() {
 
 5eb63bbbe01eeed093cb22bb8f5acdc3
 ```
+# 并行
+## 并行映射
+```
+void testMap() {
+    long s = System.currentTimeMillis()
+    println(
+            Map.map(t -> {
+                sleep(5000)
+                return t * t
+            }, [1, 2, 3, 4, 5, 6, 7, 8])
+    )
+    println("duration:" + (System.currentTimeMillis() - s))
+}
+
+[1, 4, 9, 16, 25, 36, 49, 64]
+duration:40365
+```
+> 时间是：(n/maxCore+1)*oneItemTime
+```
+void testParallelMap() {
+    long s = System.currentTimeMillis()
+    println(
+            ParallelMap.parallelMap(t -> {
+                sleep(5000)
+                return t * t
+            }, [1, 2, 3, 4, 5, 6, 7, 8])
+    )
+    println("duration:" + (System.currentTimeMillis() - s))
+}
+
+[1, 4, 9, 16, 25, 36, 49, 64]
+duration:5242
+```
