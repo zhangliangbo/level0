@@ -31,7 +31,7 @@ class CacheTest extends GroovyTestCase {
     }
 
     void testPutNX() {
-        Cache.putNX("zlb", "1")
+        Cache.putNx("zlb", "1")
     }
 
     void testClear() {

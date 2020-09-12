@@ -11,7 +11,7 @@ import java.util.Map;
  * @since 2020/9/6
  **/
 public class Cache {
-    private static final ICacheAccess<String, Object> iCacheAccess = JCS.getInstance("default");
+    private static final ICacheAccess<String, Object> I_CACHE_ACCESS = JCS.getInstance("default");
 
     /**
      * 获取值
@@ -20,7 +20,7 @@ public class Cache {
      * @return 值
      */
     public static Object get(String key) {
-        return iCacheAccess.get(key);
+        return I_CACHE_ACCESS.get(key);
     }
 
     /**
@@ -32,7 +32,7 @@ public class Cache {
      * @return 值
      */
     public static long idleTime(String key) {
-        return iCacheAccess.getCacheElement(key).getElementAttributes().getIdleTime();
+        return I_CACHE_ACCESS.getCacheElement(key).getElementAttributes().getIdleTime();
     }
 
     /**
@@ -44,7 +44,7 @@ public class Cache {
      * @return 值
      */
     public static long maxLife(String key) {
-        return iCacheAccess.getCacheElement(key).getElementAttributes().getMaxLife();
+        return I_CACHE_ACCESS.getCacheElement(key).getElementAttributes().getMaxLife();
     }
 
     /**
@@ -53,7 +53,7 @@ public class Cache {
      * @return 键值对
      */
     public static Map<String, Object> match(String pattern) {
-        return iCacheAccess.getMatching(pattern);
+        return I_CACHE_ACCESS.getMatching(pattern);
     }
 
     /**
@@ -63,7 +63,7 @@ public class Cache {
      * @param value 值
      */
     public static void put(String key, Object value) {
-        iCacheAccess.put(key, value);
+        I_CACHE_ACCESS.put(key, value);
     }
 
     /**
@@ -74,8 +74,8 @@ public class Cache {
      * @param idleSeconds 有效期
      */
     public static void put(String key, Object value, long idleSeconds) {
-        iCacheAccess.put(key, value);
-        ICacheElement<String, Object> element = iCacheAccess.getCacheElement(key);
+        I_CACHE_ACCESS.put(key, value);
+        ICacheElement<String, Object> element = I_CACHE_ACCESS.getCacheElement(key);
         element.getElementAttributes().setIdleTime(idleSeconds);
     }
 
@@ -85,15 +85,15 @@ public class Cache {
      * @param key   键
      * @param value 值
      */
-    public static void putNX(String key, Object value) {
-        iCacheAccess.putSafe(key, value);
+    public static void putNx(String key, Object value) {
+        I_CACHE_ACCESS.putSafe(key, value);
     }
 
     /**
      * 清空缓存
      */
     public static void clear() {
-        iCacheAccess.clear();
+        I_CACHE_ACCESS.clear();
     }
 
     /**
@@ -102,7 +102,7 @@ public class Cache {
      * @param key 键
      */
     public static void remove(String key) {
-        iCacheAccess.remove(key);
+        I_CACHE_ACCESS.remove(key);
     }
 
     /**
@@ -111,7 +111,7 @@ public class Cache {
      * @return 缓存大小
      */
     public static int size() {
-        return iCacheAccess.getMatching(".*").size();
+        return I_CACHE_ACCESS.getMatching(".*").size();
     }
 
     /**
@@ -120,6 +120,6 @@ public class Cache {
      * @return 缓存容量
      */
     public static int capacity() {
-        return iCacheAccess.getCacheAttributes().getMaxObjects();
+        return I_CACHE_ACCESS.getCacheAttributes().getMaxObjects();
     }
 }
