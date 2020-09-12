@@ -2,8 +2,9 @@ package xxl.mathematica.cache;
 
 import org.apache.commons.jcs.JCS;
 import org.apache.commons.jcs.access.behavior.ICacheAccess;
-import org.apache.commons.jcs.engine.ElementAttributes;
-import org.apache.commons.jcs.engine.behavior.IElementAttributes;
+import org.apache.commons.jcs.engine.behavior.ICacheElement;
+
+import java.util.Map;
 
 /**
  * @author zhangliangbo
@@ -23,6 +24,39 @@ public class Cache {
     }
 
     /**
+     * 获取最大空闲时间（超过最大空闲时间，值会被移除）
+     * 单位：s
+     * 默认值参考cache.ccf
+     *
+     * @param key 键
+     * @return 值
+     */
+    public static long idleTime(String key) {
+        return iCacheAccess.getCacheElement(key).getElementAttributes().getIdleTime();
+    }
+
+    /**
+     * 获取最大生存时间（超过最大生存空间，值会被移除，即使在最大空闲时间内被刷新）
+     * 单位：s
+     * 默认值参考cache.ccf
+     *
+     * @param key 键
+     * @return 值
+     */
+    public static long maxLife(String key) {
+        return iCacheAccess.getCacheElement(key).getElementAttributes().getMaxLife();
+    }
+
+    /**
+     * 匹配正则表达式的键值对
+     *
+     * @return 键值对
+     */
+    public static Map<String, Object> match(String pattern) {
+        return iCacheAccess.getMatching(pattern);
+    }
+
+    /**
      * 放入值
      *
      * @param key   键
@@ -35,14 +69,14 @@ public class Cache {
     /**
      * 放入值，带有效期
      *
-     * @param key     键
-     * @param value   值
-     * @param seconds 有效期
+     * @param key         键
+     * @param value       值
+     * @param idleSeconds 有效期
      */
-    public static void put(String key, Object value, long seconds) {
-        IElementAttributes attributes = new ElementAttributes();
-        attributes.setMaxLife(seconds);
-        iCacheAccess.put(key, value, attributes);
+    public static void put(String key, Object value, long idleSeconds) {
+        iCacheAccess.put(key, value);
+        ICacheElement<String, Object> element = iCacheAccess.getCacheElement(key);
+        element.getElementAttributes().setIdleTime(idleSeconds);
     }
 
     /**
@@ -69,5 +103,23 @@ public class Cache {
      */
     public static void remove(String key) {
         iCacheAccess.remove(key);
+    }
+
+    /**
+     * 获取缓存的大小
+     *
+     * @return 缓存大小
+     */
+    public static int size() {
+        return iCacheAccess.getMatching(".*").size();
+    }
+
+    /**
+     * 获取缓存的容量
+     *
+     * @return 缓存容量
+     */
+    public static int capacity() {
+        return iCacheAccess.getCacheAttributes().getMaxObjects();
     }
 }
