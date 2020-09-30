@@ -56,6 +56,9 @@ dependencies {
     implementation 'javax.activation:activation:1.1.1'
     //google core api for java
     implementation 'com.google.guava:guava:29.0-jre'
+    //lombok
+    implementation 'org.projectlombok:lombok:1.18.12'
+    annotationProcessor 'org.projectlombok:lombok:1.18.12'
     //just use in test to study grammar
     testImplementation 'org.codehaus.groovy:groovy-all:3.0.4'
     //real test
