@@ -36,9 +36,11 @@ dependencies {
     implementation 'commons-io:commons-io:2.6'
     implementation 'commons-cli:commons-cli:1.4'
     implementation 'commons-beanutils:commons-beanutils:1.9.4'
+    //log
     implementation 'commons-logging:commons-logging:1.2'
     implementation 'org.slf4j:jcl-over-slf4j:1.7.30'
     implementation 'ch.qos.logback:logback-classic:1.2.3'
+    implementation 'net.logstash.logback:logstash-logback-encoder:6.4'
     //复制源码，适配android
 //    implementation 'commons-codec:commons-codec:1.14'
     implementation 'com.google.code.findbugs:jsr305:3.0.2'
