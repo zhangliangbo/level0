@@ -7,7 +7,7 @@
             <fileNamePattern>${JSON_LOG_FILE}.%i</fileNamePattern>
         </rollingPolicy>
         <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
-            <MaxFileSize>100MB</MaxFileSize>
+            <MaxFileSize>64MB</MaxFileSize>
         </triggeringPolicy>
         <encoder class="net.logstash.logback.encoder.LogstashEncoder">
             <includeCallerData>false</includeCallerData>

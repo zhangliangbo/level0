@@ -6,9 +6,10 @@ import lombok.extern.slf4j.Slf4j;
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        Integer one = new Integer(1);
-        Integer two = new Integer(1);
-        log.info("{}", one == two);
+        for (int i = 0; i < 1000000; i++) {
+            log.info("the number is {}", i);
+            Thread.sleep(10);
+        }
     }
 
 }
