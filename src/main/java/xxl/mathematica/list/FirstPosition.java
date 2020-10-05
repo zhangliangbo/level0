@@ -21,10 +21,10 @@ public class FirstPosition {
      */
     public static <T> int firstPosition(List<T> list, Predicate<T> criteria) {
         return io.vavr.collection.List.ofAll(list)
-            .zipWithIndex()
-            .find(tIntegerTuple2 -> criteria.test(tIntegerTuple2._1))
-            .map(Tuple2::_2)
-            .get();
+                .zipWithIndex()
+                .find(tIntegerTuple2 -> criteria.test(tIntegerTuple2._1))
+                .map(Tuple2::_2)
+                .get();
     }
 
     /**
@@ -38,9 +38,9 @@ public class FirstPosition {
      */
     public static <T> int firstPosition(List<T> list, Predicate<T> criteria, int def) {
         return io.vavr.collection.List.ofAll(list)
-            .zipWithIndex()
-            .find(tIntegerTuple2 -> criteria.test(tIntegerTuple2._1))
-            .map(Tuple2::_2)
-            .getOrElse(def);
+                .zipWithIndex()
+                .find(tIntegerTuple2 -> criteria.test(tIntegerTuple2._1))
+                .map(Tuple2::_2)
+                .getOrElse(def);
     }
 }

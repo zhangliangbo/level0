@@ -23,7 +23,7 @@ public class Association {
      * @return
      */
     @SafeVarargs
-    public static <K, V> Map<K, V> association(Rule<K, V>... rules) {
+    public static <K, V> Map<K, V> ofRules(Rule<K, V>... rules) {
         return io.vavr.collection.List.ofAll(Arrays.asList(rules))
                 .toJavaMap(rule -> Tuple.of(rule.getKey(), rule.getValue()));
     }

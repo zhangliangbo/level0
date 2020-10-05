@@ -5,7 +5,6 @@ import xxl.mathematica.exception.MaxStepException;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Callable;
 import java.util.function.BiPredicate;
 import java.util.function.Function;
 import java.util.function.Predicate;

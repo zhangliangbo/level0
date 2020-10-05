@@ -8,7 +8,7 @@ import xxl.mathematica.test.Interest
 class AssociationTest extends GroovyTestCase {
 
     void testAssociation() {
-        def map = Association.association(Rule.valueOf("a", 1), Rule.valueOf("b", 2), Rule.valueOf("c", 3))
+        def map = Association.ofRules(Rule.valueOf("a", 1), Rule.valueOf("b", 2), Rule.valueOf("c", 3))
         println(map)
     }
 
