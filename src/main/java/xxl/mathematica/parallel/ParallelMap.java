@@ -1,7 +1,5 @@
 package xxl.mathematica.parallel;
 
-import io.vavr.control.Try;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ForkJoinPool;
@@ -16,16 +14,33 @@ import java.util.function.Function;
  */
 public class ParallelMap {
     /**
-     * 并行映射
+     * 使用默认线程数
      *
-     * @param f
-     * @param list
-     * @param <T>
-     * @param <R>
-     * @return
+     * @param f    函数
+     * @param list 列表
+     * @param <T>  输入
+     * @param <R>  输出
+     * @return 输出列表
      */
     public static <T, R> List<R> parallelMap(Function<T, R> f, List<T> list) {
-        return Try.ofCallable(() -> ForkJoinPool.commonPool().invoke(new Task<>(f, list))).get();
+        return parallelMap(f, list, Runtime.getRuntime().availableProcessors());
+    }
+
+    /**
+     * 并行映射
+     *
+     * @param f           函数
+     * @param list        列表
+     * @param parallelism 并行数量
+     * @param <T>         输入
+     * @param <R>         输出
+     * @return 输出列表
+     */
+    public static <T, R> List<R> parallelMap(Function<T, R> f, List<T> list, int parallelism) {
+        ForkJoinPool forkJoinPool = new ForkJoinPool(parallelism);
+        List<R> res = forkJoinPool.invoke(new Task<>(f, list));
+        forkJoinPool.shutdown();
+        return res;
     }
 
     /**
