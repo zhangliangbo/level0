@@ -96,7 +96,7 @@ public class GB2312 {
 
     public static List<String> chinese2() throws IOException {
         List<String> res = new ArrayList<>();
-        FileOutputStream file = new FileOutputStream("C:\\Users\\zhang\\Desktop\\GB2312.txt");
+        FileOutputStream file = new FileOutputStream("C:\\Users\\EDZ\\Desktop\\GB2312.txt");
         //遍历gb2312汉字编码分区
         for (int i = 0xB0; i <= 0xF7; i++) {
             //遍历每个分区中的汉字
@@ -113,6 +113,10 @@ public class GB2312 {
             }
             System.err.println();
             file.write("\n".getBytes("gb2312"));
+            if (i == 0xD7) {
+                System.err.println();
+                file.write("\n".getBytes("gb2312"));
+            }
         }
         return res;
     }
