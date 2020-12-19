@@ -14,7 +14,7 @@ sourceCompatibility = "8"
 targetCompatibility = "8"
 
 repositories {
-    maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
+    maven { url 'https://maven.aliyun.com/repository/public/' }
     jcenter()
     mavenCentral()
 }
