@@ -32,7 +32,7 @@ public class Array {
      */
     public static <R> List<R> array(Function<Integer, R> function, int n, int r) {
         return io.vavr.collection.List.rangeBy(r, r + n, 1)
-                .map(function::apply)
+                .map(function)
                 .asJava();
     }
 }
