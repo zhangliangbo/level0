@@ -116,8 +116,8 @@ public class ParallelMap {
 
         @Override
         protected List<R> compute() {
-            if (list == null || list.size() == 0) {
-                return null;
+            if (CollectionUtils.isEmpty(list)) {
+                return new ArrayList<>();
             }
             if (list.size() == 1) {
                 List<R> res = new ArrayList<>();
