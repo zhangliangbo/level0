@@ -73,6 +73,7 @@ public class ParallelMap {
         //根据并行数把原列表分成大小大致相同的列表
         int size = list.size();
         int numOfOne = size / parallel;
+        //多出的个数
         int more = size - numOfOne * parallel;
         List<List<T>> partitions;
         if (more == 0) {
