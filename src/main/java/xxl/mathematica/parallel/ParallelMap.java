@@ -72,20 +72,25 @@ public class ParallelMap {
     public static <T, R> List<R> parallelMap(Function<T, R> f, List<T> list, int parallel) {
         //根据并行数把原列表分成大小大致相同的列表
         int size = list.size();
-        int numOfOne = size / parallel;
-        //多出的个数
-        int more = size - numOfOne * parallel;
         List<List<T>> partitions;
-        if (more == 0) {
-            partitions = Lists.partition(list, numOfOne);
+        if (size <= parallel) {
+            partitions = new ArrayList<>(Collections.singletonList(list));
         } else {
-            int split = (numOfOne + 1) * more;
-            List<List<T>> group1 = Lists.partition(list.subList(0, split), numOfOne + 1);
-            List<List<T>> group2 = Lists.partition(list.subList(split, size), numOfOne);
-            partitions = ListUtils.union(group1, group2);
+            int numOfOne = size / parallel;
+            //多出的个数
+            int more = size - numOfOne * parallel;
+
+            if (more == 0) {
+                partitions = Lists.partition(list, numOfOne);
+            } else {
+                int split = (numOfOne + 1) * more;
+                List<List<T>> group1 = Lists.partition(list.subList(0, split), numOfOne + 1);
+                List<List<T>> group2 = Lists.partition(list.subList(split, size), numOfOne);
+                partitions = ListUtils.union(group1, group2);
+            }
+            partitions = partitions.stream().map((Function<List<T>, List<T>>) ArrayList::new)
+                    .collect(Collectors.toList());
         }
-        partitions = partitions.stream().map((Function<List<T>, List<T>>) ArrayList::new)
-                .collect(Collectors.toList());
         //开始线程池
         ForkJoinPool forkJoinPool = new ForkJoinPool(parallel);
         //每个并行数处理一个子列表
