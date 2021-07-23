@@ -29,7 +29,9 @@ public class BarcodeImage {
      */
     public static int[] barcodePixel(String content, BarcodeFormat format, int width, int height) {
         BitMatrix matrix = getMatrix(content, format, width, height);
-        if (matrix == null) return null;
+        if (matrix == null) {
+            return null;
+        }
         int[] pixels = new int[width * height];
         for (int h = 0; h < height; h++) {
             for (int w = 0; w < width; w++) {
@@ -87,7 +89,9 @@ public class BarcodeImage {
      */
     public static String barcodeImage(String content, BarcodeFormat format, int width, int height, String outPath) {
         BitMatrix bitMatrix = getMatrix(content, format, width, height);
-        if (bitMatrix == null) return null;
+        if (bitMatrix == null) {
+            return null;
+        }
         Path file = new File(outPath).toPath();
         try {
             MatrixToImageWriter.writeToPath(bitMatrix, outPath.substring(1 + outPath.lastIndexOf(".")), file);

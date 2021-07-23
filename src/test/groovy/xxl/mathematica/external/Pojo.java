@@ -1,15 +1,19 @@
 package xxl.mathematica.external;
 
+import com.alibaba.excel.annotation.ExcelProperty;
 import xxl.mathematica.io.excel.ExcelColumnName;
 
 public class Pojo {
 
+    @ExcelProperty(value = "名称", order = 0)
     @ExcelColumnName(value = "名称", order = 2)
     private String name;
 
+    @ExcelProperty(value = "年龄", order = 1)
     @ExcelColumnName(value = "年龄", order = 1)
     private int age;
 
+    @ExcelProperty(value = "性别", order = 2)
     @ExcelColumnName(value = "性别", order = 3)
     private String sex;
 
