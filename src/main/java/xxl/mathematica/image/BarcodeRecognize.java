@@ -26,8 +26,7 @@ public class BarcodeRecognize {
             File file = new File(filePath);
             BufferedImage bufferedImage = ImageIO.read(file);
             BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(new BufferedImageLuminanceSource(bufferedImage)));
-            Map hints = new HashMap();
-            hints.put(EncodeHintType.CHARACTER_SET, "UTF8");
+            Map hints = new HashMap(0);
             Result result = new MultiFormatReader().decode(bitmap, hints);
             return result.getText();
         } catch (NotFoundException | IOException e) {

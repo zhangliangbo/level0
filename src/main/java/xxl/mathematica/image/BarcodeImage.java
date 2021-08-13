@@ -156,8 +156,8 @@ public class BarcodeImage {
     }
 
     private static BitMatrix getMatrix(String content, BarcodeFormat format, int width, int height) {
-        Map<EncodeHintType, Object> hints = new HashMap<>();
-        hints.put(EncodeHintType.CHARACTER_SET, "UTF8");
+        Map<EncodeHintType, Object> hints = new HashMap<>(1);
+        hints.put(EncodeHintType.MARGIN, 0);
         try {
             return new MultiFormatWriter().encode(content, format, width, height, hints);
         } catch (WriterException e) {
