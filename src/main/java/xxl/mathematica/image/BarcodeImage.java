@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * 条形码图像
@@ -28,7 +29,7 @@ public class BarcodeImage {
      * @return
      */
     public static int[] barcodePixel(String content, BarcodeFormat format, int width, int height) {
-        BitMatrix matrix = getMatrix(content, format, width, height);
+        BitMatrix matrix = getMatrix(null, content, format, width, height);
         if (matrix == null) {
             return null;
         }
@@ -87,8 +88,8 @@ public class BarcodeImage {
      * @param height
      * @return
      */
-    public static String barcodeImage(String content, BarcodeFormat format, int width, int height, String outPath) {
-        BitMatrix bitMatrix = getMatrix(content, format, width, height);
+    public static String barcodeImage(String encoding, String content, BarcodeFormat format, int width, int height, String outPath) {
+        BitMatrix bitMatrix = getMatrix(encoding, content, format, width, height);
         if (bitMatrix == null) {
             return null;
         }
@@ -110,8 +111,8 @@ public class BarcodeImage {
      * @param outPath
      * @return
      */
-    public static String barcodeImage(String content, BarcodeFormat format, int size, String outPath) {
-        return barcodeImage(content, format, size, size, outPath);
+    public static String barcodeImage(String encoding, String content, BarcodeFormat format, int size, String outPath) {
+        return barcodeImage(encoding, content, format, size, size, outPath);
     }
 
     /**
@@ -122,8 +123,20 @@ public class BarcodeImage {
      * @param outPath
      * @return
      */
+    public static String barcodeImage(String encoding, String content, int size, String outPath) {
+        return barcodeImage(encoding, content, BarcodeFormat.QR_CODE, size, outPath);
+    }
+
+    /**
+     * null(默认编码ISO-8859-1)
+     *
+     * @param content 内容
+     * @param size
+     * @param outPath
+     * @return
+     */
     public static String barcodeImage(String content, int size, String outPath) {
-        return barcodeImage(content, BarcodeFormat.QR_CODE, size, size, outPath);
+        return barcodeImage(null, content, size, outPath);
     }
 
     /**
@@ -135,7 +148,7 @@ public class BarcodeImage {
      */
     public static String barcodeImage(String content, int size) {
         try {
-            return barcodeImage(content, BarcodeFormat.QR_CODE, size, size, File.createTempFile(BarcodeImage.class.getName(), ".png").getAbsolutePath());
+            return barcodeImage(content, size, File.createTempFile(BarcodeImage.class.getName(), ".png").getAbsolutePath());
         } catch (IOException e) {
             return null;
         }
@@ -148,20 +161,20 @@ public class BarcodeImage {
      * @return
      */
     public static String barcodeImage(String content) {
-        try {
-            return barcodeImage(content, BarcodeFormat.QR_CODE, 500, 500, File.createTempFile(BarcodeImage.class.getName(), ".png").getAbsolutePath());
-        } catch (IOException e) {
-            return null;
-        }
+        return barcodeImage(content, 500);
     }
 
-    private static BitMatrix getMatrix(String content, BarcodeFormat format, int width, int height) {
+    private static BitMatrix getMatrix(String encoding, String content, BarcodeFormat format, int width, int height) {
         Map<EncodeHintType, Object> hints = new HashMap<>(1);
         hints.put(EncodeHintType.MARGIN, 0);
+        if (Objects.nonNull(encoding)) {
+            hints.put(EncodeHintType.CHARACTER_SET, encoding);
+        }
         try {
             return new MultiFormatWriter().encode(content, format, width, height, hints);
         } catch (WriterException e) {
             return null;
         }
     }
+
 }
