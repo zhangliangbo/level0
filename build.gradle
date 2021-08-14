@@ -62,6 +62,8 @@ dependencies {
     implementation 'com.google.guava:guava:29.0-jre'
     //cache
     implementation 'com.github.ben-manes.caffeine:caffeine:2.8.6'
+    //weka
+    implementation group: 'nz.ac.waikato.cms.weka', name: 'weka-dev', version: '3.9.5'
     //lombok
     implementation 'org.projectlombok:lombok:1.18.12'
     annotationProcessor 'org.projectlombok:lombok:1.18.12'
