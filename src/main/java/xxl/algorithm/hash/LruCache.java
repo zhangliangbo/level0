@@ -6,6 +6,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * Least Recently Used Cache
+ * 最近最少使用缓存
+ *
  * @author zhangliangbo
  * @since 2021/11/9
  **/

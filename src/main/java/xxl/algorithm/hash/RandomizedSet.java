@@ -4,6 +4,8 @@ import java.util.*;
 import java.util.stream.IntStream;
 
 /**
+ * 插入、删除和随机访问都是O（1）的容器
+ *
  * @author zhangliangbo
  * @since 2021/11/8
  **/

@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ * 变位词
+ *
  * @author zhangliangbo
  * @since 2021/11/10
  **/

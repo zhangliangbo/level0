@@ -58,8 +58,8 @@ dependencies {
     implementation 'org.glassfish.jaxb:jaxb-runtime:2.3.0'
     implementation 'javax.activation:activation:1.1.1'
     implementation group: 'nz.ac.waikato.cms.weka', name: 'weka-dev', version: '3.9.5'
-    //google core api for java
-    implementation 'com.google.guava:guava:29.0-jre'
+    // https://mvnrepository.com/artifact/com.google.guava/guava
+    implementation group: 'com.google.guava', name: 'guava', version: '31.0.1-jre'
     //cache
     implementation 'com.github.ben-manes.caffeine:caffeine:2.8.6'
     //weka
@@ -85,6 +85,8 @@ dependencies {
     implementation group: 'com.github.spotbugs', name: 'spotbugs', version: '4.4.2', ext: 'pom'
     // https://mvnrepository.com/artifact/com.google.code.findbugs/findbugs
     implementation group: 'com.google.code.findbugs', name: 'findbugs', version: '3.0.1'
+
+
 }
 
 tasks.withType(JavaCompile) {
