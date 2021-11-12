@@ -5,6 +5,8 @@ import java.util.stream.IntStream;
 
 /**
  * 插入、删除和随机访问都是O（1）的容器
+ * <p>
+ * Map提供O(1)的插入和删除操作，Array提供O(1)的随机访问操作
  *
  * @author zhangliangbo
  * @since 2021/11/8

@@ -8,6 +8,8 @@ import java.util.Map;
 /**
  * Least Recently Used Cache
  * 最近最少使用缓存
+ * <p>
+ * 每次把访问过的数据放到链表末尾，那么链表头部的节点就是最近最少使用的数据
  *
  * @author zhangliangbo
  * @since 2021/11/9
