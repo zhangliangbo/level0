@@ -58,8 +58,8 @@ dependencies {
     implementation 'org.glassfish.jaxb:jaxb-runtime:2.3.0'
     implementation 'javax.activation:activation:1.1.1'
     implementation group: 'nz.ac.waikato.cms.weka', name: 'weka-dev', version: '3.9.5'
-    //google core api for java
-    implementation 'com.google.guava:guava:29.0-jre'
+    // https://mvnrepository.com/artifact/com.google.guava/guava
+    implementation group: 'com.google.guava', name: 'guava', version: '31.0.1-jre'
     //cache
     implementation 'com.github.ben-manes.caffeine:caffeine:2.8.6'
     //weka
@@ -71,6 +71,21 @@ dependencies {
     testImplementation 'org.codehaus.groovy:groovy-all:3.0.4'
     //real test
     testImplementation 'junit:junit:4.12'
+    // https://mvnrepository.com/artifact/net.bytebuddy/byte-buddy
+    implementation group: 'net.bytebuddy', name: 'byte-buddy', version: '1.12.0'
+    // https://mvnrepository.com/artifact/net.bytebuddy/byte-buddy-agent
+    testImplementation group: 'net.bytebuddy', name: 'byte-buddy-agent', version: '1.12.0'
+    // https://mvnrepository.com/artifact/net.java.dev.jna/jna
+    implementation group: 'net.java.dev.jna', name: 'jna', version: '5.9.0'
+    // https://mvnrepository.com/artifact/net.java.dev.jna/jna-platform
+    implementation group: 'net.java.dev.jna', name: 'jna-platform', version: '5.9.0'
+    // https://mvnrepository.com/artifact/net.jcip/jcip-annotations
+    implementation group: 'net.jcip', name: 'jcip-annotations', version: '1.0'
+    // https://mvnrepository.com/artifact/com.github.spotbugs/spotbugs
+    implementation group: 'com.github.spotbugs', name: 'spotbugs', version: '4.4.2', ext: 'pom'
+    // https://mvnrepository.com/artifact/com.google.code.findbugs/findbugs
+    implementation group: 'com.google.code.findbugs', name: 'findbugs', version: '3.0.1'
+
 
 }
 
