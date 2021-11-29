@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <configuration>
-    <property name="JSON_LOG_FILE" value="D:\\log\\level0.json}"/>
+    <property name="JSON_LOG_FILE" value="level0.json"/>
     <appender name="stash" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${JSON_LOG_FILE}</file>
         <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
