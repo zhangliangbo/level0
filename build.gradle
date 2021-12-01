@@ -85,6 +85,10 @@ dependencies {
     implementation group: 'com.github.spotbugs', name: 'spotbugs', version: '4.4.2', ext: 'pom'
     // https://mvnrepository.com/artifact/com.google.code.findbugs/findbugs
     implementation group: 'com.google.code.findbugs', name: 'findbugs', version: '3.0.1'
+    // https://mvnrepository.com/artifact/org.openjdk.jmh/jmh-core
+    implementation 'org.openjdk.jmh:jmh-core:1.33'
+    // https://mvnrepository.com/artifact/org.openjdk.jmh/jmh-generator-annprocess
+    annotationProcessor 'org.openjdk.jmh:jmh-generator-annprocess:1.33'
 
 
 }
