@@ -5,11 +5,13 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class Main {
 
+    static void print(int a) {
+        System.err.println(a);
+    }
+
     public static void main(String[] args) throws Exception {
-        for (int i = 0; i < 1000000; i++) {
-            log.info("the number is {}", i);
-            Thread.sleep(10);
-        }
+        Integer a = null;
+        print(a);
     }
 
 }
