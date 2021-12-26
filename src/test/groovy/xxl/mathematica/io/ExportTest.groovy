@@ -2,16 +2,12 @@ package xxl.mathematica.io
 
 import com.alibaba.excel.EasyExcel
 import com.alibaba.excel.ExcelWriter
-import com.alibaba.excel.metadata.Sheet
-import com.alibaba.excel.metadata.Table
-import com.alibaba.excel.support.ExcelTypeEnum
 import com.alibaba.excel.write.builder.ExcelWriterSheetBuilder
 import com.alibaba.excel.write.metadata.WriteSheet
 import xxl.mathematica.external.Pojo
 import xxl.mathematica.io.excel.IExcel
 
 import java.util.function.IntFunction
-import java.util.function.IntUnaryOperator
 import java.util.stream.Collectors
 import java.util.stream.IntStream
 
