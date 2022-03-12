@@ -2,15 +2,14 @@ package xxl.jmh;
 
 import org.openjdk.jmh.annotations.*;
 
+import java.util.PriorityQueue;
 import java.util.concurrent.TimeUnit;
 
 /**
  * @author zhangliangbo
- * @since 2021/11/30
- **/
-
-
-public class Sleep {
+ * @since 2022/3/12
+ */
+public class PriorityQueueTest {
 
     @Benchmark
     @BenchmarkMode(Mode.Throughput)
@@ -18,8 +17,8 @@ public class Sleep {
     @Fork(1)
     @Measurement(iterations = 3)
     @Warmup(iterations = 1)
-    public void sleep1() throws InterruptedException {
-        TimeUnit.MILLISECONDS.sleep(1);
+    public void measure100() {
+        offer(100);
     }
 
     @Benchmark
@@ -28,8 +27,8 @@ public class Sleep {
     @Fork(1)
     @Measurement(iterations = 3)
     @Warmup(iterations = 1)
-    public void sleep10() throws InterruptedException {
-        TimeUnit.MILLISECONDS.sleep(10);
+    public void measure1000() {
+        offer(1000);
     }
 
     @Benchmark
@@ -38,8 +37,8 @@ public class Sleep {
     @Fork(1)
     @Measurement(iterations = 3)
     @Warmup(iterations = 1)
-    public void sleep100() throws InterruptedException {
-        TimeUnit.MILLISECONDS.sleep(100);
+    public void measure10000() {
+        offer(10000);
     }
 
     @Benchmark
@@ -48,8 +47,15 @@ public class Sleep {
     @Fork(1)
     @Measurement(iterations = 3)
     @Warmup(iterations = 1)
-    public void sleep1000() throws InterruptedException {
-        TimeUnit.MILLISECONDS.sleep(1000);
+    public void measure100000() {
+        offer(100000);
+    }
+
+    private void offer(int size) {
+        PriorityQueue<Integer> priorityQueue = new PriorityQueue<>();
+        for (int i = 0; i < size; i++) {
+            priorityQueue.offer(i);
+        }
     }
 
 }

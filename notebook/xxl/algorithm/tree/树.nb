@@ -1,0 +1,253 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      8581,        245]
+NotebookOptionsPosition[      8085,        227]
+NotebookOutlinePosition[      8498,        244]
+CellTagsIndexPosition[      8455,        241]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"Tree", "[", 
+  RowBox[{"2", ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"Tree", "[", 
+      RowBox[{"3", ",", "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Tree", "[", 
+          RowBox[{"4", ",", "None"}], "]"}], ",", 
+         RowBox[{"Tree", "[", 
+          RowBox[{"6", ",", "None"}], "]"}]}], "}"}]}], "\[IndentingNewLine]",
+       "]"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"Tree", "[", 
+      RowBox[{"5", ",", "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Tree", "[", 
+          RowBox[{"7", ",", "None"}], "]"}], ",", 
+         RowBox[{"Tree", "[", 
+          RowBox[{"1", ",", "None"}], "]"}]}], "}"}]}], "\[IndentingNewLine]",
+       "]"}]}], "\[IndentingNewLine]", "}"}]}], "\[IndentingNewLine]", 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.849599540983656*^9, 3.849599549426528*^9}, {
+  3.849599814386305*^9, 3.8495999548303995`*^9}},
+ CellLabel->
+  "In[106]:=",ExpressionUUID->"b04ee9d9-2fa8-4ea6-9d5d-023cf597af45"],
+
+Cell[BoxData[
+ GraphicsBox[
+  NamespaceBox["Trees",
+   DynamicModuleBox[{Typeset`tree = HoldComplete[
+     Tree[2, {
+       Tree[3, {
+         Tree[4, None], 
+         Tree[6, None]}], 
+       Tree[5, {
+         Tree[7, None], 
+         Tree[1, None]}]}]]}, 
+    NamespaceBox[{
+      {RGBColor[0.6588235294117647, 0.7294117647058823, 0.7058823529411765], 
+       AbsoluteThickness[1], Opacity[0.7], 
+       StyleBox[{
+         LineBox[{{1.2247448713915892`, 1.6329931618554523`}, {
+          0.4082482904638631, 0.8164965809277261}}], 
+         LineBox[{{1.2247448713915892`, 1.6329931618554523`}, {
+          2.041241452319315, 0.8164965809277261}}], 
+         LineBox[{{0.4082482904638631, 0.8164965809277261}, {0., 0.}}], 
+         LineBox[{{0.4082482904638631, 0.8164965809277261}, {
+          0.8164965809277261, 0.}}], 
+         LineBox[{{2.041241452319315, 0.8164965809277261}, {
+          1.6329931618554523`, 0.}}], 
+         LineBox[{{2.041241452319315, 0.8164965809277261}, {
+          2.4494897427831783`, 0.}}]},
+        GraphicsHighlightColor->RGBColor[
+         0.403921568627451, 0.8705882352941177, 0.7176470588235294]]}, 
+      {Hue[0.6, 0.2, 0.8], EdgeForm[{GrayLevel[0], Opacity[0.7]}], 
+       StyleBox[{
+         TagBox[InsetBox[
+           FrameBox["2",
+            Background->Directive[
+              RGBColor[
+              0.9607843137254902, 0.9882352941176471, 0.9764705882352941]],
+            BaseStyle->GrayLevel[0],
+            FrameStyle->Directive[
+              RGBColor[
+              0.6588235294117647, 0.7294117647058823, 0.7058823529411765], 
+              AbsoluteThickness[1]],
+            ImageSize->Automatic,
+            RoundingRadius->4,
+            StripOnInput->False], {1.2247448713915892, 1.6329931618554523}],
+          "DynamicName",
+          BoxID -> "VertexID$1"], 
+         TagBox[InsetBox[
+           FrameBox["3",
+            Background->Directive[
+              RGBColor[
+              0.9607843137254902, 0.9882352941176471, 0.9764705882352941]],
+            BaseStyle->GrayLevel[0],
+            FrameStyle->Directive[
+              RGBColor[
+              0.6588235294117647, 0.7294117647058823, 0.7058823529411765], 
+              AbsoluteThickness[1]],
+            ImageSize->Automatic,
+            RoundingRadius->4,
+            StripOnInput->False], {0.4082482904638631, 0.8164965809277261}],
+          "DynamicName",
+          BoxID -> "VertexID$2"], 
+         TagBox[InsetBox[
+           FrameBox["4",
+            Background->Directive[
+              RGBColor[
+              0.9607843137254902, 0.9882352941176471, 0.9764705882352941]],
+            BaseStyle->GrayLevel[0],
+            FrameStyle->Directive[
+              RGBColor[
+              0.6588235294117647, 0.7294117647058823, 0.7058823529411765], 
+              AbsoluteThickness[1]],
+            ImageSize->Automatic,
+            RoundingRadius->0,
+            StripOnInput->False], {0., 0.}],
+          "DynamicName",
+          BoxID -> "VertexID$3"], 
+         TagBox[InsetBox[
+           FrameBox["6",
+            Background->Directive[
+              RGBColor[
+              0.9607843137254902, 0.9882352941176471, 0.9764705882352941]],
+            BaseStyle->GrayLevel[0],
+            FrameStyle->Directive[
+              RGBColor[
+              0.6588235294117647, 0.7294117647058823, 0.7058823529411765], 
+              AbsoluteThickness[1]],
+            ImageSize->Automatic,
+            RoundingRadius->0,
+            StripOnInput->False], {0.8164965809277261, 0.}],
+          "DynamicName",
+          BoxID -> "VertexID$4"], 
+         TagBox[InsetBox[
+           FrameBox["5",
+            Background->Directive[
+              RGBColor[
+              0.9607843137254902, 0.9882352941176471, 0.9764705882352941]],
+            BaseStyle->GrayLevel[0],
+            FrameStyle->Directive[
+              RGBColor[
+              0.6588235294117647, 0.7294117647058823, 0.7058823529411765], 
+              AbsoluteThickness[1]],
+            ImageSize->Automatic,
+            RoundingRadius->4,
+            StripOnInput->False], {2.041241452319315, 0.8164965809277261}],
+          "DynamicName",
+          BoxID -> "VertexID$5"], 
+         TagBox[InsetBox[
+           FrameBox["7",
+            Background->Directive[
+              RGBColor[
+              0.9607843137254902, 0.9882352941176471, 0.9764705882352941]],
+            BaseStyle->GrayLevel[0],
+            FrameStyle->Directive[
+              RGBColor[
+              0.6588235294117647, 0.7294117647058823, 0.7058823529411765], 
+              AbsoluteThickness[1]],
+            ImageSize->Automatic,
+            RoundingRadius->0,
+            StripOnInput->False], {1.6329931618554523, 0.}],
+          "DynamicName",
+          BoxID -> "VertexID$6"], 
+         TagBox[InsetBox[
+           FrameBox["1",
+            Background->Directive[
+              RGBColor[
+              0.9607843137254902, 0.9882352941176471, 0.9764705882352941]],
+            BaseStyle->GrayLevel[0],
+            FrameStyle->Directive[
+              RGBColor[
+              0.6588235294117647, 0.7294117647058823, 0.7058823529411765], 
+              AbsoluteThickness[1]],
+            ImageSize->Automatic,
+            RoundingRadius->0,
+            StripOnInput->False], {2.4494897427831783, 0.}],
+          "DynamicName",
+          BoxID -> "VertexID$7"]},
+        GraphicsHighlightColor->RGBColor[
+         0.403921568627451, 0.8705882352941177, 0.7176470588235294]]}}]]],
+  AlignmentPoint->Center,
+  Axes->False,
+  AxesLabel->None,
+  AxesOrigin->Automatic,
+  AxesStyle->{},
+  Background->None,
+  BaseStyle->Directive[
+   FrontEnd`GraphicsHighlightColor -> 
+    RGBColor[0.403921568627451, 0.8705882352941177, 0.7176470588235294]],
+  BaselinePosition->Automatic,
+  ContentSelectable->Automatic,
+  Epilog->{},
+  FormatType->StandardForm,
+  Frame->False,
+  FrameLabel->FormBox["False", StandardForm],
+  FrameStyle->{},
+  FrameTicks->None,
+  FrameTicksStyle->{},
+  GridLines->None,
+  GridLinesStyle->{},
+  ImageMargins->0.,
+  ImagePadding->All,
+  ImageSize->Automatic,
+  LabelStyle->{},
+  PlotLabel->None,
+  PlotRange->All,
+  PlotRangeClipping->False,
+  PlotRangePadding->Automatic,
+  PlotRegion->Automatic,
+  Prolog->{},
+  RotateLabel->True,
+  Ticks->Automatic,
+  TicksStyle->{}]], "Output",
+ CellChangeTimes->{3.8495995719947133`*^9, 3.8495999223220825`*^9, 
+  3.84959995611137*^9},
+ CellLabel->
+  "Out[106]=",ExpressionUUID->"4a483f71-51b1-4c17-8ecd-6fa6bbff8bfc"]
+}, Open  ]]
+},
+WindowSize->{466, 414},
+WindowMargins->{{8, Automatic}, {12.5, Automatic}},
+FrontEndVersion->"13.0 for Microsoft Windows (64-bit) (2021\:5e7412\:67082\
+\:65e5)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"95bfebe7-1c69-4bba-91df-efc52792378c"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 1054, 27, 262, "Input",ExpressionUUID->"b04ee9d9-2fa8-4ea6-9d5d-023cf597af45"],
+Cell[1637, 51, 6432, 173, 266, "Output",ExpressionUUID->"4a483f71-51b1-4c17-8ecd-6fa6bbff8bfc"]
+}, Open  ]]
+}
+]
+*)
+
