@@ -19,16 +19,6 @@ import java.util.concurrent.TimeUnit;
 @Warmup(iterations = 1)
 public class PriorityQueueTest {
 
-    @Setup
-    public void setup() {
-
-    }
-
-    @TearDown
-    public void tearDown() {
-
-    }
-
     @Benchmark
     public void measure1000() {
         offer(1000);
@@ -40,7 +30,7 @@ public class PriorityQueueTest {
     }
 
     @Benchmark
-    public void measure100000() {
+    public void measure4000() {
         offer(4000);
     }
 
