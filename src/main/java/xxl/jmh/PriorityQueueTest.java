@@ -9,46 +9,49 @@ import java.util.concurrent.TimeUnit;
  * @author zhangliangbo
  * @since 2022/3/12
  */
+
+
+@BenchmarkMode(Mode.AverageTime)
+@OutputTimeUnit(TimeUnit.MICROSECONDS)
+@Fork(1)
+@Threads(1)
+@Measurement(iterations = 3)
+@Warmup(iterations = 1)
 public class PriorityQueueTest {
 
-    @Benchmark
-    @BenchmarkMode(Mode.Throughput)
-    @OutputTimeUnit(TimeUnit.SECONDS)
-    @Fork(1)
-    @Measurement(iterations = 3)
-    @Warmup(iterations = 1)
-    public void measure100() {
-        offer(100);
+    @Setup
+    public void setup() {
+
+    }
+
+    @TearDown
+    public void tearDown() {
+
     }
 
     @Benchmark
-    @BenchmarkMode(Mode.Throughput)
-    @OutputTimeUnit(TimeUnit.SECONDS)
-    @Fork(1)
-    @Measurement(iterations = 3)
-    @Warmup(iterations = 1)
     public void measure1000() {
         offer(1000);
     }
 
     @Benchmark
-    @BenchmarkMode(Mode.Throughput)
-    @OutputTimeUnit(TimeUnit.SECONDS)
-    @Fork(1)
-    @Measurement(iterations = 3)
-    @Warmup(iterations = 1)
-    public void measure10000() {
-        offer(10000);
+    public void measure2000() {
+        offer(2000);
     }
 
     @Benchmark
-    @BenchmarkMode(Mode.Throughput)
-    @OutputTimeUnit(TimeUnit.SECONDS)
-    @Fork(1)
-    @Measurement(iterations = 3)
-    @Warmup(iterations = 1)
     public void measure100000() {
-        offer(100000);
+        offer(4000);
+    }
+
+    @Benchmark
+    public void measure8000() {
+        offer(8000);
+    }
+
+    @Benchmark
+    public void measure16000() {
+        offer(16000);
     }
 
     private void offer(int size) {

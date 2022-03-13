@@ -13,43 +13,49 @@ import java.util.concurrent.TimeUnit;
 public class Sleep {
 
     @Benchmark
-    @BenchmarkMode(Mode.Throughput)
-    @OutputTimeUnit(TimeUnit.SECONDS)
+    @BenchmarkMode(Mode.AverageTime)
+    @OutputTimeUnit(TimeUnit.MILLISECONDS)
     @Fork(1)
     @Measurement(iterations = 3)
     @Warmup(iterations = 1)
     public void sleep1() throws InterruptedException {
-        TimeUnit.MILLISECONDS.sleep(1);
+        sleep(1);
     }
 
     @Benchmark
-    @BenchmarkMode(Mode.Throughput)
-    @OutputTimeUnit(TimeUnit.SECONDS)
+    @BenchmarkMode(Mode.AverageTime)
+    @OutputTimeUnit(TimeUnit.MILLISECONDS)
     @Fork(1)
     @Measurement(iterations = 3)
     @Warmup(iterations = 1)
     public void sleep10() throws InterruptedException {
-        TimeUnit.MILLISECONDS.sleep(10);
+        sleep(10);
     }
 
     @Benchmark
-    @BenchmarkMode(Mode.Throughput)
-    @OutputTimeUnit(TimeUnit.SECONDS)
+    @BenchmarkMode(Mode.AverageTime)
+    @OutputTimeUnit(TimeUnit.MILLISECONDS)
     @Fork(1)
     @Measurement(iterations = 3)
     @Warmup(iterations = 1)
     public void sleep100() throws InterruptedException {
-        TimeUnit.MILLISECONDS.sleep(100);
+        sleep(100);
     }
 
     @Benchmark
-    @BenchmarkMode(Mode.Throughput)
-    @OutputTimeUnit(TimeUnit.SECONDS)
+    @BenchmarkMode(Mode.AverageTime)
+    @OutputTimeUnit(TimeUnit.MILLISECONDS)
     @Fork(1)
     @Measurement(iterations = 3)
     @Warmup(iterations = 1)
     public void sleep1000() throws InterruptedException {
-        TimeUnit.MILLISECONDS.sleep(1000);
+        sleep(1000);
+    }
+
+    private void sleep(int n) throws InterruptedException {
+        for (int i = 0; i < n; i++) {
+            TimeUnit.MILLISECONDS.sleep(1);
+        }
     }
 
 }
