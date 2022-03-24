@@ -1,5 +1,6 @@
 package xxl.jmh;
 
+import org.apache.commons.lang.math.RandomUtils;
 import org.openjdk.jmh.annotations.*;
 
 import java.util.PriorityQueue;
@@ -17,7 +18,28 @@ import java.util.concurrent.TimeUnit;
 @Threads(1)
 @Measurement(iterations = 3)
 @Warmup(iterations = 1)
+@State(Scope.Benchmark)
 public class PriorityQueueTest {
+
+    private final Integer[] data = new Integer[100000];
+
+    @Setup(Level.Iteration)
+    public void su() {
+        for (int i = 0; i < 100000; i++) {
+            int random = RandomUtils.nextInt(100000);
+            data[i] = random;
+        }
+    }
+
+    @TearDown(Level.Iteration)
+    public void td() {
+
+    }
+
+    @Benchmark
+    public void measure100() {
+        offer(100);
+    }
 
     @Benchmark
     public void measure1000() {
@@ -25,29 +47,19 @@ public class PriorityQueueTest {
     }
 
     @Benchmark
-    public void measure2000() {
-        offer(2000);
+    public void measure10000() {
+        offer(10000);
     }
 
     @Benchmark
-    public void measure4000() {
-        offer(4000);
-    }
-
-    @Benchmark
-    public void measure8000() {
-        offer(8000);
-    }
-
-    @Benchmark
-    public void measure16000() {
-        offer(16000);
+    public void measure100000() {
+        offer(100000);
     }
 
     private void offer(int size) {
         PriorityQueue<Integer> priorityQueue = new PriorityQueue<>();
         for (int i = 0; i < size; i++) {
-            priorityQueue.offer(i);
+            priorityQueue.offer(data[i]);
         }
     }
 

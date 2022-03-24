@@ -2,6 +2,8 @@ package xxl.algorithm.hash;
 
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -58,7 +60,8 @@ public class MinDifference {
 
     public static void main(String[] args) {
         MinDifference minDifference = new MinDifference();
-        List<String> list = List.of("23:50", "23:59", "00:00");
+        List<String> list = new LinkedList<>();
+        list.addAll(Arrays.asList("23:50", "23:59", "00:00"));
         int difference = minDifference.findMinDifference(list);
         System.err.println(difference);
     }
