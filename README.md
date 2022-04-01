@@ -1,5 +1,6 @@
 # mathematica的简单java实现，一个兴趣项目，不做商业用途
 # java编码，groovy测试
+# 无任何io
 # gradle地址
 ```
 implementation 'io.github.zhangliangbo:level0:1.0.0'
