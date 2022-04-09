@@ -51,7 +51,6 @@ dependencies {
     implementation 'com.sun.xml.bind:jaxb-impl:3.0.2'
     implementation 'org.glassfish.jaxb:jaxb-runtime:3.0.2'
     implementation 'javax.activation:activation:1.1.1'
-    implementation group: 'nz.ac.waikato.cms.weka', name: 'weka-dev', version: '3.9.5'
     // https://mvnrepository.com/artifact/com.google.guava/guava
     implementation group: 'com.google.guava', name: 'guava', version: '31.0.1-jre'
     //cache

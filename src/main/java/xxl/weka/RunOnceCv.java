@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import weka.classifiers.AbstractClassifier;
 import weka.classifiers.Classifier;
 import weka.classifiers.Evaluation;
+import weka.classifiers.trees.J48;
 import weka.core.Instances;
 import weka.core.Utils;
 import weka.core.converters.ConverterUtils;
@@ -19,32 +20,44 @@ import java.util.Random;
 @Slf4j
 public class RunOnceCv {
     public static void main(String[] args) throws Exception {
+        //加载数据集
         Instances data = ConverterUtils.DataSource.read("D:\\Program Files\\Weka-3-8-5\\data\\ionosphere.arff");
+        //设置类别属性
         data.setClassIndex(data.numAttributes() - 1);
+        //设置选项
         String[] options = new String[2];
-        String classname = "weka.classifiers.trees.J48";
         options[0] = "-C";
         options[1] = "0.25";
-        Classifier classifier = (Classifier) Utils.forName(Classifier.class, classname, options);
+        //初始化分类器
+        J48 classifier = new J48();
+        classifier.setOptions(options);
 
-        int seed = 1234;
-        int folds = 10;
-
+        //随机种子和随机器
+        int seed = 5555;
         Random rand = new Random(seed);
-        Instances newData = new Instances(data);
-        newData.randomize(rand);
 
-        if (newData.classAttribute().isNominal()) {
-            newData.stratify(folds);
+        //折数
+        int folds = 10;
+        //打乱数据
+        Instances randomData = new Instances(data);
+        randomData.randomize(rand);
+
+        if (randomData.classAttribute().isNominal()) {
+            randomData.stratify(folds);
         }
 
-        Evaluation eval = new Evaluation(newData);
+        //执行十次交叉验证
+        Evaluation eval = new Evaluation(randomData);
         for (int i = 0; i < folds; i++) {
-            Instances train = newData.trainCV(folds, i);
-            Instances test = newData.testCV(folds, i);
-
+            //分出训练集
+            Instances train = randomData.trainCV(folds, i);
+            //分出测试集
+            Instances test = randomData.testCV(folds, i);
+            //复制分类器
             Classifier clsCopy = AbstractClassifier.makeCopy(classifier);
+            //通过训练构建分类器
             clsCopy.buildClassifier(train);
+            //评估分类器
             eval.evaluateModel(clsCopy, test);
         }
 
