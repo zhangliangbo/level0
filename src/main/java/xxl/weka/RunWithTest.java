@@ -8,21 +8,19 @@ import weka.core.converters.ConverterUtils;
 import weka.filters.Filter;
 import weka.filters.supervised.attribute.AddClassification;
 
-import java.util.Random;
-
 /**
  * @author zhangliangbo
- * @since 2021/12/5
- **/
-
-
+ * @since 2022/4/10
+ */
 @Slf4j
-public class RunOnceCv {
+public class RunWithTest {
     public static void main(String[] args) throws Exception {
-        //加载数据集
-        Instances data = ConverterUtils.DataSource.read("D:\\Program Files\\Weka-3-8-5\\data\\ionosphere.arff");
+        //加载训练集和测试集
+        Instances train = ConverterUtils.DataSource.read("D:\\Program Files\\Weka-3-8-5\\data\\segment-challenge.arff");
+        Instances test = ConverterUtils.DataSource.read("D:\\Program Files\\Weka-3-8-5\\data\\segment-test.arff");
         //设置类别属性
-        data.setClassIndex(data.numAttributes() - 1);
+        train.setClassIndex(train.numAttributes() - 1);
+        test.setClassIndex(test.numAttributes() - 1);
         //设置选项
         String[] options = new String[2];
         options[0] = "-C";
@@ -30,27 +28,22 @@ public class RunOnceCv {
         //初始化分类器
         J48 classifier = new J48();
         classifier.setOptions(options);
-        //随机种子和随机器
-        int seed = 5555;
-        Random rand = new Random(seed);
-        //折数
-        int folds = 10;
-        //进行十折交叉验证
-        Evaluation evaluation = new Evaluation(data);
-        evaluation.crossValidateModel(classifier, data, folds, rand);
+        //构建分类器
+        classifier.buildClassifier(train);
+        //开始评估
+        Evaluation evaluation = new Evaluation(train);
+        evaluation.evaluateModel(classifier, test);
         log.info("评估结果\n{}", evaluation.toSummaryString());
-        //假设结果满意，用全量数据训练分类器
-        classifier.buildClassifier(data);
         //设置预测过滤器，使用过滤器预测
         AddClassification filter = new AddClassification();
         filter.setClassifier(classifier);
         filter.setOutputClassification(true);
         filter.setOutputDistribution(true);
         filter.setOutputErrorFlag(true);
-        filter.setInputFormat(data);
+        filter.setInputFormat(train);
         //开始预测
-        Instances predicatedData = Filter.useFilter(data, filter);
+        Instances predicatedData = Filter.useFilter(test, filter);
         //保存预测结果
-        ConverterUtils.DataSink.write("D:\\predications.arff", predicatedData);
+        ConverterUtils.DataSink.write("D:\\withTest.arff", predicatedData);
     }
 }
