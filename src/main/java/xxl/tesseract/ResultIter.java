@@ -39,6 +39,7 @@ public class ResultIter {
             } while (ri.Next(level));
             ri.close();
         }
+        tesseract.TessMonitorDelete(etextDesc);
         etextDesc.close();
         api.close();
     }
