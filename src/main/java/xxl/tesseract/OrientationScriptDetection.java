@@ -37,9 +37,12 @@ public class OrientationScriptDetection {
 
         tesseract.TessPageIteratorDelete(it);
         it.close();
+
         tesseract.TessMonitorDelete(etextDesc);
         etextDesc.close();
+
         api.close();
+
         lept.pixDestroy(image);
         image.close();
     }
