@@ -33,6 +33,7 @@ public class GetComponentImages {
             lept.boxDestroy(box);
             ocrResult.close();
         }
+        lept.pixDestroy(image);
         api.close();
     }
 }
