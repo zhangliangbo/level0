@@ -32,7 +32,7 @@ public class OrientationScriptDetection {
 
         PageIterator it = api.AnalyseLayout();
         it.Orientation(orientation, direction, order, deskewAngle);
-        log.info("Orientation: {};\nWritingDirection: {}\nTextlineOrder: {}\nDeskew angle: {}\n",
+        log.info("\nOrientation: {};\nWritingDirection: {}\nTextlineOrder: {}\nDeskew angle: {}\n",
                 orientation, direction, order, deskewAngle);
 
         tesseract.TessPageIteratorDelete(it);

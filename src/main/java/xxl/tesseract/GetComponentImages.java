@@ -22,7 +22,7 @@ public class GetComponentImages {
         api.Init("D:\\github\\tessdata", "eng");
         api.SetImage(image);
         BOXA boxes = api.GetComponentImages(tesseract.RIL_TEXTLINE, true, null, (IntPointer) null);
-        log.info("Found {} textline image components.\n", boxes.n());
+        log.info("Found {} textline image components.", boxes.n());
         for (int i = 0; i < boxes.n(); i++) {
             BOX box = lept.boxaGetBox(boxes, i, lept.L_CLONE);
             api.SetRectangle(box.x(), box.y(), box.w(), box.h());
