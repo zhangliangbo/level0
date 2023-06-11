@@ -52,7 +52,7 @@ public class Export {
      * @throws Exception
      */
     public static String exportExcel(String file, boolean withAnnotationQ, List<List<Object>> sheets) throws Exception {
-        return exportExcel(IExcel.JXL, file, withAnnotationQ, sheets);
+        return exportExcel(IExcel.POI, file, withAnnotationQ, sheets);
     }
 
     /**
@@ -64,7 +64,7 @@ public class Export {
      * @throws Exception
      */
     public static String exportExcel(String file, List<List<Object>> sheets) throws Exception {
-        return exportExcel(IExcel.JXL, file, sheets);
+        return exportExcel(IExcel.POI, file, sheets);
     }
 
     /**

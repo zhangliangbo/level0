@@ -26,7 +26,7 @@ public class Import {
      * @return
      */
     public static List<List<String[]>> importExcel(String file) {
-        return importExcel(IExcel.JXL, file);
+        return importExcel(IExcel.POI, file);
     }
 
     /**
@@ -51,7 +51,7 @@ public class Import {
      * @return
      */
     public static <T> List<List<T>> importExcel(String file, Class<T> cls) {
-        return importExcel(IExcel.JXL, file, cls);
+        return importExcel(IExcel.POI, file, cls);
     }
 
     /**

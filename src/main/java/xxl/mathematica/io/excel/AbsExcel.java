@@ -13,8 +13,6 @@ public abstract class AbsExcel implements IExcel {
         switch (method) {
             case IExcel.POI:
                 return PoiExcel.getInstance();
-            case IExcel.JXL:
-                return JxlExcel.getInstance();
             default:
                 throw new IllegalArgumentException("no such implementation");
         }
